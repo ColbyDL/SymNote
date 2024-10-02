@@ -2,5 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    box-sizing: border-box;
+}
 
-
+.navBarShift {
+    margin-top: 100px;
+}
