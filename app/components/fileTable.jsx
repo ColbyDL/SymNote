@@ -1,48 +1,31 @@
+
 import Link from 'next/link'
 
+import FileDisplay from './fileDisplay'
+
 const fileTable = () => {
+
+  
   return (
-    <div>
-      <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr className="hover">
-              <th></th>
-              <th>Name</th>
-              <th>Text</th>
-              <th>Last Modified</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* row 1 */}
-            <tr className="hover">
-              <th>1</th>
-              <td>File 1</td>
-              <td>This is some text</td>
-              <td>01/01/2024</td>
-              <td><Link href="/temporary"><button className="btn-sm bg-slate-400 rounded-md">Open</button></Link></td>
-            </tr>
-            {/* row 2 */}
-            <tr className="hover">
-              <th>2</th>
-              <td>File 2</td>
-              <td>This is some text</td>
-              <td>01/01/2024</td>
-              <td><Link href="/"><button className="btn-sm bg-slate-400 rounded-md">Open</button></Link></td>
-            </tr>
-            {/* row 3 */}
-            <tr className="hover">
-              <th>3</th>
-              <td>File 3</td>
-              <td>This is some text</td>
-              <td>01/01/2024</td>
-              <td><Link href="/"><button className="btn-sm bg-slate-400 rounded-md">Open</button></Link></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div className="w-full px-16">
+      <table className="table-fixed w-full border-separate border-spacing-2">
+        <thead className="h-10">
+          <tr>
+            <th className="rounded-tl-3xl border border-slate-400 bg-slate-500">File Name</th>
+            <th className="border border-slate-400 bg-slate-500">Description</th>
+            <th className="border border-slate-400 bg-slate-500">Last Modified</th>
+            <th className="border rounded-tr-3xl border-slate-400 bg-slate-500">Link</th>
+          </tr>
+        </thead>
+        <tbody className="w-full">
+          <FileDisplay />
+          <FileDisplay />
+          <FileDisplay />
+          <FileDisplay />
+          <FileDisplay />
+          <FileDisplay />
+        </tbody>
+      </table>
     </div>
   );
 };
