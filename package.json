@@ -13,7 +13,8 @@
     "next": "14.2.12",
     "quill": "^2.0.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
     "daisyui": "^4.12.10",

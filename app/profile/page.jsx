@@ -5,17 +5,14 @@ import FileTable from '../components/fileTable'
 
 const ProfilePage = () => {
   return (
-    <div className="h-full w-full p-2 pt-10">
-      <div>
+    <div className="">
+      <div className="h-40">
         <FolderFileButtons />
       </div>
-      <div className="flex flex-wrap gap-2 justify-evenly p-10">
-        <Folders />
-        <Folders />
-        <Folders />
+      <div className="">
         <Folders />
       </div>
-      <div>
+      <div className="pt-40">
         <FileTable />
       </div>
     </div>
