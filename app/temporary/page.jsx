@@ -4,6 +4,7 @@ const temporary = () => {
 
   return (
     <div>  
+      <TextEditor />
     </div>
   )
 }

@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
       </head>
       <UserProvider>
         <body>
-          <Navbar />
+          <Navbar/>
           <main className="bg-scroll">
             {children}
           </main>

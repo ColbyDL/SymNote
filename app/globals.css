@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --black: rgb(0, 0, 0);
+}
+
 html, body {
     height: 100%;
 }
@@ -19,7 +23,7 @@ html, body {
 }
 
 .navBar {
-    @apply p-4 mx-auto fixed bg-slate-500 z-50;
+    @apply p-4 mx-auto bg-slate-500 z-50;
 }
 
 main {
@@ -30,4 +34,10 @@ main {
     z-index: 0;
     overflow-x: scroll;
     background-repeat: repeat;
+}
+
+#editorjs {
+    border: 2px solid var(--black);
+    margin-left: 25%;
+    margin-right: 25%;
 }
