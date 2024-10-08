@@ -65,7 +65,7 @@ const Navbar = () => {
             <Link href="/docs" className="btn-primary self-center w-20">
               <h2 className="text-center">Docs</h2>
             </Link>
-            <a href="/profile/" className="btn-primary self-center">
+            <a href="/profile/user" className="btn-primary self-center">
               <h2 className="whitespace-nowrap">{user.name}</h2>
             </a>
             <a href="/api/auth/logout" className="btn-primary self-center">
