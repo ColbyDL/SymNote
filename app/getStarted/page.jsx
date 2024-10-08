@@ -1,6 +1,6 @@
 import TextEditor from '../components/textEditor'
 
-const temporary = () => {
+const getStarted = () => {
 
   return (
     <div>  
@@ -9,4 +9,4 @@ const temporary = () => {
   )
 }
 
-export default temporary 
+export default getStarted 
