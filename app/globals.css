@@ -23,7 +23,7 @@ html, body {
 }
 
 .navBar {
-    @apply p-4 mx-auto bg-slate-500 z-50;
+    @apply p-4 mx-auto fixed bg-slate-500 z-50 w-full;
 }
 
 main {

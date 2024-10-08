@@ -1,7 +1,9 @@
+import DocSection from "../components/docs-section";
+
 const docsPage = () => {
   return (
-    <div><h1>docs page</h1></div>
+    <DocSection />
   )
 }
 
-export default docsPage
+export default docsPage;
