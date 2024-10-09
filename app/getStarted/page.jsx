@@ -1,11 +1,12 @@
 import TextEditor from '../components/textEditor'
 
-const temporary = () => {
+const getStarted = () => {
 
   return (
     <div>  
+      <TextEditor />
     </div>
   )
 }
 
-export default temporary 
+export default getStarted 

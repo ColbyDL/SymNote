@@ -1,17 +1,19 @@
 import "./globals.css";
 import Navbar from "./components/navbar";
 import { UserProvider } from '@auth0/nextjs-auth0/client';
+import { connectToMongoDB } from "../lib/mongodb";
 
 export default function RootLayout({ children }) {
+  connectToMongoDB();
   return (
     <html lang="en">
       <head>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1" />
       </head>
       <UserProvider>
         <body>
-          <Navbar />
+          <Navbar/>
           <main className="bg-scroll">
             {children}
           </main>
