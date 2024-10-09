@@ -8,7 +8,7 @@
 
 <h3>Can I see a demo?</h3>
 
-**A video demonstration** of the app can be found here: -link to be added-
+**A video demonstration** of the app can be found here: [https://youtu.be/4B_kHCOMqHY](https://youtu.be/4B_kHCOMqHY)
 
 <h3>User Experience</h3>
 
