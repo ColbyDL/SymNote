@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
 
 import Link from "next/link";
@@ -15,13 +15,38 @@ const Navbar = () => {
 
 
   const [homeButtonText, setHomeButtonText] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { user, error, isLoading } = useUser();
+  
+  const toggleDarkMode = () => {
+    setIsDarkMode((prevState) => {
+      const newState = !prevState;
+      if (newState) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme','dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+      return newState;
+    });
+  };
+
+  useEffect(() => {
+    const localState = localStorage.getItem('theme');
+    if (localState === 'dark'){
+      document.documentElement.classList.add('dark');
+      setIsDarkMode(true);
+    }
+  }, []);
+  
   
   let homeText = "SymNote"
-  
   if (!homeButtonText) {
     homeText = "Go Home"
 
   }
+
 
   
 
@@ -48,13 +73,15 @@ const Navbar = () => {
         </div>
       </nav>
   );
-  if (error) return <div>{error.message}</div>;
-  
 
+  if (error) return <div>{error.message}</div>;
   if (user) {
     return (
       <nav className="navBar">
         <div className="flex h-20 items-center justify-between pl-20">
+          <button onClick={toggleDarkMode} className="bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 p-2 rounded">
+            {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+          </button>
           <div className="flex h-full gap-10">
             <Link onMouseOver={() => setHomeButtonText((prevState) => !prevState)} onMouseOut={() => setHomeButtonText((prevState) => !prevState)}href="/" className="btn-primary self-center">
               <h2 >{homeText}</h2>
@@ -80,6 +107,9 @@ const Navbar = () => {
     <nav className="navBar">
       <div className="flex h-20 items-center justify-between pl-20">
         <div className="flex h-full gap-10">
+        <button onClick={toggleDarkMode} className="bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 p-2 rounded">
+            {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+          </button>
           <Link onMouseOver={() => setHomeButtonText((prevState) => !prevState)} onMouseOut={() => setHomeButtonText((prevState) => !prevState)}href="/" className="btn-primary self-center">
             <h2 >{homeText}</h2>
           </Link>

@@ -10,8 +10,13 @@ html, body {
     height: 100%;
 }
 
+body {
+    @apply bg-white dark:bg-black;
+}
+
+/* Button classes */
 .btn-primary {
-    @apply rounded-3xl p-4 text-lg font-bold cursor-pointer tracking-wider bg-cyan-600 text-white hover:bg-cyan-300 transform transition duration-150 hover:scale-110;
+    @apply rounded-3xl p-4 text-lg font-bold cursor-pointer tracking-wider bg-cyan-600 text-white hover:bg-cyan-300 transform transition duration-150 hover:scale-110 dark:bg-cyan-700;
 }
 
 .btn-nocolor {
@@ -22,22 +27,24 @@ html, body {
     @apply cursor-pointer tracking-wider transform transition duration-150 hover:scale-110;
 }
 
+/* Navbar class */
 .navBar {
-    @apply p-4 mx-auto fixed bg-slate-500 z-50 w-full;
+
+    @apply p-4 mx-auto fixed bg-slate-500 z-50 dark:bg-slate-800;
+
 }
 
+/* Main content area */
 main {
-    padding-top: 200px;
-    padding-bottom: 100px;
-    background-color: lightgray;
-    height: 100%; 
-    z-index: 0;
-    overflow-x: scroll;
+    @apply pt-16 pb-10 h-full z-0 overflow-x-scroll bg-gray-200 dark:bg-gray-900;
     background-repeat: repeat;
 }
+
+
 
 #editorjs {
     border: 2px solid var(--black);
     margin-left: 25%;
     margin-right: 25%;
 }
+
