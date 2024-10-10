@@ -36,7 +36,7 @@ body {
 
 /* Main content area */
 main {
-    @apply pt-16 pb-10 h-full z-0 overflow-x-scroll bg-gray-200 dark:bg-gray-900;
+    @apply pt-52 pb-28 h-full z-0 overflow-x-scroll bg-gray-200 dark:bg-gray-900;
     background-repeat: repeat;
 }
 
