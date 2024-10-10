@@ -16,7 +16,7 @@ const Navbar = () => {
 
   const [homeButtonText, setHomeButtonText] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const { user, error, isLoading } = useUser();
+  //const { user, error, isLoading } = useUser();
   
   const toggleDarkMode = () => {
     setIsDarkMode((prevState) => {

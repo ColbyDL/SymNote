@@ -6,7 +6,7 @@ import FileTable from '../../components/fileTable'
 const ProfilePage = () => {
   return (
     <div className="">
-      <div className="h-40">
+      <div className="h-40 pt-20">
         <FolderFileButtons />
       </div>
       <div className="">

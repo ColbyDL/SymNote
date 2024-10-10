@@ -1,18 +1,30 @@
 ## SymNote
 <img src="https://i.imgur.com/EQBEvEg.png" width=200/>
 
-<h3>What is SymNote?</h3>
+### What is SymNote?
 
 **SymNote** is an up and coming note-taking application designed specifically for students, educators, and professionals who need to incorporate complex mathematical symbols and expressions into their notes seamlessly. We put a focus on user experience and powerful functionality, SymNote aims to make mathematical writing accessible and efficient. 
 
 
-<h3>Can I see a demo?</h3>
+### Can I see a demo?
 
-**A video demonstration** of the app can be found here: -link to be added-
+**A video demonstration** of the app can be found here: https://youtu.be/4B_kHCOMqHY
 
-<h3>User Experience</h3>
+### User Experience
 
 **Using the app, users will be able to** effortlessly write out complex mathematical documents, type intricate equations, and export your work in multiple formats, allowing you to upload your work to other applications! In addition, SymNote provides you with a user-friendly interface, customizable to fit your needs*.
+
+**Light and Dark Mode** We are incorporating a light and dark mode theme to enhance the user experience for the editors preference. This will help the editor website feel more modern for Users that are accustomed to a certain theming on there applications of choice. 
+
+### Design Elements
+
+For the Prototype we decided to build direclty using React, Next.js with the usage of Tailwind.css, editor.js, and auth0 for the logging in functionality. We wanted to keep the website simple so it is easy to navigate with a folder/file page that is similiar to the look of google drive for ease of understanding. 
+
+The Editor is basic as of this prototype but with the use of plug-ins available to editor.js, we will be able to add in functionality without having to code each element from scratch. 
+
+Auth0 has the functionality to be able to sign in using email, google, or github for the user's preference.  It also allows for ease of logging off from any screen within the website with minimal code. With Auth0's functionality, we will be able to combine new users directly to the Mongo backend database.
+
+
 
 <sup>*many features still in development</sup>
 
