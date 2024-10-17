@@ -7,7 +7,6 @@ import Image from "next/image";
 import Logo from "../public/images/SymNote_Png_Logo.png";
 
 import Profile from "../../models/profileModel"
-import Folder from "../../models/foldersModel"
 import { BrowserRouter } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -18,10 +17,6 @@ import { faMoon } from '@fortawesome/free-solid-svg-icons'
 const Navbar = () => {
   const [homeButtonText, setHomeButtonText] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  //const { user, error, isLoading } = useUser();
-  
-  //const lightIcon = <FontAwesomeIcon class='w-8 h-8 transform transition duration-150 hover:scale-110' icon={faSun} />
-  //const darkIcon =  <FontAwesomeIcon class='w-8 h-8 transform transition duration-150 hover:scale-110' icon={faMoon} />
 
   const toggleDarkMode = () => {
     setIsDarkMode((prevState) => {
@@ -52,19 +47,9 @@ const Navbar = () => {
 
   }
 
-  //const { user, error, isLoading } = useUser();
+  const { user, error, isLoading } = useUser();
 
-  //const profile = await Profile.findOne({ email: user.email });
-  //const folder = await Folder.findOne({ root_folder: profile.root_folder});
-  /*
-  <button onClick={toggleDarkMode} className="bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 p-2 rounded">
-      {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-  </button>
-  <Link onMouseOver={() => setHomeButtonText((prevState) => !prevState)} onMouseOut={() => setHomeButtonText((prevState) => !prevState)}href="/" src={Logo} className="btn-primary self-center">
-    <h2 >{homeText}</h2>
-  </Link>
-  <Image className="w-auto h-auto" src={Logo}></Image>
-  */
+  
 
    
   if (isLoading) return (
