@@ -11,7 +11,7 @@ const heroWelcome = () => {
             <Link href="/getStarted" className="btn-primary self-center"><h1>Get Started</h1></Link>
         </div>
         <div className="h-full w-full">
-            <Image className="w-auto h-5/6 mx-auto pr-40" src={tempImage} alt="tempImage" />
+            <Image className="w-auto pt-36 h-4/6 mx-auto pr-40" src={tempImage} alt="tempImage" />
         </div>
     </div>
   )
