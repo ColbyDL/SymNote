@@ -8,16 +8,21 @@ import Logo from "../public/images/SymNote_Png_Logo.png";
 
 import Profile from "../../models/profileModel"
 import Folder from "../../models/foldersModel"
+import { BrowserRouter } from 'react-router-dom';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSun } from '@fortawesome/free-solid-svg-icons'
+import { faMoon } from '@fortawesome/free-solid-svg-icons'
 
 
 const Navbar = () => {
-
-
-
   const [homeButtonText, setHomeButtonText] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
   //const { user, error, isLoading } = useUser();
   
+  //const lightIcon = <FontAwesomeIcon class='w-8 h-8 transform transition duration-150 hover:scale-110' icon={faSun} />
+  //const darkIcon =  <FontAwesomeIcon class='w-8 h-8 transform transition duration-150 hover:scale-110' icon={faMoon} />
+
   const toggleDarkMode = () => {
     setIsDarkMode((prevState) => {
       const newState = !prevState;
@@ -47,15 +52,19 @@ const Navbar = () => {
 
   }
 
-
-  
-
-  const { user, error, isLoading } = useUser();
-  
-  
+  //const { user, error, isLoading } = useUser();
 
   //const profile = await Profile.findOne({ email: user.email });
   //const folder = await Folder.findOne({ root_folder: profile.root_folder});
+  /*
+  <button onClick={toggleDarkMode} className="bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 p-2 rounded">
+      {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+  </button>
+  <Link onMouseOver={() => setHomeButtonText((prevState) => !prevState)} onMouseOut={() => setHomeButtonText((prevState) => !prevState)}href="/" src={Logo} className="btn-primary self-center">
+    <h2 >{homeText}</h2>
+  </Link>
+  <Image className="w-auto h-auto" src={Logo}></Image>
+  */
 
    
   if (isLoading) return (
@@ -79,14 +88,10 @@ const Navbar = () => {
     return (
       <nav className="navBar">
         <div className="flex h-20 items-center justify-between pl-20">
-          <button onClick={toggleDarkMode} className="bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 p-2 rounded">
-            {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-          </button>
           <div className="flex h-full gap-10">
-            <Link onMouseOver={() => setHomeButtonText((prevState) => !prevState)} onMouseOut={() => setHomeButtonText((prevState) => !prevState)}href="/" className="btn-primary self-center">
-              <h2 >{homeText}</h2>
+            <Link href = "/" className="btn-logo">
+              <Image src={Logo} alt="logo-alt"></Image>
             </Link>
-            <Image className="w-auto h-auto" src={Logo}></Image>
           </div>
           <div className="flex h-full gap-10 pr-20"> 
             <Link href="/docs" className="btn-primary self-center w-20">
@@ -98,6 +103,9 @@ const Navbar = () => {
             <a href="/api/auth/logout" className="btn-primary self-center">
               <h2 className="whitespace-nowrap">Logout</h2>
             </a>
+            <button onClick={toggleDarkMode}>
+            {isDarkMode ? <FontAwesomeIcon class='theme-icon' icon={faMoon} /> : <FontAwesomeIcon class='w-8 h-8 transform transition duration-150 hover:scale-110 text-cyan-600' icon={faSun} />}
+            </button>
           </div>
         </div>
       </nav>
@@ -106,15 +114,11 @@ const Navbar = () => {
   return (
     <nav className="navBar">
       <div className="flex h-20 items-center justify-between pl-20">
-        <div className="flex h-full gap-10">
-        <button onClick={toggleDarkMode} className="bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 p-2 rounded">
-            {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-          </button>
-          <Link onMouseOver={() => setHomeButtonText((prevState) => !prevState)} onMouseOut={() => setHomeButtonText((prevState) => !prevState)}href="/" className="btn-primary self-center">
-            <h2 >{homeText}</h2>
-          </Link>
-          <Image className="w-auto h-auto" src={Logo}></Image>
-        </div>
+      <div className="flex h-full gap-10">
+            <Link href = "/" className="btn-logo">
+              <Image src={Logo} alt="logo-alt"></Image>
+            </Link>
+          </div>
         <div className="flex h-full gap-10 pr-20"> 
           <Link href="/docs" className="btn-primary self-center w-20">
             <h2 className="text-center">Docs</h2>
@@ -122,6 +126,9 @@ const Navbar = () => {
           <a href="/api/auth/login" className="btn-primary self-center">
             <h2 className="whitespace-nowrap">Log In or Sign Up</h2>
           </a>
+          <button onClick={toggleDarkMode}>
+            {isDarkMode ? <FontAwesomeIcon class='theme-icon' icon={faMoon} /> : <FontAwesomeIcon class='w-8 h-8 transform transition duration-150 hover:scale-110 text-cyan-600' icon={faSun} />}
+          </button>
         </div>
       </div>
     </nav>

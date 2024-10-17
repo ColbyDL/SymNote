@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
 :root {
     --black: rgb(0, 0, 0);
@@ -27,10 +28,18 @@ body {
     @apply cursor-pointer tracking-wider transform transition duration-150 hover:scale-110;
 }
 
+.btn-logo {
+    @apply w-16 h-16 align-middle transform transition duration-150 hover:scale-110;
+}
+
+.theme-icon {
+    @apply w-8 h-8 transform transition duration-150 hover:scale-110 text-white;
+}
+
 /* Navbar class */
 .navBar {
 
-    @apply p-4 mx-auto fixed bg-slate-500 z-50 dark:bg-slate-800;
+    @apply p-4 mx-auto bg-slate-500 z-50 dark:bg-slate-800;
 
 }
 
