@@ -1,10 +1,8 @@
 import "./globals.css";
 import Navbar from "./components/navbar";
 import { UserProvider } from '@auth0/nextjs-auth0/client';
-import { connectToMongoDB } from "../lib/mongodb";
 
 export default function RootLayout({ children }) {
-  connectToMongoDB();
   return (
     <html lang="en">
       <head>
