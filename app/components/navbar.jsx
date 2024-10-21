@@ -6,7 +6,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Logo from "../public/images/SymNote_Png_Logo.png";
 
-import Profile from "../../models/profileModel"
 import Folder from "../../models/foldersModel"
 import { BrowserRouter } from 'react-router-dom';
 
