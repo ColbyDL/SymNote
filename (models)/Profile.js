@@ -5,6 +5,7 @@ mongoose.Promise = global.Promise
 
 const ProfileSchema = new Schema(
     {
+        auth0Id: { type: String, required: true, unique: true},
         name: {type: String, required: true},
         email: {type: String, required: true},
         rootFolderId: {type: mongoose.Schema.Types.ObjectId, ref: 'Folder'},
