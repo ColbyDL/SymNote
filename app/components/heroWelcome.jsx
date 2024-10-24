@@ -4,14 +4,14 @@ import tempImage from '../public/images/TempPreview.jpg';
 
 const heroWelcome = () => {
   return (
-    <div className="grid grid-cols-2 gap-10 h-full ">
-        <div className="flex flex-col justify-center align-middle gap-8 pl-40">
-            <h1 className="self-center text-9xl font-mono">SymNote</h1>
+    <div className="flex flex-row h-full w-full">
+        <div className="flex flex-col justify-center gap-4 p-4 m-auto">
+            <h1 className="self-center text-9xl font-mono max-[515px]:text-7xl">SymNote</h1>
             <p className="self-center">This is some text</p>
             <Link href="/getStarted" className="btn-primary self-center"><h1>Get Started</h1></Link>
         </div>
-        <div className="h-full w-full">
-            <Image className="w-auto pt-36 h-4/6 mx-auto pr-40" src={tempImage} alt="tempImage" />
+        <div className="my-auto mr-auto max-[919px]:hidden">
+            <Image className="w-96 h-96 object-scale-down p-4" src={tempImage} alt="tempImage" />
         </div>
     </div>
   )
