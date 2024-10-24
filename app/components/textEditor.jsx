@@ -1,13 +1,16 @@
 "use client";
 
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import EditorJS from "@editorjs/editorjs"
 import Header from "@editorjs/header"
+//import MathTool from 'editorjs-math';
+import SymbolPicker from './SymbolPicker';
 
 const textEditor = () => {
   // Stores reference to an Editor.js instance
   const ejInstance = useRef();
-
+  const [isMathMode, setIsMathMode] = useState(false);
+  const [currentMathBlockIndex, setCurrentMathBlockIndex] = useState(null);
 
   const initEditor= () => {
     // Create editor
@@ -19,6 +22,14 @@ const textEditor = () => {
           class: Header,
           inlineToolbar: true
         },
+        /*math:{
+          class: MathTool,
+          config:{
+            katex:{ //Katex Rendering Configuration
+              throwOnError: false, //Will not crash the entire site if katex fails to render
+            }
+          }
+        },*/
       },
       // Prevents editor border from extending down, creating unused space
       minHeight: 0,
@@ -52,14 +63,45 @@ const textEditor = () => {
     }
   }, []);
   
+/*
+  const insertMathBlock = () => {
+    ejInstance.current.blocks.insert('math', {});
+    setIsMathMode(true);  // Activate math mode
+  };
+*/
+  const exitMathMode = () => {
+    setIsMathMode(false);  // Deactivate math mode
+  };
+  
+
   // Displays the editor
     return (
-
     <>
       <h1 className="text-4xl font-bold text-center mb-10">Your Document</h1>
-      <div id="editorjs" className="rounded-lg"></div>
-    </>
 
+      <div className="flex justify-center mb-10">
+        {!isMathMode && (
+          <button
+            className="p-2 bg-blue-500 text-white rounded"
+            /*onClick={insertMathBlock}*/
+          >
+            Insert Math Block
+          </button>
+        )}
+        {isMathMode && (
+          <button
+            className="p-2 bg-red-500 text-white rounded"
+            onClick={exitMathMode}
+          >
+            Exit Math Mode
+          </button>
+        )}
+      </div>
+
+      <div id="editorjs" className="rounded-lg"></div>
+
+      {isMathMode && <SymbolPicker/>}
+    </>
   )
 }
 
