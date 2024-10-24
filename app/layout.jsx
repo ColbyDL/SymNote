@@ -2,6 +2,8 @@ import "./globals.css";
 import Navbar from "./components/navbar";
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 
+import 'katex/dist/katex.min.css';
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
