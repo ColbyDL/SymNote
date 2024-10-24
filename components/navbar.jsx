@@ -56,7 +56,7 @@ const Navbar = () => {
         setIsProfileLoading(true);
         try {
           console.log("Fetching profile for auth0Id:", user.sub);
-          const res = await fetch(`/api/profiles?auth0Id=${user.sub}`);
+          const res = await fetch(`/api/Profiles?auth0Id=${user.sub}`);
           if (!res.ok) {
             throw new Error(`HTTP error! status: ${res.status}`);
           }

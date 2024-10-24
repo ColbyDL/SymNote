@@ -5,6 +5,7 @@ import { profileEnd } from 'console';
 
 
 export async function GET(req) {
+  console.log("GET [id] reached");
     await dbConnect();
     const { id } = req.params;
     try {

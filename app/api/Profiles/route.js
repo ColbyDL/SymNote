@@ -1,7 +1,7 @@
 import dbConnect from "../../../lib/dbConnect";
-import Profile from "../../(models)/Profile";
-import Folder from "../../(models)/Folder";
-import File from "../../(models)/File";
+import Profile from "../../../(models)/Profile";
+import Folder from "../../../(models)/Folder";
+import File from "../../../(models)/File";
 
 import { NextResponse } from "next/server";
 
