@@ -6,7 +6,7 @@ const DocSection = () => {
     <>
       <section>
         <details>
-          <summary>
+          <summary className="doc-bar">
             <h2>Description</h2>
           </summary>
           <p className="pb-5">This is a description.</p>
@@ -15,7 +15,7 @@ const DocSection = () => {
 
       <section>
         <details>
-          <summary>
+          <summary className="doc-bar">
             <h2>Quick Start</h2>
           </summary>
           <p className="pb-5">
@@ -26,7 +26,7 @@ const DocSection = () => {
 
       <section>
         <details>
-          <summary>
+          <summary className="doc-bar">
             <h2>Adding Symbols</h2>
           </summary>
           <p className="pb-5">Here is how to add symbols.</p>
@@ -35,7 +35,7 @@ const DocSection = () => {
 
       <section>
         <details>
-          <summary>
+          <summary className="doc-bar">
             <h2>Mathmetical Expressions</h2>
           </summary>
           <p className="pb-5">
@@ -46,7 +46,7 @@ const DocSection = () => {
 
       <section>
         <details>
-          <summary>
+          <summary className="doc-bar">
             <h2>Export</h2>
           </summary>
           <p className="pb-5">Here is how to export your notes.</p>
