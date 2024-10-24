@@ -1,7 +1,7 @@
 import dbConnect from "../../../lib/dbConnect";
-import Profile from "../../../(models)/Profile";
-import Folder from "../../../(models)/Folder";
-import File from "../../../(models)/File";
+import Profile from "../../../models/Profile";
+import Folder from "../../../models/Folder";
+import File from "../../../models/File";
 
 import { NextResponse } from "next/server";
 
@@ -45,45 +45,51 @@ export async function GET(req) {
       );
     }
   }
-  
   export async function POST(req) {
     console.log("POST /api/profiles called");
     await dbConnect();
     try {
-      const body = await req.json();
-      console.log("Request body:", body);
-  
-      // Check if the profile already exists
-      const existingProfile = await Profile.findOne({ auth0Id: body.auth0Id });
-      if (existingProfile) {
-        console.log("Profile already exists:", existingProfile);
-        return NextResponse.json({ success: true, data: existingProfile });
-      }
-  
-      // Create a root folder
-      const rootFolder = await Folder.create({ name: 'Root Folder' });
-  
-      // Create a new profile and associate it with the root folder
-      const profile = await Profile.create({
-        ...body,
-        rootFolderId: rootFolder._id,
-      });
-  
-      // Associate the profile with the root folder
-      rootFolder.profileId = profile._id;
-      await rootFolder.save();
-  
-      console.log("New profile created:", profile);
-      return NextResponse.json({ success: true, data: profile });
-    } catch (error) {
-      console.error("Error in POST /api/profiles:", error);
-      return NextResponse.json(
-        { success: false, error: error.message },
-        { status: 500 }
-      );
-    }
-  }
+        const body = await req.json();
+        console.log("Request body:", body);
 
+        // Validate input
+        if (!body.auth0Id) {
+            return NextResponse.json(
+                { success: false, error: "auth0Id is required" },
+                { status: 400 }
+            );
+        }
+
+        const existingProfile = await Profile.findOne({ auth0Id: body.auth0Id });
+        if (existingProfile) {
+            console.log("Profile already exists:", existingProfile);
+            return NextResponse.json({ success: true, data: existingProfile });
+        }
+
+        // Create a root folder
+        const rootFolder = await Folder.create({ name: 'Root Folder', profileId: null }); // Initialize profileId as null
+
+        // Create a new profile and associate it with the root folder
+        const profile = await Profile.create({
+            ...body,
+            rootFolderId: rootFolder._id,
+        });
+
+        // Associate the profile with the root folder
+        rootFolder.profileId = profile._id; // Set the profileId
+        await rootFolder.save(); // Save the updated folder
+
+        console.log("New profile created:", profile);
+        return NextResponse.json({ success: true, data: profile }, { status: 201 });
+    } catch (error) {
+        console.error("Error in POST /api/profiles:", error);
+        return NextResponse.json(
+            { success: false, error: error.message },
+            { status: 500 }
+        );
+    }
+  } 
+  
 
 
 

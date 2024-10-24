@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose"
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.Promise = global.Promise
 
-const ProfileSchema = new Schema(
+const ProfileSchema = new mongoose.Schema(
     {
         auth0Id: { type: String, required: true, unique: true},
         name: {type: String, required: true},

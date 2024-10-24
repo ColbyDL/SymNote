@@ -1,5 +1,5 @@
 import dbConnect from '../../../../lib/dbConnect'
-import Profile from '../../../../(models)/Profile'
+import Profile from '../../../../models/Profile'
 import { NextResponse } from 'next/server'
 import { profileEnd } from 'console';
 
