@@ -63,7 +63,6 @@ const textEditor = () => {
     }
   }, []);
   
-
   const insertMathBlock = () => {
     ejInstance.current.blocks.insert('math', {});
     setIsMathMode(true);  // Activate math mode

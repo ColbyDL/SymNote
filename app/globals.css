@@ -1,23 +1,53 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
 
 :root {
     --black: rgb(0, 0, 0);
+    --logo-color: #2B3440;
+    --nav-color:#E5E6E6;
+    --button-color:#2B3440;
+    --settings-color:#2B3440
+}
+[data-theme='dark'] {
+    --logo-color: #e7e2df;
+    --nav-color:#15191e;
+    --button-color: #2a323c;
+    --settings-color:#2a323c
+}
+[data-theme='cupcake'] {
+    --logo-color: #291334;
+    --nav-color:#e7e2df;
+    --button-color:#291334;
+    --settings-color:#291334
+}
+[data-theme='synthwave'] {
+    --logo-color: #221551;
+    --nav-color:#f9f7fd;
+    --button-color: #221551;
+    --settings-color:#221551
+}
+[data-theme='aqua'] {
+    --logo-color: #a9cbff;
+    --nav-color:#3b8ac4;
+    --button-color: #a9cbff;
+    --settings-color:#a9cbff;
 }
 
 html, body {
-    height: 100%;
-}
-
-body {
-    @apply bg-white dark:bg-black;
+    @apply h-full w-full;
 }
 
 /* Button classes */
+.logo-div {
+    overflow: hidden;
+}
+
 .btn-primary {
-    @apply rounded-3xl p-4 text-lg font-bold cursor-pointer tracking-wider bg-cyan-600 text-white hover:bg-cyan-300 transform transition duration-150 hover:scale-110 dark:bg-cyan-700;
+    @apply inline-block align-middle mx-1 min-[400px]:mx-2 sm:mx-4 rounded-3xl p-4 text-xs min-[400px]:text-sm sm:text-lg font-bold cursor-pointer tracking-wider text-white hover:bg-cyan-300 transform transition duration-150 hover:scale-110 dark:bg-cyan-700;
+    background-color: var(--button-color);
 }
 
 .btn-nocolor {
@@ -29,27 +59,29 @@ body {
 }
 
 .btn-logo {
-    @apply w-16 h-16 align-middle transform transition duration-150 hover:scale-110;
+    @apply w-16 h-16 align-middle transform transition duration-150;
+    filter: drop-shadow(0px 100px 0 var(--logo-color));
+    transform: translateY(-100px);
+}
+
+.settings-icon {
+    color: var(--settings-color);
 }
 
 .theme-icon {
-    @apply w-8 h-8 transform transition duration-150 hover:scale-110 text-white;
+    @apply w-8 h-8 object-center transform transition duration-150 hover:scale-110 text-white;
 }
 
 /* Navbar class */
 .navBar {
-
-    @apply p-4 mx-auto bg-slate-500 z-50 dark:bg-slate-800;
-
+    @apply flex justify-between p-4 mx-auto z-50 w-full h-24;
+    background-color: var(--nav-color);
 }
 
 /* Main content area */
 main {
-    @apply pt-52 pb-28 h-full z-0 overflow-x-scroll bg-gray-200 dark:bg-gray-900;
-    background-repeat: repeat;
+    @apply pt-52 pb-28 h-full z-0 overflow-x-scroll;
 }
-
-
 
 #editorjs {
     border: 2px solid var(--black);
