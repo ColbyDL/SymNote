@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import EditorJS from "@editorjs/editorjs"
 import Header from "@editorjs/header"
-//import MathTool from 'editorjs-math';
+import MathTool from 'editorjs-math';
 import SymbolPicker from './SymbolPicker';
 
 const textEditor = () => {
@@ -22,14 +22,14 @@ const textEditor = () => {
           class: Header,
           inlineToolbar: true
         },
-        /*math:{
+        math:{
           class: MathTool,
           config:{
             katex:{ //Katex Rendering Configuration
               throwOnError: false, //Will not crash the entire site if katex fails to render
             }
           }
-        },*/
+        },
       },
       // Prevents editor border from extending down, creating unused space
       minHeight: 0,
@@ -63,12 +63,11 @@ const textEditor = () => {
     }
   }, []);
   
-/*
   const insertMathBlock = () => {
     ejInstance.current.blocks.insert('math', {});
     setIsMathMode(true);  // Activate math mode
   };
-*/
+
   const exitMathMode = () => {
     setIsMathMode(false);  // Deactivate math mode
   };
@@ -83,7 +82,7 @@ const textEditor = () => {
         {!isMathMode && (
           <button
             className="p-2 bg-blue-500 text-white rounded"
-            /*onClick={insertMathBlock}*/
+            onClick={insertMathBlock}
           >
             Insert Math Block
           </button>
