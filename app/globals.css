@@ -9,19 +9,21 @@
     --logo-color: #2B3440;
     --nav-color:#E5E6E6;
     --button-color:#2B3440;
-    --settings-color:#2B3440
+    --settings-color:#2B3440;
+    --btn-text-color: #D7DDE4;
 }
 [data-theme='dark'] {
     --logo-color: #e7e2df;
     --nav-color:#15191e;
-    --button-color: #2a323c;
-    --settings-color:#2a323c
+    --button-color: #e7e2df;
+    --settings-color:#e7e2df;
+    --btn-text-color: #15191e;
 }
 [data-theme='cupcake'] {
     --logo-color: #291334;
     --nav-color:#e7e2df;
     --button-color:#291334;
-    --settings-color:#291334
+    --settings-color:#291334;
 }
 [data-theme='synthwave'] {
     --logo-color: #221551;
@@ -34,6 +36,7 @@
     --nav-color:#3b8ac4;
     --button-color: #a9cbff;
     --settings-color:#a9cbff;
+    --btn-text-color: #345da7;
 }
 
 html, body {
@@ -46,8 +49,9 @@ html, body {
 }
 
 .btn-primary {
-    @apply inline-block align-middle mx-1 min-[400px]:mx-2 sm:mx-4 rounded-3xl p-4 text-xs min-[400px]:text-sm sm:text-lg font-bold cursor-pointer tracking-wider text-white hover:bg-cyan-300 transform transition duration-150 hover:scale-110 dark:bg-cyan-700;
+    @apply inline-block align-middle mx-1 min-[400px]:mx-2 sm:mx-4 rounded-3xl p-4 text-xs min-[400px]:text-sm sm:text-lg font-bold cursor-pointer tracking-wider transform transition duration-150 hover:scale-110;
     background-color: var(--button-color);
+    color: var(--btn-text-color);
 }
 
 .btn-nocolor {

@@ -1,4 +1,4 @@
-summary {
+summary.doc-bar {
     cursor: pointer;
     display: flex;
     justify-content: space-between; 
@@ -13,12 +13,12 @@ summary {
     background-color: #e0e0e0; 
   }
   
-  summary::after {
+  summary.doc-bar::after {
     content: '▼';  
     font-size: 1rem;
   }
   
-  details[open] summary::after {
+  details[open] summary.doc-bar::after {
     content: '▲';  
   }
 

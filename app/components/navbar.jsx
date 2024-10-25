@@ -71,12 +71,12 @@ const Navbar = () => {
             >
               <div className="py-1">
                 <MenuItem>
-                  <a
+                  <Link
                     href="/profile/user"
                     className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
                   >
                     Files
-                  </a>
+                  </Link>
                 </MenuItem>
                 <MenuItem>
                   <a

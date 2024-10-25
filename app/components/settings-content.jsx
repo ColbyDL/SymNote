@@ -2,10 +2,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { themeChange } from 'theme-change';
 
 const settingsContent = () => {
-    const [themeText, setThemeText] = useState('Light');
+    const [themeText, setThemeText] = useState(() => {
+        const storedValue = localStorage.getItem('themeText');
+        return storedValue || 'Light';
+    });
 
     const handleClick = (string) => {
         setThemeText(string);
@@ -14,7 +18,8 @@ const settingsContent = () => {
     useEffect(() => {
         themeChange(false)
         //false parameter is required for react project
-      }, [])
+        localStorage.setItem('themeText', themeText);
+      }, [themeText])
 
     return (
         <>
