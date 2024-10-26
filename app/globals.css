@@ -45,6 +45,20 @@
     --settings-color:#a9cbff;
     --btn-text-color: #345da7;
 }
+[data-theme='coffee'] {
+    --logo-color: #c59f60;
+    --nav-color:#120C12;
+    --button-color: #c59f60;
+    --settings-color:#c59f60;
+    --btn-text-color: #120C12;
+}
+[data-theme='valentine'] {
+    --logo-color: #f0d6e8;
+    --nav-color:#e96d7b;
+    --button-color: #f0d6e8;
+    --settings-color:#f0d6e8;
+    --btn-text-color: #632c3b;
+}
 
 html, body {
     @apply h-full w-full;

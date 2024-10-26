@@ -34,6 +34,8 @@ const settingsContent = () => {
                     <li><button data-set-theme="cupcake" data-act-class="ACTIVECLASS" onClick={() => handleClick('Cupcake')}>Cupcake</button></li>
                     <li><button data-set-theme="synthwave" data-act-class="ACTIVECLASS" onClick={() => handleClick('Synthwave')}>Synthwave</button></li>
                     <li><button data-set-theme="aqua" data-act-class="ACTIVECLASS" onClick={() => handleClick('Aqua')}>Aqua</button></li>
+                    <li><button data-set-theme="coffee" data-act-class="ACTIVECLASS" onClick={() => handleClick('Coffee')}>Coffee</button></li>
+                    <li><button data-set-theme="valentine" data-act-class="ACTIVECLASS" onClick={() => handleClick('Valentine')}>Valentine</button></li>
                 </ul>
             </details>
         </div>
