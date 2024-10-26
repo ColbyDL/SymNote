@@ -19,6 +19,13 @@
     --settings-color:#e7e2df;
     --btn-text-color: #15191e;
 }
+[data-theme='luxury'] {
+    --logo-color: #dca54c;
+    --nav-color:#0b0c0f;
+    --button-color: #2e2d2f;
+    --settings-color:#dca54c;
+    --btn-text-color: #dca54c;
+}
 [data-theme='cupcake'] {
     --logo-color: #291334;
     --nav-color:#e7e2df;
@@ -72,6 +79,12 @@ html, body {
     color: var(--settings-color);
 }
 
+.dropdown-content {
+    @apply font-bold;
+    background-color: var(--button-color);
+    color: var(--btn-text-color);
+}
+
 .theme-icon {
     @apply w-8 h-8 object-center transform transition duration-150 hover:scale-110 text-white;
 }
@@ -93,3 +106,36 @@ main {
     margin-right: 25%;
 }
 
+.symbol-picker {
+    background-color: var(--nav-color);
+}
+
+.sym-pick-header {
+    color: var(--button-color);
+}
+
+.symbol-btns {
+    background-color: var(--button-color);
+    color: var(--btn-text-color);
+}
+
+.doc-bar {
+    @apply font-bold;
+    color: var(--btn-text-color);
+    background-color: var(--button-color);
+}
+
+.folder {
+    color: var(--btn-text-color);
+    background-color: var(--button-color);
+}
+
+.file-display {
+    color: var(--btn-text-color);
+    background-color: var(--button-color);
+}
+
+.file-table-header {
+    color: var(--btn-text-color);
+    background-color: var(--button-color);
+}

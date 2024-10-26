@@ -81,7 +81,7 @@ const textEditor = () => {
       <div className="flex justify-center mb-10">
         {!isMathMode && (
           <button
-            className="p-2 bg-blue-500 text-white rounded"
+            className="btn-primary"
             onClick={insertMathBlock}
           >
             Insert Math Block
@@ -89,7 +89,7 @@ const textEditor = () => {
         )}
         {isMathMode && (
           <button
-            className="p-2 bg-red-500 text-white rounded"
+            className="btn-primary"
             onClick={exitMathMode}
           >
             Exit Math Mode

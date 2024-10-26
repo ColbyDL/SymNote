@@ -30,6 +30,7 @@ const settingsContent = () => {
                 <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                     <li><button data-set-theme="" data-act-class="ACTIVECLASS" onClick={() => handleClick('Light')}>Light</button></li>
                     <li><button data-set-theme="dark" data-act-class="ACTIVECLASS" onClick={() => handleClick('Dark')}>Dark</button></li>
+                    <li><button data-set-theme="luxury" data-act-class="ACTIVECLASS" onClick={() => handleClick('Luxury')}>Luxury</button></li>
                     <li><button data-set-theme="cupcake" data-act-class="ACTIVECLASS" onClick={() => handleClick('Cupcake')}>Cupcake</button></li>
                     <li><button data-set-theme="synthwave" data-act-class="ACTIVECLASS" onClick={() => handleClick('Synthwave')}>Synthwave</button></li>
                     <li><button data-set-theme="aqua" data-act-class="ACTIVECLASS" onClick={() => handleClick('Aqua')}>Aqua</button></li>
