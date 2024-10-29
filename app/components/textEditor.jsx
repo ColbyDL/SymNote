@@ -1,10 +1,14 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react"
-import EditorJS from "@editorjs/editorjs"
-import Header from "@editorjs/header"
+import React, { useEffect, useRef, useState } from "react";
+import EditorJS from "@editorjs/editorjs";
+import Header from "@editorjs/header";
 import MathTool from 'editorjs-math';
 import SymbolPicker from './SymbolPicker';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSquareRootVariable } from '@fortawesome/free-solid-svg-icons';
+import { faX } from '@fortawesome/free-solid-svg-icons';
 
 const textEditor = () => {
   // Stores reference to an Editor.js instance
@@ -75,33 +79,37 @@ const textEditor = () => {
 
   // Displays the editor
     return (
-    <>
-      <h1 className="text-4xl font-bold text-center mb-10">Your Document</h1>
-
-      <div className="flex justify-center mb-10">
-        {!isMathMode && (
-          <button
-            className="btn-primary"
-            onClick={insertMathBlock}
-          >
-            Insert Math Block
-          </button>
-        )}
-        {isMathMode && (
-          <button
-            className="btn-primary"
-            onClick={exitMathMode}
-          >
-            Exit Math Mode
-          </button>
-        )}
+    <div>
+      <div id="editor-toolbar" className="">
+        <div id="filename" className="">
+          <form><input type="text" name="filename" placeholder="New Document"></input></form>
+        </div>
+        <div id="tool" className="basis-1/10">
+          {!isMathMode && (
+            <button
+              onClick={insertMathBlock}
+            >
+              <FontAwesomeIcon icon={faSquareRootVariable} />
+            </button>
+          )}
+          {isMathMode && (
+            <button
+              onClick={exitMathMode}
+            >
+              <FontAwesomeIcon icon={faX} />
+            </button>
+          )}
+        </div>
+        <div id="tool" className="basis-1/10">
+          <p>T2</p>
+        </div>
       </div>
 
       <div id="editorjs" className="rounded-lg"></div>
 
       {isMathMode && <SymbolPicker/>}
-    </>
+    </div>
   )
 }
 
-export default textEditor
+export default textEditor;

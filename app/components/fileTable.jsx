@@ -11,10 +11,10 @@ const fileTable = () => {
       <table className="table-fixed w-full border-separate border-spacing-2">
         <thead className="h-10">
           <tr className="file-table-header">
-            <th className="rounded-tl-3xl border border-slate-400">File Name</th>
-            <th className="border border-slate-400">Description</th>
-            <th className="border border-slate-400">Last Modified</th>
-            <th className="border rounded-tr-3xl border-slate-400">Link</th>
+            <th className="rounded-tl-3xl">File Name</th>
+            <th className="">Description</th>
+            <th className="">Last Modified</th>
+            <th className="rounded-tr-3xl">Link</th>
           </tr>
         </thead>
         <tbody className="w-full">
