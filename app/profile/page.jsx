@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import FolderFileButtons from '../components/folderFileButtons'
-import Folders from '../components/folders'
-import FileTable from '../components/fileTable'
+import FolderFileButtons from '../../components/folderFileButtons'
+import Folders from '../../components/folders'
+import FileTable from '../../components/fileTable'
 
 const ProfilePage = () => {
   return (
