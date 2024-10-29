@@ -23,4 +23,4 @@ const heroWelcome = () => {
   )
 }
 
-export default heroWelcome
+export default heroWelcome;

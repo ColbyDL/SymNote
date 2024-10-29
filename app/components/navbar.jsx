@@ -31,6 +31,7 @@ const Navbar =  () => {
   
   function dropDownMenu() {
     const [isOpen, setIsOpen] = useState(false);
+  }
   
     const toggleDropdown = () => {
       setIsOpen(!isOpen);
