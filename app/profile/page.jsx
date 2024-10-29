@@ -5,11 +5,11 @@ import FileTable from '../../components/fileTable'
 
 const ProfilePage = () => {
   return (
-    <div className="">
+    <div>
       <div className="h-40">
         <FolderFileButtons />
       </div>
-      <div className="">
+      <div>
         <Folders />
       </div>
       <div className="pt-40">

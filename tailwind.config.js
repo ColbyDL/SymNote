@@ -5,6 +5,7 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    './src/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
     screens: {
@@ -20,5 +21,11 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+    require('tailwindcss-animated'),
+  ],
+  daisyui: {
+    themes: ["light", "dark", "cupcake", "synthwave", "aqua"],
+  },
 };
