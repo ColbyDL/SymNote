@@ -4,7 +4,9 @@ const folderSchema = new Schema(
     {
         name: { type: String, required: true },
         profileId: { type: mongoose.Schema.Types.ObjectId, ref: 'Profile' },
-        parendId: { type: mongoose.Schema.Types.ObjectId, ref: 'Folder', default: null },
+        parentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Folder', default: null },
+        folders: { type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Folder'}], default: [] },
+        files:  { type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'File'}], default: [] },
     },
     {
         timestamps: true,
