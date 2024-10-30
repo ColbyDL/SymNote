@@ -23,3 +23,22 @@ export async function DELETE(request, { params }) {
     await Folder.findByIdAndDelete({ _id: id });
     return NextResponse.json({ message: "folder deleted "}, { status: 200 });
 }
+
+export async function POST(request) {
+    const { name, rootFolderId } = await request.json();
+    await connectMongoDB();
+
+    // Create the new folder
+    const newFolder = await Folder.create({ name, parentId: rootFolderId, folders: [], files: [] });
+
+    // Find the parent folder and add the new folder to its folders array
+    const parentFolder = await Folder.findById(rootFolderId);
+    if (parentFolder) {
+        parentFolder.folders.push(newFolder._id); // Add new folder ID to the parent's folders array
+        await parentFolder.save(); // Save the updated parent folder
+    } else {
+        throw new Error("Parent folder not found");
+    }
+
+    return NextResponse.json({ message: "Folder added", folderId: newFolder._id }, { status: 201 });
+}

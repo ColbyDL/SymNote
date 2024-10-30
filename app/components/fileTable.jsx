@@ -3,9 +3,8 @@ import Link from 'next/link'
 
 import FileDisplay from './fileDisplay'
 
-const fileTable = () => {
+const fileTable = ({rootFolder}) => {
 
-  
   return (
     <div className="w-full px-16">
       <table className="table-fixed w-full border-separate border-spacing-2">
@@ -18,12 +17,10 @@ const fileTable = () => {
           </tr>
         </thead>
         <tbody className="w-full">
-          <FileDisplay />
-          <FileDisplay />
-          <FileDisplay />
-          <FileDisplay />
-          <FileDisplay />
-          <FileDisplay />
+          {rootFolder.files.map(f => (
+            <FileDisplay />
+
+          ))}
         </tbody>
       </table>
     </div>

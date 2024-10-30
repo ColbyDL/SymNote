@@ -1,8 +1,8 @@
 'use client'
 import Link from 'next/link'
-import FolderFileButtons from '../components/folderFileButtons'
-import Folders from '../components/folders'
-import FileTable from '../components/fileTable'
+import FolderFileButtons from '../../components/folderFileButtons'
+import Folders from '../../components/folders'
+import FileTable from '../../components/fileTable'
 import { useParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
 
@@ -49,13 +49,25 @@ const ProfilePage = () => {
   return (
     <div>
       <div className="h-40">
+        { rootFolder ? (
         <FolderFileButtons rootFolder={rootFolder} />
+        ):(
+          <></>
+        )}
       </div>
       <div>
-        <Folders rootFolder={rootFolder}  />
+        {rootFolder ? (
+          <Folders rootFolder={rootFolder}  />
+        ): (
+          <></>
+        )}
       </div>
       <div className="pt-40">
+        {rootFolder ? (
         <FileTable rootFolder={rootFolder}  />
+        ):(
+          <></>
+        )}
       </div>
     </div>
   )
