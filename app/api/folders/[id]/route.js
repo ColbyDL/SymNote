@@ -7,8 +7,19 @@ import ConnectMongoDB from '../../../../libs/mongodb';
 export async function GET(request, { params }) {
     await ConnectMongoDB();
     const { id } = params;
-    const folder = await FolderService.getById(id);
-    return NextResponse.json(folder);
+
+    try {
+        const folder = await FolderService.getById(id);
+
+        if (!folder) {
+            return NextResponse.json({ message: 'Folder not found' }, { status: 404 });
+        }
+
+        return NextResponse.json(folder);
+    } catch (error) {
+        console.error("Error retrieving folder:", error);
+        return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
+    }
 }
 
 export async function PUT(request, { params }) {
