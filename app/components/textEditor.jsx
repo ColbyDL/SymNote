@@ -1,10 +1,14 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react"
-import EditorJS from "@editorjs/editorjs"
-import Header from "@editorjs/header"
+import React, { useEffect, useRef, useState } from "react";
+import EditorJS from "@editorjs/editorjs";
+import Header from "@editorjs/header";
 import MathTool from 'editorjs-math';
 import SymbolPicker from './SymbolPicker';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSquareRootVariable } from '@fortawesome/free-solid-svg-icons';
+import { faX } from '@fortawesome/free-solid-svg-icons';
 
 const textEditor = () => {
   // Stores reference to an Editor.js instance
@@ -61,7 +65,7 @@ const textEditor = () => {
       ejInstance.current = null;
     };
   }, []);
-
+  
 
   const insertMathBlock = () => {
     ejInstance.current.blocks.insert("math", {});
@@ -77,36 +81,42 @@ const textEditor = () => {
   const exitMathMode = () => {
     setIsMathMode(false);
   };
+  
 
-  // Render the editor
-  return (
-    <>
-      <h1 className="text-4xl font-bold text-center mb-10">Your Document</h1>
-
-      <div className="flex justify-center gap-4 mb-10">
-        {/* Button to insert a math block */}
-        <button
-          className="p-2 bg-blue-500 text-white rounded"
-          onClick={insertMathBlock}
-        >
-          Insert Math Block
-        </button>
-
-        {/* Button to open/close Symbol Picker */}
+  // Displays the editor
+    return (
+    
+    <div>
+      <div id="editor-toolbar" className="">
+        <div id="filename" className="">
+          <form><input type="text" name="filename" placeholder="New Document"></input></form>
+        </div>
+        <div id="tool" className="basis-1/10">
+          {!isMathMode && (
+            <button
+              onClick={insertMathBlock}
+            >
+              <FontAwesomeIcon icon={faSquareRootVariable} />
+            </button>
+          )}
+          {/* Button to open/close Symbol Picker */}
         <button
           className="p-2 bg-green-500 text-white rounded"
           onClick={toggleSymbolPicker}
         >
-          {isSymbolPickerOpen ? "Close Symbol Picker" : "Open Symbol Picker"}
+        {isSymbolPickerOpen ? "Close Symbol Picker" : "Open Symbol Picker"}
         </button>
-
+        </div>
+        <div id="tool" className="basis-1/10">
+          <p>T2</p>
+        </div>
       </div>
 
       <div id="editorjs" className="rounded-lg"></div>
 
       {/* Render Symbol Picker if it's open */}
       {isSymbolPickerOpen && <SymbolPicker />}
-    </>
+  </div>
   );
 };
 

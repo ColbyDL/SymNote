@@ -1,12 +1,22 @@
+"use client";
+
 import "./globals.css";
 import Navbar from "./components/navbar";
 import { UserProvider } from '@auth0/nextjs-auth0/client';
-
-import 'katex/dist/katex.min.css';
+import { useState, useEffect } from 'react';
 
 export default function RootLayout({ children }) {
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+  }, []);
+  
   return (
-    <html lang="en">
+    <html lang="en" data-theme={theme}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1" />

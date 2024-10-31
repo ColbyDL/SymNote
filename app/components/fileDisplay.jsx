@@ -1,16 +1,14 @@
 import Link from 'next/link'
 
 
-const fileDisplay = () => {
+const fileDisplay = ({ file }) => {
 
   
   return (
-        <tr className="">
-            <td className="border border-slate-400 text-center bg-slate-200 h-14">File Name</td>
-            <td className="border border-slate-400 text-center bg-slate-200">File Description</td>
-            <td className="border border-slate-400 text-center bg-slate-200">Last Modified</td>
-            <td className="border border-slate-400 text-center bg-slate-200"><Link href="/documents/myDocument" className="transition duration-100 transform hover:font-bold text-sky-600 text-2xl hover:text-4xl hover:text-red-700">Edit</Link></td>
-
+        <tr className="file-display">
+            <td className="text-center h-14">{file.name}</td>
+            <td className="text-center">Last Modified: {new Date(file.updatedAt).toLocaleString()}</td>
+            <td className="text-center"><Link href={`/documents/${file._id}`} className="transition duration-100 transform hover:font-bold text-2xl hover:text-4xl">Edit</Link></td>
         </tr>
   )
 }

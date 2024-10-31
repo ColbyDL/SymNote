@@ -40,7 +40,7 @@ const SymbolPicker = () => {
   
     return (
       <div
-        className="symbol-picker p-4 bg-gray-100 rounded-lg shadow-lg cursor-move"
+        className="symbol-picker p-4 rounded-lg shadow-lg cursor-move align-middle"
         style={{
           position: 'absolute',
           left: `${position.x}px`,
@@ -53,13 +53,13 @@ const SymbolPicker = () => {
         onMouseUp={stopDragging}
         onMouseLeave={stopDragging}
       >
-        <h2 className="font-bold text-lg mb-2">Select a Symbol</h2>
+        <h2 className="sym-pick-header font-bold text-lg mb-2">Select a Symbol</h2>
         <div className="flex flex-wrap gap-3">
           {symbols.map((item, index) => (
             <button
               key={index}
               onClick={() => copyToClipboard(item.latex)}  // Copy LaTeX to clipboard
-              className="p-2 bg-white border border-gray-300 rounded shadow hover:bg-gray-200"
+              className="symbol-btns p-2 border border-gray-300 rounded shadow hover:bg-gray-200"
             >
               {item.symbol}
             </button>

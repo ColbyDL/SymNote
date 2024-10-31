@@ -1,11 +1,10 @@
-summary {
+summary.doc-bar {
     cursor: pointer;
     display: flex;
     justify-content: space-between; 
     align-items: center;  
     padding: 20px;
     font-size: 1.2rem;
-    background-color: #f0f0f0;
     border-radius: 20px;
     margin-bottom: 25px;
   }
@@ -13,12 +12,12 @@ summary {
     background-color: #e0e0e0; 
   }
   
-  summary::after {
+  summary.doc-bar::after {
     content: '▼';  
     font-size: 1rem;
   }
   
-  details[open] summary::after {
+  details[open] summary.doc-bar::after {
     content: '▲';  
   }
 

@@ -1,13 +1,17 @@
 import Folder from "./folder";
 
-const folders = () => {
+const folders = ({ rootFolder }) => {
+
+  console.log("folders", rootFolder.folders)
 
   return (
     <div className="flex flex-wrap gap-9 px-24 justify-between">
-      <Folder />
-      <Folder />
-      <Folder />
-      <Folder />
+
+        {Array.isArray(rootFolder.folders) &&
+          rootFolder.folders.map(f => (
+            <Folder key={f._id} folder={f} />
+        ))} 
+      
     </div>
   );
 };

@@ -1,118 +1,219 @@
-'use client'
-import { useState, useEffect } from 'react';
-import { useUser } from '@auth0/nextjs-auth0/client';
+"use client";
+import { useState, useEffect } from "react";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../public/images/SymNote_Png_Logo.png";
 
+import { BrowserRouter } from "react-router-dom";
 
-import Profile from "../../models/profileModel"
-import Folder from "../../models/foldersModel"
-
-import { BrowserRouter } from 'react-router-dom';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSun } from '@fortawesome/free-solid-svg-icons'
-import { faMoon } from '@fortawesome/free-solid-svg-icons'
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun } from "@fortawesome/free-solid-svg-icons";
+import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faGear } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
-  const [homeButtonText, setHomeButtonText] = useState(true);
+  //themes
   const [isDarkMode, setIsDarkMode] = useState(false);
+
+  //auth0
   const { user, error, isLoading } = useUser();
-  
+
+  //getProfile
+  const [profile, setProfile] = useState(null);
+
+  function dropDownMenu() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleDropdown = () => {
+      setIsOpen(!isOpen);
+    };
+  }
+  //themes
   const toggleDarkMode = () => {
     setIsDarkMode((prevState) => {
       const newState = !prevState;
       if (newState) {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('theme','dark');
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
       } else {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
       }
       return newState;
     });
   };
 
+  //themes
   useEffect(() => {
-    const localState = localStorage.getItem('theme');
-    if (localState === 'dark'){
-      document.documentElement.classList.add('dark');
+    const localState = localStorage.getItem("theme");
+    if (localState === "dark") {
+      document.documentElement.classList.add("dark");
       setIsDarkMode(true);
     }
   }, []);
-  
-  
-  let homeText = "SymNote"
-  if (!homeButtonText) {
-    homeText = "Go Home"
 
-  }
-   
-  if (isLoading) return (
-      <nav className="navBar">
-        <div className="flex h-20 items-center justify-between pl-20">
-          <div className="flex h-full gap-10">
-            <Link onMouseOver={() => setHomeButtonText((prevState) => !prevState)} onMouseOut={() => setHomeButtonText((prevState) => !prevState)}href="/" className="btn-primary self-center opacity-0">
-              <h2 >{homeText}</h2>
+  const createOrFindProfile = async () => {
+    console.log("user", user)
+    if (!user) return;
+
+    const auth0Id = user.sub;
+    const name = user.name;
+    const email = user.email;
+
+    try {
+      console.log("trying to fetch profile")
+      const res = await fetch("/api/profiles", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ auth0Id, name, email }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        console.log(data.rootFolderId);
+        setProfile(data); // Store the entire profile
+      } else {
+        throw new Error("Error creating or finding profile");
+      }
+    } catch (error) {
+      console.error("Fetch error:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (!isLoading) createOrFindProfile();
+  }, [isLoading]);
+
+  useEffect(() => {
+    console.log("profile variable updated", profile)
+  }, [profile]);
+
+  if (isLoading)
+    return (
+      <nav>
+        <div className="navBar">
+          <div className="logo-div">
+            <Link href="/">
+              <Image className="btn-logo" src={Logo} alt="logo-alt"></Image>
             </Link>
-            <Image className="w-auto h-auto" src={Logo}></Image>
           </div>
-          <div className="flex h-full gap-10 pr-20"> 
-            <h2 className="text-white self-center text-3xl">Loading...</h2>
+          <div className="align-middle place-self-center pr-24">
+            <h2 className="text-white text-3xl">Loading...</h2>
+          </div>
+          <div className="flex h-full gap-10 pr-20">
+            <Link href="/docs" className="btn-primary self-center w-20">
+              <h2 className="text-center">Docs</h2>
+            </Link>
+            <a href="/api/auth/login" className="btn-primary self-center">
+              <h2 className="whitespace-nowrap">Loading...</h2>
+            </a>
+            <button onClick={toggleDarkMode}>
+              {isDarkMode ? (
+                <FontAwesomeIcon className="theme-icon" icon={faMoon} />
+              ) : (
+                <FontAwesomeIcon
+                  className="w-8 h-8 transform transition duration-150 hover:scale-110 text-cyan-600"
+                  icon={faSun}
+                />
+              )}
+            </button>
           </div>
         </div>
       </nav>
-  );
+    );
 
   if (error) return <div>{error.message}</div>;
   if (user) {
     return (
-      <nav className="navBar">
-        <div className="flex h-20 items-center justify-between pl-20">
-          <div className="flex h-full gap-10">
-            <Link href = "/" className="btn-logo">
-              <Image src={Logo} alt="logo-alt"></Image>
+      <nav>
+        <div className="navBar">
+          <div>
+            <Link href="/">
+              <Image className="btn-logo" src={Logo} alt="logo-alt"></Image>
             </Link>
           </div>
-          <div className="flex h-full gap-10 pr-20"> 
-            <Link href="/docs" className="btn-primary self-center w-20">
+          <div className="place-content-center">
+            <Link href="/docs" className="btn-primary">
               <h2 className="text-center">Docs</h2>
             </Link>
-            <a href="/profile/user" className="btn-primary self-center">
-              <h2 className="whitespace-nowrap">{user.name}</h2>
-            </a>
-            <a href="/api/auth/logout" className="btn-primary self-center">
-              <h2 className="whitespace-nowrap">Logout</h2>
-            </a>
-            <button onClick={toggleDarkMode}>
-            {isDarkMode ? <FontAwesomeIcon class='theme-icon' icon={faMoon} /> : <FontAwesomeIcon class='w-8 h-8 transform transition duration-150 hover:scale-110 text-cyan-600' icon={faSun} />}
-            </button>
+
+            <Menu as="div" className="relative inline-block text-left">
+              <div>
+                <MenuButton className="btn-primary">
+                  {user.given_name}
+                  <FontAwesomeIcon icon={faChevronDown} className="pl-2" />
+                </MenuButton>
+              </div>
+              <MenuItems
+                transition
+                className="dropdown-content absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+              >
+                <div className="py-1">
+                  <MenuItem>
+                    { profile ? (
+                      <Link href={`/profile/${profile.rootFolderId}`}
+                        className="block px-4 py-2 text-sm data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
+                      >
+                        Files
+                      </Link>
+                    ) : (
+                      <Link href={``}
+                        className="block px-4 py-2 text-sm data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
+                      >
+                        Profile Loading...
+                      </Link>
+                    )}
+                    
+                  </MenuItem>
+                  <MenuItem>
+                    <a
+                      href="/api/auth/logout"
+                      className="block px-4 py-2 text-sm data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
+                    >
+                      Logout
+                    </a>
+                  </MenuItem>
+                </div>
+              </MenuItems>
+            </Menu>
+            <Link href="/settings">
+              <FontAwesomeIcon
+                icon={faGear}
+                className="settings-icon w-8 h-8 align-middle hover:animate-spin animate-once animate-ease-in-out"
+              />
+            </Link>
           </div>
         </div>
       </nav>
     );
   }
   return (
-    <nav className="navBar">
-      <div className="flex h-20 items-center justify-between pl-20">
-      <div className="flex h-full gap-10">
-            <Link href = "/" className="btn-logo">
-              <Image src={Logo} alt="logo-alt"></Image>
-            </Link>
-          </div>
-        <div className="flex h-full gap-10 pr-20"> 
-          <Link href="/docs" className="btn-primary self-center w-20">
+    <nav>
+      <div className="navBar">
+        <div>
+          <Link href="/">
+            <Image className="btn-logo" src={Logo} alt="logo-alt"></Image>
+          </Link>
+        </div>
+        <div className="place-content-center">
+          <Link href="/docs" className="btn-primary">
             <h2 className="text-center">Docs</h2>
           </Link>
-          <a href="/api/auth/login" className="btn-primary self-center">
-            <h2 className="whitespace-nowrap">Log In or Sign Up</h2>
+          <a href="/api/auth/login" className="btn-primary">
+            <h2>Log In/Sign Up</h2>
           </a>
-          <button onClick={toggleDarkMode}>
-            {isDarkMode ? <FontAwesomeIcon class='theme-icon' icon={faMoon} /> : <FontAwesomeIcon class='w-8 h-8 transform transition duration-150 hover:scale-110 text-cyan-600' icon={faSun} />}
-          </button>
+          <Link href="/settings">
+            <FontAwesomeIcon
+              icon={faGear}
+              className="settings-icon w-8 h-8 align-middle hover:animate-spin animate-once animate-ease-in-out"
+            />
+          </Link>
         </div>
       </div>
     </nav>
