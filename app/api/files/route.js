@@ -15,6 +15,7 @@ export async function POST(request) {
     const { name, content, folderId} = await request.json();
     const file = await FileService.createFile({ name, content, folderId });
     const updatedParentFolder = await FolderService.addFileToFolder(folderId, file._id);
+    const updatedParent = await FolderService.getById(updatedParentFolder._id)
 
-    return NextResponse.json({file, updatedParentFolder});
+    return NextResponse.json({file, updatedParent});
 }
