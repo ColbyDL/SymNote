@@ -158,15 +158,25 @@ main {
     height: 30px;
     background-color: var(--button-color);
     color: var(--btn-text-color);
-    margin-right: 10px;
+    margin-left: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 #filename {
-    margin-left: 0.5rem;
-    margin-right: 2rem;
+    @apply font-bold text-3xl;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5rem;
+}
+
+.filename-text {
+    @apply rounded-3xl text-center;
+    background-color: var(--button-color);
+    color: var(--btn-text-color);
+    border: 4px solid var(--btn-text-color);
 }
 
 #editor-file-nav {
@@ -217,6 +227,25 @@ main {
     margin-left: 25%;
     margin-right: 25%;
     color: black;
+}
+
+h1.ce-header{
+    @apply text-3xl font-bold;
+}
+h2.ce-header{
+    @apply text-2xl font-semibold;
+}
+h3.ce-header{
+    @apply text-xl font-semibold;
+}
+h4.ce-header{
+    @apply text-lg font-semibold;
+}
+h5.ce-header{
+    @apply text-base font-semibold;
+}
+h6.ce-header{
+    @apply text-base font-semibold;
 }
 
 .symbol-picker {
