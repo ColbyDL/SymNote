@@ -1,4 +1,3 @@
-'use-client';
 import SettingsContent from '../components/settings-content';
 
 const SettingsPage = () => {

@@ -32,7 +32,7 @@ const Navbar = () => {
     const toggleDropdown = () => {
       setIsOpen(!isOpen);
     };
-  }
+    
   //themes
   const toggleDarkMode = () => {
     setIsDarkMode((prevState) => {

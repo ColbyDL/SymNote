@@ -5,18 +5,19 @@ import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import MathTool from 'editorjs-math';
 import SymbolPicker from './SymbolPicker';
-
+import Undo from 'editorjs-undo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareRootVariable } from '@fortawesome/free-solid-svg-icons';
 import { faX } from '@fortawesome/free-solid-svg-icons';
+import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 
 const textEditor = () => {
   // Stores reference to an Editor.js instance
-  const ejInstance = useRef();
+  const ejInstance = useRef(null);
   const [isMathMode, setIsMathMode] = useState(false);
   const [currentMathBlockIndex, setCurrentMathBlockIndex] = useState(null);
 
-  const initEditor= () => {
+  const initEditor = () => {
     // Create editor
     const editor = new EditorJS({
       // ID for the editor dom
@@ -40,6 +41,7 @@ const textEditor = () => {
       // When the editor is loaded and ready, the reference now refers to the editor
       onReady: () => {
         ejInstance.current = editor;
+        new Undo({ editor });
       },
       // Autofocuses on the editor after loading.
       autofocus: true,
@@ -75,14 +77,27 @@ const textEditor = () => {
   const exitMathMode = () => {
     setIsMathMode(false);  // Deactivate math mode
   };
+
+  const saveEditor = async () => {
+    try {
+    const outputData = await ejInstance.current.save();
+    console.log('Article data: ', outputData);
+    } catch (error) {
+      console.log('Saving failed: ', error)
+    }
+  };
   
 
   // Displays the editor
     return (
     <div>
       <div id="editor-toolbar" className="">
-        <div id="filename" className="">
-          <form><input type="text" name="filename" placeholder="New Document"></input></form>
+        <div id="tool" className="basis-1/10">
+          <button
+            onClick={saveEditor}
+          >
+            <FontAwesomeIcon icon={faFloppyDisk} />
+          </button>
         </div>
         <div id="tool" className="basis-1/10">
           {!isMathMode && (
@@ -103,6 +118,10 @@ const textEditor = () => {
         <div id="tool" className="basis-1/10">
           <p>T2</p>
         </div>
+      </div>
+
+      <div id="filename" className="">
+          <form><input className="filename-text" type="text" name="filename" placeholder="New Document"></input></form>
       </div>
 
       <div id="editorjs" className="rounded-lg"></div>
