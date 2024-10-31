@@ -1,22 +1,15 @@
-import React, {useState} from 'react';
-
-const symbols = [
-  { symbol: 'α', latex: '\\alpha' },
-  { symbol: 'β', latex: '\\beta' },
-  { symbol: '√', latex: '\\sqrt{}' },
-  { symbol: '∫', latex: '\\int' },
-  { symbol: 'π', latex: '\\pi' },
-  { symbol: '∞', latex: '\\infty' },
-  { symbol: '∑', latex: '\\sum' },
-  {symbol: 'σ', latex: '\\sigma'},
-  // Add more symbols as needed
-];
+import React, {useState, useEffect} from 'react';
+import symbolsData from '../public/katexSymbols.json'
 
 const SymbolPicker = () => {
-
+    const [symbols, setSymbols] = useState([]);
     const [position, setPosition] = useState({ x: 100, y: 100 });
     const [isDragging, setIsDragging] = useState(false);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+      setSymbols(symbolsData);
+    }, []);
   
     const startDragging = (e) => {
       setIsDragging(true);
