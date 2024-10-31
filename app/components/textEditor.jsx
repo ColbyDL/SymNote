@@ -7,7 +7,7 @@ import MathTool from 'editorjs-math';
 import SymbolPicker from './SymbolPicker';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSquareRootVariable } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faSquareRootVariable } from '@fortawesome/free-solid-svg-icons';
 import { faX } from '@fortawesome/free-solid-svg-icons';
 
 const textEditor = () => {
@@ -92,20 +92,21 @@ const textEditor = () => {
           <form><input type="text" name="filename" placeholder="New Document"></input></form>
         </div>
         <div id="tool" className="basis-1/10">
-          {!isMathMode && (
+          
             <button
               onClick={insertMathBlock}
             >
               <FontAwesomeIcon icon={faSquareRootVariable} />
             </button>
-          )}
+        </div>
+        <div id="tool" className="basis-1/10">
           {/* Button to open/close Symbol Picker */}
-        <button
-          className="p-2 bg-green-500 text-white rounded"
-          onClick={toggleSymbolPicker}
-        >
-        {isSymbolPickerOpen ? "Close Symbol Picker" : "Open Symbol Picker"}
-        </button>
+          <button
+            onClick={toggleSymbolPicker}
+          >
+          <FontAwesomeIcon icon={faPlus} />
+          </button>
+
         </div>
         <div id="tool" className="basis-1/10">
           <p>T2</p>
