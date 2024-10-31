@@ -1,7 +1,7 @@
 // app/api/files/[id]/route.js
 import FileService from '../../../../services/FileService';
 import { NextResponse } from 'next/server';
-import connectMongoDB from '../../../../libs/mongodb';
+import ConnectMongoDB from '../../../../libs/mongodb';
 
 export async function GET(request, { params }) {
     await ConnectMongoDB();

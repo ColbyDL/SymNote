@@ -1,7 +1,8 @@
 // app/api/files/route.js
 import FileService from '../../../services/FileService';
+import FolderService from '../../../services/FolderService';
 import { NextResponse } from 'next/server';
-import connectMongoDB from '../../../libs/mongodb';
+import ConnectMongoDB from '../../../libs/mongodb';
 
 export async function GET() {
     await ConnectMongoDB();
@@ -11,7 +12,9 @@ export async function GET() {
 
 export async function POST(request) {
     await ConnectMongoDB();
-    const data = await request.json();
-    const file = await FileService.createFile(data);
-    return NextResponse.json(file, { status: 201 });
+    const { name, content, folderId} = await request.json();
+    const file = await FileService.createFile({ name, content, folderId });
+    const updatedParentFolder = await FolderService.addFileToFolder(folderId, file._id);
+
+    return NextResponse.json({file, updatedParentFolder});
 }

@@ -27,7 +27,7 @@ const ProfilePage = () => {
         console.log("res.ok folder");
         const data = await res.json();
         setRootFolder(data);
-        console.log(data);
+        console.log("data from the rootFolder",data);
       } else {
         throw new Error("Error finding folder");
       }
@@ -65,7 +65,7 @@ const ProfilePage = () => {
 
       } else {
         const errorData = await res.json();
-        console.error("error creating profile", errorData)
+        console.error("error creating folder", errorData)
       }
 
     } catch (error) {
@@ -77,9 +77,31 @@ const ProfilePage = () => {
     
 
   const addFile = async (fileName) => {
+    const fileContent = "";
     try {
+      const res = await fetch(`/api/files`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: fileName, content: fileContent, folderId: rootFolderId }),
+      });
+      console.log("Creating New File...")
+      if (res.ok) {
+        console.log("res.ok file creation")
+        const data = await res.json();
+        console.log("file data", data)
+        const { file, updatedParentFolder } = data
+        console.log(file)
+        setRootFolder(updatedParentFolder);
+
+      } else {
+        const errorData = await res.json();
+        console.error("error creating file", errorData)
+      }
 
     } catch (error) {
+      console.error("error file creation", error)
 
     }
     
