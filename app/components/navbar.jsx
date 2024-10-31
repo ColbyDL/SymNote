@@ -6,6 +6,10 @@ import Link from "next/link";
 import Image from "next/image";
 import Logo from "../public/images/SymNote_Png_Logo.png";
 
+
+import Profile from "../../models/profileModel"
+import Folder from "../../models/foldersModel"
+
 import { BrowserRouter } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -16,7 +20,8 @@ import { faMoon } from '@fortawesome/free-solid-svg-icons'
 const Navbar = () => {
   const [homeButtonText, setHomeButtonText] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
-
+  const { user, error, isLoading } = useUser();
+  
   const toggleDarkMode = () => {
     setIsDarkMode((prevState) => {
       const newState = !prevState;
@@ -45,11 +50,6 @@ const Navbar = () => {
     homeText = "Go Home"
 
   }
-
-  const { user, error, isLoading } = useUser();
-
-  
-
    
   if (isLoading) return (
       <nav className="navBar">
