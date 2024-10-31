@@ -1,26 +1,26 @@
-import { NextResponse } from "next/server";
-import connectMongoDB from "../../../../libs/mongodb"
-import Profile from "../../../../models/profile"
-
-
-export async function PUT(request, { params }) {
-    const { id } = params;
-    const { newName: name, newEmail: email } = await request.json();
-    await connectMongoDB();
-    await Profile.findByIdAndUpdate(id, { name, email });
-    return NextResponse.json({ message: "Profile updated"}, { status: 200 });
-}
+// app/api/profiles/[id]/route.js
+import ProfileService from '../../../../services/ProfileService';
+import { NextResponse } from 'next/server';
+import ConnectMongoDB from '../../../../libs/mongodb'
 
 export async function GET(request, { params }) {
+    await ConnectMongoDB();
     const { id } = params;
-    await connectMongoDB();
-    const profile = await Profile.findOne({_id: id});
-    return NextResponse.json({ profile }, {status: 200 });
+    const profile = await ProfileService.findProfile(id);
+    return NextResponse.json(profile);
+}
+
+export async function PUT(request, { params }) {
+    await ConnectMongoDB();
+    const { id } = params;
+    const data = await request.json();
+    const updatedProfile = await ProfileService.updateProfile(id, data);
+    return NextResponse.json(updatedProfile);
 }
 
 export async function DELETE(request, { params }) {
+    await ConnectMongoDB();
     const { id } = params;
-    await connectMongoDB();
-    await Profile.findByIdAndDelete({ _id: id });
-    return NextResponse.json({ message: "profile deleted "}, { status: 200 });
+    await ProfileService.deleteProfile(id);
+    return NextResponse.json({ message: 'Profile deleted' });
 }
