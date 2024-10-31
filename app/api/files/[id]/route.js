@@ -1,26 +1,26 @@
-import connectMongoDB from "../../../../libs/mongodb";
-import File from "../../../../models/file"
-import { NextResponse } from "next/server";
-
-export async function PUT(request, { params }){
-    const { id } = params;
-    const { newName: name, newContent: content, newFolderId: folderId } = await request.json();
-    await connectMongoDB();
-    await File.findByIdAndUpdate(id, {name, content, folderId});
-    return NextResponse.json({ message: "File updated"}, { status: 200 });
-}
-
+// app/api/files/[id]/route.js
+import FileService from '../../../../services/FileService';
+import { NextResponse } from 'next/server';
+import connectMongoDB from '../../../../libs/mongodb';
 
 export async function GET(request, { params }) {
+    await ConnectMongoDB();
     const { id } = params;
-    await connectMongoDB();
-    const file = File.findOne({_id: id});
-    return NextResponse.json({ file }, { status: 200 });
+    const file = await FileService.getById(id);
+    return NextResponse.json(file);
+}
+
+export async function PUT(request, { params }) {
+    await ConnectMongoDB();
+    const { id } = params;
+    const data = await request.json();
+    const updatedFile = await FileService.update(id, data);
+    return NextResponse.json(updatedFile);
 }
 
 export async function DELETE(request, { params }) {
+    await ConnectMongoDB();
     const { id } = params;
-    await connectMongoDB();
-    await File.findByIdAndDelete({ _id: id });
-    return NextResponse.json({ message: "file deleted "}, { status: 200 });
+    await FileService.delete(id);
+    return NextResponse.json({ message: 'File deleted' });
 }
