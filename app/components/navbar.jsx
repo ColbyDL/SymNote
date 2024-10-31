@@ -58,6 +58,7 @@ const Navbar = () => {
   }, []);
 
   const createOrFindProfile = async () => {
+    console.log("user", user)
     if (!user) return;
 
     const auth0Id = user.sub;
@@ -65,6 +66,7 @@ const Navbar = () => {
     const email = user.email;
 
     try {
+      console.log("trying to fetch profile")
       const res = await fetch("/api/profiles", {
         method: "POST",
         headers: {
@@ -74,20 +76,24 @@ const Navbar = () => {
       });
 
       if (res.ok) {
-        console.log("res.ok");
         const data = await res.json();
-        setProfile(data.profile);
+        console.log(data.rootFolderId);
+        setProfile(data); // Store the entire profile
       } else {
         throw new Error("Error creating or finding profile");
       }
     } catch (error) {
-      console.error("fetch error:", error);
+      console.error("Fetch error:", error);
     }
   };
 
   useEffect(() => {
     if (!isLoading) createOrFindProfile();
   }, [isLoading]);
+
+  useEffect(() => {
+    console.log("profile variable updated", profile)
+  }, [profile]);
 
   if (isLoading)
     return (
@@ -141,7 +147,7 @@ const Navbar = () => {
             <Menu as="div" className="relative inline-block text-left">
               <div>
                 <MenuButton className="btn-primary">
-                  {user.name}
+                  {user.given_name}
                   <FontAwesomeIcon icon={faChevronDown} className="pl-2" />
                 </MenuButton>
               </div>
