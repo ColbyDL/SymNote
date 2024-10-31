@@ -2,6 +2,7 @@
 import FolderService from '../../../services/FolderService';
 import { NextResponse } from 'next/server';
 import ConnectMongoDB from '../../../libs/mongodb';
+import Folder from '../../../models/folder';
 
 export async function GET() {
     await ConnectMongoDB();
@@ -16,5 +17,6 @@ export async function POST(request) {
     const updatedParentFolder = await FolderService.addFolderToParent(parentId, folder);
     folder.parentId = updatedParentFolder._id;
     await folder.save();
-    return NextResponse.json({folder, updatedParentFolder});
+    const updatedParent = await FolderService.getById(updatedParentFolder._id)
+    return NextResponse.json({folder, updatedParent});
 }
