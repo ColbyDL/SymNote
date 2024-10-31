@@ -15,6 +15,10 @@ class FolderService extends GenericService {
     async addFileToFolder(folderId, fileId) {
         return await Folder.findByIdAndUpdate(folderId, { $push: { files: fileId } }, { new: true });
     }
+
+    async getById(id) {
+        return await Folder.findById(id).populate('folders').populate('files');
+    }
 }
 
 export default new FolderService(Folder);

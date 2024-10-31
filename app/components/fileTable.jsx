@@ -11,14 +11,13 @@ const fileTable = ({rootFolder}) => {
         <thead className="h-10">
           <tr className="file-table-header">
             <th className="rounded-tl-3xl">File Name</th>
-            <th className="">Description</th>
             <th className="">Last Modified</th>
             <th className="rounded-tr-3xl">Link</th>
           </tr>
         </thead>
         <tbody className="w-full">
           {rootFolder.files.map(f => (
-            <FileDisplay />
+            <FileDisplay key={f._id} file={f} />
 
           ))}
         </tbody>
