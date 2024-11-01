@@ -12,9 +12,10 @@ export async function GET() {
 
 export async function POST(request) {
     await ConnectMongoDB();
-    const { name, content, folderId} = await request.json();
-    const file = await FileService.createFile({ name, content, folderId });
+    const { name, folderId} = await request.json();
+    const file = await FileService.createFile({ name: name, folderId: folderId });
     const updatedParentFolder = await FolderService.addFileToFolder(folderId, file._id);
+    const updatedParent = await FolderService.getById(updatedParentFolder._id)
 
-    return NextResponse.json({file, updatedParentFolder});
+    return NextResponse.json({file, updatedParent});
 }

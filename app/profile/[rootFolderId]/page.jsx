@@ -5,7 +5,7 @@ import Folders from "../../components/folders";
 import FileTable from "../../components/fileTable";
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
-import Modal from "../../components/modal"
+import Modal from "../../components/modal";
 
 const ProfilePage = () => {
   const { rootFolderId } = useParams();
@@ -13,6 +13,7 @@ const ProfilePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState("");
 
+  
   const findFolder = async () => {
     try {
       const res = await fetch(`/api/folders/${rootFolderId}`, {
@@ -26,13 +27,15 @@ const ProfilePage = () => {
       if (res.ok) {
         console.log("res.ok folder");
         const data = await res.json();
+        
         setRootFolder(data);
-        console.log("data from the rootFolder",data);
+        console.log("data from the rootFolder", data);
       } else {
         throw new Error("Error finding folder");
       }
     } catch (error) {
       console.error("fetch error:", error);
+    } finally {
     }
   };
 
@@ -42,73 +45,72 @@ const ProfilePage = () => {
       findFolder();
     }
   }, [rootFolderId]);
-  
+
   const addFolder = async (folderName) => {
     try {
       const res = await fetch(`/api/folders`, {
         method: "POST",
         headers: {
           "Content-Type": "applicaton/json",
-        }, 
-          body: JSON.stringify({ name: folderName, profileId: rootFolder.parentId ,parentId: rootFolderId }),
+        },
+        body: JSON.stringify({
+          name: folderName,
+          profileId: rootFolder.parentId,
+          parentId: rootFolderId,
+        }),
       });
       console.log("Creating New Folder...");
       if (res.ok) {
-        console.log("res.ok folder creation")
+        console.log("res.ok folder creation");
         const data = await res.json();
-        console.log("data",data)
-        const {folder, updatedParentFolder} = data;
-        console.log("new Folder",folder);
-        console.log("updated Parent Folder", updatedParentFolder);
-        setRootFolder(updatedParentFolder);
-
-
+        console.log("data", data);
+        const { folder, updatedParent } = data;
+        console.log("new Folder", folder);
+        console.log("updated Parent Folder", updatedParent);
+        setRootFolder(updatedParent);
       } else {
         const errorData = await res.json();
-        console.error("error creating folder", errorData)
+        console.error("error creating folder", errorData);
       }
-
     } catch (error) {
-      console.error("addFolder Error", error)
-
+      console.error("addFolder Error", error);
+    } finally {
     }
-
   };
-    
 
   const addFile = async (fileName) => {
-    const fileContent = "";
     try {
       const res = await fetch(`/api/files`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name: fileName, content: fileContent, folderId: rootFolderId }),
+        body: JSON.stringify({
+          name: fileName,
+          folderId: rootFolderId,
+        }),
       });
-      console.log("Creating New File...")
+      console.log("Creating New File...");
       if (res.ok) {
-        console.log("res.ok file creation")
+        console.log("res.ok file creation");
         const data = await res.json();
-        console.log("file data", data)
-        const { file, updatedParentFolder } = data
-        console.log(file)
-        setRootFolder(updatedParentFolder);
-
+        const { file, updatedParent } = data;
+        console.log("new file", file)
+        console.log("updated parent FOlder", updatedParent)
+        setRootFolder(updatedParent);
       } else {
         const errorData = await res.json();
-        console.error("error creating file", errorData)
+        console.error("error creating file", errorData);
       }
-
     } catch (error) {
-      console.error("error file creation", error)
-
+      console.error("error file creation", error);
+    } finally {
     }
-    
   };
 
- 
+  
 
+ 
 
   return (
     <div>
@@ -117,7 +119,7 @@ const ProfilePage = () => {
           <button
             className="btn-primary w-72 h-20"
             onClick={() => {
-              setModalType('folder');
+              setModalType("folder");
               setIsModalOpen(true);
             }}
           >
@@ -126,7 +128,7 @@ const ProfilePage = () => {
           <button
             className="btn-primary w-72 h-20"
             onClick={() => {
-              setModalType('file');
+              setModalType("file");
               setIsModalOpen(true);
             }}
           >
@@ -134,22 +136,24 @@ const ProfilePage = () => {
           </button>
         </div>
       </div>
-      <div>{rootFolder ? <Folders rootFolder={rootFolder} /> : <></>}</div>
+      <div>{rootFolder ? <Folders key={`${rootFolder._id}-${rootFolder.folders.length}`} rootFolder={rootFolder} /> : <></>}</div>
       <div className="pt-40">
-        {rootFolder ? <FileTable rootFolder={rootFolder} /> : <></>}
+        {rootFolder ? <FileTable key={`${rootFolder._id}-${rootFolder.files.length}`}  rootFolder={rootFolder} /> : <></>}
       </div>
 
-      {/* Modal for adding folders/files */}
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        onSubmit={modalType === 'folder' ? addFolder : addFile}
-        title={modalType === 'folder' ? 'Create New Folder' : 'Create New File'}
-        placeholder={modalType === 'folder' ? 'Enter folder name' : 'Enter file name'}
+        onSubmit={modalType === "folder" ? addFolder : addFile}
+        title={modalType === "folder" ? "Create New Folder" : "Create New File"}
+        placeholder={
+          modalType === "folder" ? "Enter folder name" : "Enter file name"
+        }
       />
     </div>
   );
-
 };
 
 export default ProfilePage;
+
+

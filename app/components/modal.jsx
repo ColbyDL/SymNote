@@ -1,17 +1,26 @@
 import React from 'react';
+import { useEffect } from 'react';
 
 const Modal = ({ isOpen, onClose, onSubmit, title, placeholder }) => {
   const [inputValue, setInputValue] = React.useState('');
+  const [errorMessage, setErrorMessage] = React.useState('')
 
   const handleSubmit = () => {
     if(inputValue.length == 0) {
-        alert("Please enter a Name")
+        setErrorMessage("Please enter valid Name")
         return;
     }
     onSubmit(inputValue);
     setInputValue(''); // Reset input
     onClose(); // Close the modal
   };
+
+  useEffect(() => {
+    if (!isOpen){
+      setErrorMessage("")
+    }
+  }, [isOpen])
+  
 
   if (!isOpen) return null;
 
@@ -26,6 +35,7 @@ const Modal = ({ isOpen, onClose, onSubmit, title, placeholder }) => {
           placeholder={placeholder}
           className="border border-gray-300 rounded p-2 mb-4 w-full"
         />
+        <p className='p-6 font-bold justify-center pl '>{errorMessage}</p>
         <div className="flex justify-between">
           <button onClick={handleSubmit} className="btn-primary">
             Submit
