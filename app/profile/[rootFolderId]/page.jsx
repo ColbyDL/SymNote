@@ -79,7 +79,6 @@ const ProfilePage = () => {
   };
 
   const addFile = async (fileName) => {
-    const fileContent = "";
     try {
       const res = await fetch(`/api/files`, {
         method: "POST",
@@ -88,7 +87,6 @@ const ProfilePage = () => {
         },
         body: JSON.stringify({
           name: fileName,
-          content: fileContent,
           folderId: rootFolderId,
         }),
       });
