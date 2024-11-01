@@ -179,9 +179,25 @@ main {
     border: 4px solid var(--btn-text-color);
 }
 
+.filename-text::placeholder {
+    color: var(--btn-text-color);
+}
+
+.filename-text:focus {
+    color: var(--btn-text-color);
+}
+
+.filename-text:-webkit-autofill, .filename-text:-webkit-autofill:hover, .filename-text:-webkit-autofill:focus, .filename-text:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px var(--button-color) inset;
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: var(--btn-text-color) !important;
+}
+
+
 #editor-file-nav {
     border: 1px solid var(--button-color);
     background-color: var(--nav-color);
+    color: var(--settings-color);
     position: absolute;
     top: 134px;
     left: 0px;
@@ -199,7 +215,7 @@ main {
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    border: 2px solid var(--gradient-bottom);
+    border: 2px solid var(--btn-text-color);
     text-align: center;
     position: absolute;
     top: 500px;

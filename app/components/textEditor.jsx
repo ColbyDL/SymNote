@@ -13,7 +13,7 @@ import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 
 const textEditor = () => {
   // Stores reference to an Editor.js instance
-  const ejInstance = useRef(null);
+  const ejInstance = useRef();
   const [isMathMode, setIsMathMode] = useState(false);
   const [currentMathBlockIndex, setCurrentMathBlockIndex] = useState(null);
 
