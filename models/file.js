@@ -4,7 +4,21 @@ import mongoose, { Schema } from "mongoose"
 const fileSchema = new Schema(
     {
         name: { type: String, required: true },
-        content: { type: String, required: false},
+        content: {
+            type: [
+                {
+                    id: { type: String, required: true },
+                    type: { type: String, required: true },
+                    data: {
+                        type: Object,
+                        required: true,
+                        default: {}
+                    }
+                }
+            ],
+            required: false,
+            default: [],
+        },
         folderId: { type: mongoose.Schema.Types.ObjectId, ref: "Folder" },
     },
     {
