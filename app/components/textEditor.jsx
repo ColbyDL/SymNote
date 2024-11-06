@@ -7,7 +7,7 @@ import MathTool from 'editorjs-math';
 import SymbolPicker from './SymbolPicker';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faSquareRootVariable } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMinus, faSquareRootVariable } from '@fortawesome/free-solid-svg-icons';
 import { faX } from '@fortawesome/free-solid-svg-icons';
 
 const textEditor = () => {
@@ -104,7 +104,7 @@ const textEditor = () => {
           <button
             onClick={toggleSymbolPicker}
           >
-          <FontAwesomeIcon icon={faPlus} />
+          <FontAwesomeIcon icon={isSymbolPickerOpen ? faMinus : faPlus} />
           </button>
 
         </div>

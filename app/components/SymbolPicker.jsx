@@ -1,5 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import symbolsData from '../public/katexSymbols.json'
+import symbolsData from '../public/symbols/katexSymbols.json'
+import symbolsArrows from '../public/symbols/Arrows.json'
+import symbolsGreek from '../public/symbols/Greek_Letters.json'
+import symbolsLogic from '../public/symbols/Logical_and_Set_Notation.json'
+import symbolsRelational from '../public/symbols/Relational_Operators.json'
+import symbolsMisc from '../public/symbols/Miscellaneous_Symbols.json'
 
 const SymbolPicker = () => {
     const [symbols, setSymbols] = useState([]);
@@ -7,9 +12,21 @@ const SymbolPicker = () => {
     const [isDragging, setIsDragging] = useState(false);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
 
-    useEffect(() => {
-      setSymbols(symbolsData);
-    }, []);
+    const categories = {
+      '↔\nArrows\n↔': symbolsArrows,
+      'Ξ\nGreek Letters\nΞ': symbolsGreek,
+      '∈\nLogical and Set Notation\n∋': symbolsLogic,
+      '<\nRelational Operators\n>': symbolsRelational,
+      'Miscellaneous': symbolsMisc,
+    };
+
+    const handleCategoryChange = (category) => {
+      setSymbols(categories[category]);
+    }
+
+    // useEffect(() => {
+    //   setSymbols(symbolsData);
+    // }, []);
   
     const startDragging = (e) => {
       setIsDragging(true);
@@ -46,14 +63,30 @@ const SymbolPicker = () => {
           left: `${position.x}px`,
           top: `${position.y}px`,
           zIndex: 1000,
-          width: '250px',
+          width: '700px',
         }}
         onMouseDown={startDragging}
         onMouseMove={onDragging}
         onMouseUp={stopDragging}
         onMouseLeave={stopDragging}
       >
-        <h2 className="sym-pick-header font-bold text-lg mb-2">Select a Symbol</h2>
+        <h2 className="sym-pick-header font-bold text-lg mb-2">Mathematical Symbol Selector</h2>
+
+        {/* Category selection buttons */}
+        <div className="mb-4 flex gap-2">
+          {Object.keys(categories).map((category) => (
+          <button
+            key={category}
+            onClick={() => handleCategoryChange(category)}
+            className="category-btns p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+          {category.replace('_', ' ')}
+          </button>
+        ))}
+      </div>
+
+
+
         <div className="flex flex-wrap gap-3">
           {symbols.map((item, index) => (
             <button
