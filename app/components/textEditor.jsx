@@ -214,15 +214,9 @@ const textEditor = () => {
     }
   };
 
-  const handleChange = (event) => {
-    setFileName(event.target.value);
-  };
+  
 
-  useEffect(() => {
-    if (file) {
-      updateFileName();
-    }
-  }, [fileName]);
+  
 
   useEffect(() => {
     if (file) {
@@ -328,7 +322,43 @@ const textEditor = () => {
   
     return yPosition;
   };
- 
+
+  
+  const handleFileNameChange = (event) => {
+    setFileName(event.target.value);
+  };
+
+  const handleFileNameSave = async () => {
+    if (fileName !== file?.name) {
+      try {
+        const res = await fetch(`/api/files/${fileId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name: fileName, content: file.content }),
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setFile(data);
+          console.log("Filename updated:", data);
+        } else {
+          throw new Error("Error updating name");
+        }
+      } catch (error) {
+        console.error("Error saving filename:", error);
+      }
+    }
+  };
+
+  const handleFileNameKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleFileNameSave();
+    }
+  };
+
+  const handleFileNameBlur = () => {
+    handleFileNameSave();
+  }; 
 
   if (loading) {
     return (
@@ -413,15 +443,15 @@ const textEditor = () => {
       </div>
 
       <div id="filename" className="">
-        <form>
           <input
             className="filename-text"
-            onChange={handleChange}
+            onChange={handleFileNameChange}
+            onKeyDown={handleFileNameKeyDown}
+            onBlur={handleFileNameBlur}
             type="text"
             name="filename"
             value={fileName}
           ></input>
-        </form>
       </div>
 
       <div id="editorjs" className="rounded-lg"></div>
