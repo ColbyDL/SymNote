@@ -46,6 +46,20 @@ const ProfilePage = () => {
     }
   }, [rootFolderId]);
 
+  const removeFolder = (folderId) => {
+    setRootFolder(prev => ({
+      ...prev,
+      folders: prev.folders.filter((folder) => folder._id !== folderId)
+    }));
+  };
+
+  const removeFile = (fileId) => {
+    setRootFolder(prev => ({
+      ...prev,
+      files: prev.files.filter((file) => file._id !== fileId)
+    }));
+  };
+
   const addFolder = async (folderName) => {
     try {
       const res = await fetch(`/api/folders`, {
@@ -136,9 +150,9 @@ const ProfilePage = () => {
           </button>
         </div>
       </div>
-      <div>{rootFolder ? <Folders key={`${rootFolder._id}-${rootFolder.folders.length}`} rootFolder={rootFolder} /> : <></>}</div>
+      <div>{rootFolder ? <Folders key={`${rootFolder._id}-${rootFolder.folders.length}`} rootFolder={rootFolder} removeFolder={removeFolder} /> : <></>}</div>
       <div className="pt-40">
-        {rootFolder ? <FileTable key={`${rootFolder._id}-${rootFolder.files.length}`}  rootFolder={rootFolder} /> : <></>}
+        {rootFolder ? <FileTable key={`${rootFolder._id}-${rootFolder.files.length}`}  rootFolder={rootFolder} removeFile={removeFile} /> : <></>}
       </div>
 
       <Modal
