@@ -1,0 +1,62 @@
+[
+  {
+    "symbol": "∋",
+    "latex": "\\ni"
+  },
+  {
+    "symbol": "∀",
+    "latex": "\\forall"
+  },
+  {
+    "symbol": "∃",
+    "latex": "\\exists"
+  },
+  {
+    "symbol": "⊊",
+    "latex": "\\subsetneq"
+  },
+  {
+    "symbol": "⊋",
+    "latex": "\\supsetneq"
+  },
+  {
+    "symbol": "¬",
+    "latex": "\\neg"
+  },
+  {
+    "symbol": "∩",
+    "latex": "\\cap"
+  },
+  {
+    "symbol": "∪",
+    "latex": "\\cup"
+  },
+  {
+    "symbol": "∧",
+    "latex": "\\wedge"
+  },
+  {
+    "symbol": "∨",
+    "latex": "\\vee"
+  },
+  {
+    "symbol": "∈",
+    "latex": "\\in"
+  },
+  {
+    "symbol": "⊂",
+    "latex": "\\subset"
+  },
+  {
+    "symbol": "⊃",
+    "latex": "\\supset"
+  },
+  {
+    "symbol": "⊆",
+    "latex": "\\subseteq"
+  },
+  {
+    "symbol": "⊇",
+    "latex": "\\supseteq"
+  }
+]

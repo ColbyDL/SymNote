@@ -1,0 +1,62 @@
+[
+  {
+    "symbol": "⟵",
+    "latex": "\\longleftarrow"
+  },
+  {
+    "symbol": "⇐",
+    "latex": "\\Leftarrow"
+  },
+  {
+    "symbol": "⟶",
+    "latex": "\\longrightarrow"
+  },
+  {
+    "symbol": "⇒",
+    "latex": "\\Rightarrow"
+  },
+  {
+    "symbol": "↔",
+    "latex": "\\leftrightarrow"
+  },
+  {
+    "symbol": "⇔",
+    "latex": "\\Leftrightarrow"
+  },
+  {
+    "symbol": "↦",
+    "latex": "\\mapsto"
+  },
+  {
+    "symbol": "↗",
+    "latex": "\\nearrow"
+  },
+  {
+    "symbol": "↘",
+    "latex": "\\searrow"
+  },
+  {
+    "symbol": "↙",
+    "latex": "\\swarrow"
+  },
+  {
+    "symbol": "↖",
+    "latex": "\\nwarrow"
+  },
+  {
+    "symbol": "↞",
+    "latex": "\\twoheadleftarrow"
+  },
+  {
+    "symbol": "↠",
+    "latex": "\\twoheadrightarrow"
+  },
+  {
+    "symbol": "←",
+    "latex": "\\leftarrow"
+  },
+  {
+    "symbol": "→",
+    "latex": "\\rightarrow"
+  }
+]

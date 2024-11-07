@@ -4,23 +4,33 @@ import Header from "@editorjs/header";
 import MathTool from "editorjs-math";
 import SymbolPicker from "./SymbolPicker";
 import Undo from "editorjs-undo";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSquareRootVariable } from "@fortawesome/free-solid-svg-icons";
+
+
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import { faFileExport } from "@fortawesome/free-solid-svg-icons";
 
 import { useParams } from "next/navigation";
 
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus, faSquareRootVariable } from '@fortawesome/free-solid-svg-icons';
+import { faX } from '@fortawesome/free-solid-svg-icons';
+
 import { jsPDF } from "jspdf";
 import katex from "katex";
 import html2canvas from "html2canvas";
 import "katex/dist/katex.min.css";
 
+
 const textEditor = () => {
   // Stores reference to an Editor.js instance
   const ejInstance = useRef(null);
   const [isMathMode, setIsMathMode] = useState(false);
+
+  const [isSymbolPickerOpen, setIsSymbolPickerOpen] = useState(false);
+
+
   const [currentMathBlockIndex, setCurrentMathBlockIndex] = useState(null);
   const { fileId } = useParams();
   const [file, setFile] = useState();
@@ -66,6 +76,7 @@ const textEditor = () => {
     }
   }, [fileId, loading]);
 
+
   const initEditor = () => {
     // Create editor
     const editor = new EditorJS({
@@ -80,8 +91,10 @@ const textEditor = () => {
           class: MathTool,
           config: {
             katex: {
+
               //Katex Rendering Configuration
               throwOnError: false, //Will not crash the entire site if katex fails to render
+
             },
           },
         },
@@ -102,7 +115,6 @@ const textEditor = () => {
       // Gets the editors data within content.
       onChange: async () => {
         let content = await editor.saver.save();
-
         console.log(content);
       },
       // Initial text within the editor.
@@ -112,7 +124,9 @@ const textEditor = () => {
 
   // Ensures the editor loads once and destroys itself when it unmounts
   useEffect(() => {
+
     if (ejInstance.current === null && file) {
+
       initEditor();
       setFileName(file.name);
     }
@@ -121,14 +135,24 @@ const textEditor = () => {
       ejInstance.current?.destroy();
       ejInstance.current = null;
     };
+
   }, [file]);
+  
 
   const insertMathBlock = () => {
     ejInstance.current.blocks.insert("math", {});
-    setIsMathMode(true); // Activate math mode
+    setIsMathMode(true);  // Enable math mode after inserting a block
   };
 
+  // Function to toggle Symbol Picker visibility
+  const toggleSymbolPicker = () => {
+    setIsSymbolPickerOpen(!isSymbolPickerOpen);
+
+  };
+
+  // Exit math mode function
   const exitMathMode = () => {
+
     setIsMathMode(false); // Deactivate math mode
   };
 
@@ -225,6 +249,7 @@ const textEditor = () => {
     } catch (error) {
       console.error("Error exporting to PDF", error);
     }
+
   };
 
   const renderStyledText = (doc, text, yPosition) => {
@@ -300,6 +325,7 @@ const textEditor = () => {
 
   if (loading) {
     return (
+
       <div className="flex">
         <div id="editor-toolbar" className="">
           <div id="tool" className="basis-1/10">
@@ -346,6 +372,7 @@ const textEditor = () => {
 
   // Displays the editor
   return (
+
     <div>
       <div id="editor-toolbar" className="">
         <div id="tool" className="basis-1/10">
@@ -354,16 +381,23 @@ const textEditor = () => {
           </button>
         </div>
         <div id="tool" className="basis-1/10">
-          {!isMathMode && (
-            <button onClick={insertMathBlock}>
+
+          
+            <button
+              onClick={insertMathBlock}
+            >
               <FontAwesomeIcon icon={faSquareRootVariable} />
             </button>
-          )}
-          {isMathMode && (
-            <button onClick={exitMathMode}>
-              <FontAwesomeIcon icon={faX} />
-            </button>
-          )}
+        </div>
+        <div id="tool" className="basis-1/10">
+          {/* Button to open/close Symbol Picker */}
+          <button
+            onClick={toggleSymbolPicker}
+          >
+          <FontAwesomeIcon icon={isSymbolPickerOpen ? faMinus : faPlus} />
+          </button>
+
+
         </div>
         <div id="tool" className="basis-1/10">
           <p>T2</p>
@@ -389,10 +423,11 @@ const textEditor = () => {
 
       <div id="editorjs" className="rounded-lg"></div>
 
-      {isMathMode && <SymbolPicker />}
 
-      
-    </div>
+      {/* Render Symbol Picker if it's open */}
+      {isSymbolPickerOpen && <SymbolPicker />}
+  </div>
+
   );
 };
 

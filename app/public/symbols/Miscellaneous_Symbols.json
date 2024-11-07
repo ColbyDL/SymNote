@@ -1,0 +1,1126 @@
+[
+  {
+    "symbol": "∼",
+    "latex": "\\sim"
+  },
+  {
+    "symbol": "⪯",
+    "latex": "\\preceq"
+  },
+  {
+    "symbol": "⪰",
+    "latex": "\\succeq"
+  },
+  {
+    "symbol": "∣",
+    "latex": "\\mid"
+  },
+  {
+    "symbol": "≪",
+    "latex": "\\ll"
+  },
+  {
+    "symbol": "≫",
+    "latex": "\\gg"
+  },
+  {
+    "symbol": "≍",
+    "latex": "\\asymp"
+  },
+  {
+    "symbol": "⋈",
+    "latex": "\\bowtie"
+  },
+  {
+    "symbol": "⌣",
+    "latex": "\\smile"
+  },
+  {
+    "symbol": "⊑",
+    "latex": "\\sqsubseteq"
+  },
+  {
+    "symbol": "⊒",
+    "latex": "\\sqsupseteq"
+  },
+  {
+    "symbol": "≐",
+    "latex": "\\doteq"
+  },
+  {
+    "symbol": "⌢",
+    "latex": "\\frown"
+  },
+  {
+    "symbol": "∝",
+    "latex": "\\propto"
+  },
+  {
+    "symbol": "⊢",
+    "latex": "\\vdash"
+  },
+  {
+    "symbol": "⊣",
+    "latex": "\\dashv"
+  },
+  {
+    "symbol": "ℵ",
+    "latex": "\\aleph"
+  },
+  {
+    "symbol": "ℏ",
+    "latex": "\\hbar"
+  },
+  {
+    "symbol": "∇",
+    "latex": "\\nabla"
+  },
+  {
+    "symbol": "♭",
+    "latex": "\\flat"
+  },
+  {
+    "symbol": "ℓ",
+    "latex": "\\ell"
+  },
+  {
+    "symbol": "♮",
+    "latex": "\\natural"
+  },
+  {
+    "symbol": "♣",
+    "latex": "\\clubsuit"
+  },
+  {
+    "symbol": "℘",
+    "latex": "\\wp"
+  },
+  {
+    "symbol": "♯",
+    "latex": "\\sharp"
+  },
+  {
+    "symbol": "♢",
+    "latex": "\\diamondsuit"
+  },
+  {
+    "symbol": "ℜ",
+    "latex": "\\Re"
+  },
+  {
+    "symbol": "♡",
+    "latex": "\\heartsuit"
+  },
+  {
+    "symbol": "ℑ",
+    "latex": "\\Im"
+  },
+  {
+    "symbol": "♠",
+    "latex": "\\spadesuit"
+  },
+  {
+    "symbol": "§",
+    "latex": "\\S"
+  },
+  {
+    "symbol": "¶",
+    "latex": "\\P"
+  },
+  {
+    "symbol": "⎱",
+    "latex": "\\rmoustache"
+  },
+  {
+    "symbol": "⎰",
+    "latex": "\\lmoustache"
+  },
+  {
+    "symbol": "⟯",
+    "latex": "\\rgroup"
+  },
+  {
+    "symbol": "⟮",
+    "latex": "\\lgroup"
+  },
+  {
+    "symbol": "∓",
+    "latex": "\\mp"
+  },
+  {
+    "symbol": "⊖",
+    "latex": "\\ominus"
+  },
+  {
+    "symbol": "⊎",
+    "latex": "\\uplus"
+  },
+  {
+    "symbol": "⊓",
+    "latex": "\\sqcap"
+  },
+  {
+    "symbol": "⊔",
+    "latex": "\\sqcup"
+  },
+  {
+    "symbol": "◯",
+    "latex": "\\bigcirc"
+  },
+  {
+    "symbol": "∙",
+    "latex": "\\bullet"
+  },
+  {
+    "symbol": "≀",
+    "latex": "\\wr"
+  },
+  {
+    "symbol": "⟸",
+    "latex": "\\Longleftarrow"
+  },
+  {
+    "symbol": "⟹",
+    "latex": "\\Longrightarrow"
+  },
+  {
+    "symbol": "⟷",
+    "latex": "\\longleftrightarrow"
+  },
+  {
+    "symbol": "⟺",
+    "latex": "\\Longleftrightarrow"
+  },
+  {
+    "symbol": "⟼",
+    "latex": "\\longmapsto"
+  },
+  {
+    "symbol": "↩",
+    "latex": "\\hookleftarrow"
+  },
+  {
+    "symbol": "↪",
+    "latex": "\\hookrightarrow"
+  },
+  {
+    "symbol": "↼",
+    "latex": "\\leftharpoonup"
+  },
+  {
+    "symbol": "⇀",
+    "latex": "\\rightharpoonup"
+  },
+  {
+    "symbol": "↽",
+    "latex": "\\leftharpoondown"
+  },
+  {
+    "symbol": "⇁",
+    "latex": "\\rightharpoondown"
+  },
+  {
+    "symbol": "⇌",
+    "latex": "\\rightleftharpoons"
+  },
+  {
+    "symbol": "≮",
+    "latex": "\\nless"
+  },
+  {
+    "symbol": "⪇",
+    "latex": "\\lneq"
+  },
+  {
+    "symbol": "≨",
+    "latex": "\\lneqq"
+  },
+  {
+    "symbol": "⋦",
+    "latex": "\\lnsim"
+  },
+  {
+    "symbol": "⪉",
+    "latex": "\\lnapprox"
+  },
+  {
+    "symbol": "⊀",
+    "latex": "\\nprec"
+  },
+  {
+    "symbol": "⋠",
+    "latex": "\\npreceq"
+  },
+  {
+    "symbol": "⋨",
+    "latex": "\\precnsim"
+  },
+  {
+    "symbol": "⪹",
+    "latex": "\\precnapprox"
+  },
+  {
+    "symbol": "≁",
+    "latex": "\\nsim"
+  },
+  {
+    "symbol": "∤",
+    "latex": "\\nmid"
+  },
+  {
+    "symbol": "⊬",
+    "latex": "\\nvdash"
+  },
+  {
+    "symbol": "⊭",
+    "latex": "\\nvDash"
+  },
+  {
+    "symbol": "⋬",
+    "latex": "\\ntrianglelefteq"
+  },
+  {
+    "symbol": "⫋",
+    "latex": "\\subsetneqq"
+  },
+  {
+    "symbol": "≯",
+    "latex": "\\ngtr"
+  },
+  {
+    "symbol": "⪈",
+    "latex": "\\gneq"
+  },
+  {
+    "symbol": "≩",
+    "latex": "\\gneqq"
+  },
+  {
+    "symbol": "⋧",
+    "latex": "\\gnsim"
+  },
+  {
+    "symbol": "⪊",
+    "latex": "\\gnapprox"
+  },
+  {
+    "symbol": "⊁",
+    "latex": "\\nsucc"
+  },
+  {
+    "symbol": "⋡",
+    "latex": "\\nsucceq"
+  },
+  {
+    "symbol": "⋩",
+    "latex": "\\succnsim"
+  },
+  {
+    "symbol": "⪺",
+    "latex": "\\succnapprox"
+  },
+  {
+    "symbol": "∦",
+    "latex": "\\nparallel"
+  },
+  {
+    "symbol": "⊯",
+    "latex": "\\nVDash"
+  },
+  {
+    "symbol": "⋭",
+    "latex": "\\ntrianglerighteq"
+  },
+  {
+    "symbol": "⫌",
+    "latex": "\\supsetneqq"
+  },
+  {
+    "symbol": "⊮",
+    "latex": "\\nVdash"
+  },
+  {
+    "symbol": "⪵",
+    "latex": "\\precneqq"
+  },
+  {
+    "symbol": "⪶",
+    "latex": "\\succneqq"
+  },
+  {
+    "symbol": "↚",
+    "latex": "\\nleftarrow"
+  },
+  {
+    "symbol": "↛",
+    "latex": "\\nrightarrow"
+  },
+  {
+    "symbol": "⇍",
+    "latex": "\\nLeftarrow"
+  },
+  {
+    "symbol": "⇏",
+    "latex": "\\nRightarrow"
+  },
+  {
+    "symbol": "↮",
+    "latex": "\\nleftrightarrow"
+  },
+  {
+    "symbol": "⇎",
+    "latex": "\\nLeftrightarrow"
+  },
+  {
+    "symbol": "∡",
+    "latex": "\\measuredangle"
+  },
+  {
+    "symbol": "Ⅎ",
+    "latex": "\\Finv"
+  },
+  {
+    "symbol": "⅁",
+    "latex": "\\Game"
+  },
+  {
+    "symbol": "∢",
+    "latex": "\\sphericalangle"
+  },
+  {
+    "symbol": "∁",
+    "latex": "\\complement"
+  },
+  {
+    "symbol": "ð",
+    "latex": "\\eth"
+  },
+  {
+    "symbol": "¥",
+    "latex": "\\yen"
+  },
+  {
+    "symbol": "¥",
+    "latex": "\\yen"
+  },
+  {
+    "symbol": "✓",
+    "latex": "\\checkmark"
+  },
+  {
+    "symbol": "ℶ",
+    "latex": "\\beth"
+  },
+  {
+    "symbol": "ℸ",
+    "latex": "\\daleth"
+  },
+  {
+    "symbol": "ℷ",
+    "latex": "\\gimel"
+  },
+  {
+    "symbol": "ϝ",
+    "latex": "\\digamma"
+  },
+  {
+    "symbol": "┌",
+    "latex": "\\@ulcorner"
+  },
+  {
+    "symbol": "┐",
+    "latex": "\\@urcorner"
+  },
+  {
+    "symbol": "└",
+    "latex": "\\@llcorner"
+  },
+  {
+    "symbol": "┘",
+    "latex": "\\@lrcorner"
+  },
+  {
+    "symbol": "≦",
+    "latex": "\\leqq"
+  },
+  {
+    "symbol": "⩽",
+    "latex": "\\leqslant"
+  },
+  {
+    "symbol": "⪕",
+    "latex": "\\eqslantless"
+  },
+  {
+    "symbol": "≲",
+    "latex": "\\lesssim"
+  },
+  {
+    "symbol": "⪅",
+    "latex": "\\lessapprox"
+  },
+  {
+    "symbol": "≊",
+    "latex": "\\approxeq"
+  },
+  {
+    "symbol": "⋘",
+    "latex": "\\lll"
+  },
+  {
+    "symbol": "≶",
+    "latex": "\\lessgtr"
+  },
+  {
+    "symbol": "⋚",
+    "latex": "\\lesseqgtr"
+  },
+  {
+    "symbol": "⪋",
+    "latex": "\\lesseqqgtr"
+  },
+  {
+    "symbol": "≓",
+    "latex": "\\risingdotseq"
+  },
+  {
+    "symbol": "≒",
+    "latex": "\\fallingdotseq"
+  },
+  {
+    "symbol": "∽",
+    "latex": "\\backsim"
+  },
+  {
+    "symbol": "⋍",
+    "latex": "\\backsimeq"
+  },
+  {
+    "symbol": "⫅",
+    "latex": "\\subseteqq"
+  },
+  {
+    "symbol": "⋐",
+    "latex": "\\Subset"
+  },
+  {
+    "symbol": "⊏",
+    "latex": "\\sqsubset"
+  },
+  {
+    "symbol": "≼",
+    "latex": "\\preccurlyeq"
+  },
+  {
+    "symbol": "⋞",
+    "latex": "\\curlyeqprec"
+  },
+  {
+    "symbol": "≾",
+    "latex": "\\precsim"
+  },
+  {
+    "symbol": "⪷",
+    "latex": "\\precapprox"
+  },
+  {
+    "symbol": "⊨",
+    "latex": "\\vDash"
+  },
+  {
+    "symbol": "⊪",
+    "latex": "\\Vvdash"
+  },
+  {
+    "symbol": "≏",
+    "latex": "\\bumpeq"
+  },
+  {
+    "symbol": "≎",
+    "latex": "\\Bumpeq"
+  },
+  {
+    "symbol": "≧",
+    "latex": "\\geqq"
+  },
+  {
+    "symbol": "⩾",
+    "latex": "\\geqslant"
+  },
+  {
+    "symbol": "⪖",
+    "latex": "\\eqslantgtr"
+  },
+  {
+    "symbol": "≳",
+    "latex": "\\gtrsim"
+  },
+  {
+    "symbol": "⪆",
+    "latex": "\\gtrapprox"
+  },
+  {
+    "symbol": "⋙",
+    "latex": "\\ggg"
+  },
+  {
+    "symbol": "≷",
+    "latex": "\\gtrless"
+  },
+  {
+    "symbol": "⋛",
+    "latex": "\\gtreqless"
+  },
+  {
+    "symbol": "⪌",
+    "latex": "\\gtreqqless"
+  },
+  {
+    "symbol": "≖",
+    "latex": "\\eqcirc"
+  },
+  {
+    "symbol": "≗",
+    "latex": "\\circeq"
+  },
+  {
+    "symbol": "≜",
+    "latex": "\\triangleq"
+  },
+  {
+    "symbol": "⫆",
+    "latex": "\\supseteqq"
+  },
+  {
+    "symbol": "⋑",
+    "latex": "\\Supset"
+  },
+  {
+    "symbol": "⊐",
+    "latex": "\\sqsupset"
+  },
+  {
+    "symbol": "≽",
+    "latex": "\\succcurlyeq"
+  },
+  {
+    "symbol": "⋟",
+    "latex": "\\curlyeqsucc"
+  },
+  {
+    "symbol": "≿",
+    "latex": "\\succsim"
+  },
+  {
+    "symbol": "⪸",
+    "latex": "\\succapprox"
+  },
+  {
+    "symbol": "⊩",
+    "latex": "\\Vdash"
+  },
+  {
+    "symbol": "≬",
+    "latex": "\\between"
+  },
+  {
+    "symbol": "⋔",
+    "latex": "\\pitchfork"
+  },
+  {
+    "symbol": "∴",
+    "latex": "\\therefore"
+  },
+  {
+    "symbol": "∵",
+    "latex": "\\because"
+  },
+  {
+    "symbol": "≂",
+    "latex": "\\eqsim"
+  },
+  {
+    "symbol": "≑",
+    "latex": "\\Doteq"
+  },
+  {
+    "symbol": "∔",
+    "latex": "\\dotplus"
+  },
+  {
+    "symbol": "⋒",
+    "latex": "\\Cap"
+  },
+  {
+    "symbol": "⋓",
+    "latex": "\\Cup"
+  },
+  {
+    "symbol": "⩞",
+    "latex": "\\doublebarwedge"
+  },
+  {
+    "symbol": "⊟",
+    "latex": "\\boxminus"
+  },
+  {
+    "symbol": "⊞",
+    "latex": "\\boxplus"
+  },
+  {
+    "symbol": "⋇",
+    "latex": "\\divideontimes"
+  },
+  {
+    "symbol": "⋉",
+    "latex": "\\ltimes"
+  },
+  {
+    "symbol": "⋊",
+    "latex": "\\rtimes"
+  },
+  {
+    "symbol": "⋋",
+    "latex": "\\leftthreetimes"
+  },
+  {
+    "symbol": "⋌",
+    "latex": "\\rightthreetimes"
+  },
+  {
+    "symbol": "⋏",
+    "latex": "\\curlywedge"
+  },
+  {
+    "symbol": "⋎",
+    "latex": "\\curlyvee"
+  },
+  {
+    "symbol": "⊝",
+    "latex": "\\circleddash"
+  },
+  {
+    "symbol": "⊛",
+    "latex": "\\circledast"
+  },
+  {
+    "symbol": "⊺",
+    "latex": "\\intercal"
+  },
+  {
+    "symbol": "⊠",
+    "latex": "\\boxtimes"
+  },
+  {
+    "symbol": "⇢",
+    "latex": "\\dashrightarrow"
+  },
+  {
+    "symbol": "⇠",
+    "latex": "\\dashleftarrow"
+  },
+  {
+    "symbol": "⇇",
+    "latex": "\\leftleftarrows"
+  },
+  {
+    "symbol": "⇆",
+    "latex": "\\leftrightarrows"
+  },
+  {
+    "symbol": "⇚",
+    "latex": "\\Lleftarrow"
+  },
+  {
+    "symbol": "↢",
+    "latex": "\\leftarrowtail"
+  },
+  {
+    "symbol": "↫",
+    "latex": "\\looparrowleft"
+  },
+  {
+    "symbol": "⇋",
+    "latex": "\\leftrightharpoons"
+  },
+  {
+    "symbol": "↶",
+    "latex": "\\curvearrowleft"
+  },
+  {
+    "symbol": "↺",
+    "latex": "\\circlearrowleft"
+  },
+  {
+    "symbol": "↰",
+    "latex": "\\Lsh"
+  },
+  {
+    "symbol": "⇈",
+    "latex": "\\upuparrows"
+  },
+  {
+    "symbol": "↿",
+    "latex": "\\upharpoonleft"
+  },
+  {
+    "symbol": "⇃",
+    "latex": "\\downharpoonleft"
+  },
+  {
+    "symbol": "⊶",
+    "latex": "\\origof"
+  },
+  {
+    "symbol": "⊷",
+    "latex": "\\imageof"
+  },
+  {
+    "symbol": "⊸",
+    "latex": "\\multimap"
+  },
+  {
+    "symbol": "↭",
+    "latex": "\\leftrightsquigarrow"
+  },
+  {
+    "symbol": "⇉",
+    "latex": "\\rightrightarrows"
+  },
+  {
+    "symbol": "⇄",
+    "latex": "\\rightleftarrows"
+  },
+  {
+    "symbol": "↣",
+    "latex": "\\rightarrowtail"
+  },
+  {
+    "symbol": "↬",
+    "latex": "\\looparrowright"
+  },
+  {
+    "symbol": "↷",
+    "latex": "\\curvearrowright"
+  },
+  {
+    "symbol": "↻",
+    "latex": "\\circlearrowright"
+  },
+  {
+    "symbol": "↱",
+    "latex": "\\Rsh"
+  },
+  {
+    "symbol": "⇊",
+    "latex": "\\downdownarrows"
+  },
+  {
+    "symbol": "↾",
+    "latex": "\\upharpoonright"
+  },
+  {
+    "symbol": "⇂",
+    "latex": "\\downharpoonright"
+  },
+  {
+    "symbol": "⇝",
+    "latex": "\\rightsquigarrow"
+  },
+  {
+    "symbol": "⇛",
+    "latex": "\\Rrightarrow"
+  },
+  {
+    "symbol": "∠",
+    "latex": "\\angle"
+  },
+  {
+    "symbol": "∞",
+    "latex": "\\infty"
+  },
+  {
+    "symbol": "ϵ",
+    "latex": "\\epsilon"
+  },
+  {
+    "symbol": "ϕ",
+    "latex": "\\phi"
+  },
+  {
+    "symbol": "ϑ",
+    "latex": "\\vartheta"
+  },
+  {
+    "symbol": "ϖ",
+    "latex": "\\varpi"
+  },
+  {
+    "symbol": "ϱ",
+    "latex": "\\varrho"
+  },
+  {
+    "symbol": "ς",
+    "latex": "\\varsigma"
+  },
+  {
+    "symbol": "∗",
+    "latex": "*"
+  },
+  {
+    "symbol": "−",
+    "latex": "-"
+  },
+  {
+    "symbol": "⋅",
+    "latex": "\\cdot"
+  },
+  {
+    "symbol": "∘",
+    "latex": "\\circ"
+  },
+  {
+    "symbol": "÷",
+    "latex": "\\div"
+  },
+  {
+    "symbol": "±",
+    "latex": "\\pm"
+  },
+  {
+    "symbol": "×",
+    "latex": "\\times"
+  },
+  {
+    "symbol": "∖",
+    "latex": "\\setminus"
+  },
+  {
+    "symbol": "⟨",
+    "latex": "\\langle"
+  },
+  {
+    "symbol": "⟩",
+    "latex": "\\rangle"
+  },
+  {
+    "symbol": ">",
+    "latex": "\\gt"
+  },
+  {
+    "symbol": "⊈",
+    "latex": "\\nsubseteq"
+  },
+  {
+    "symbol": "⊉",
+    "latex": "\\nsupseteq"
+  },
+  {
+    "symbol": "<",
+    "latex": "\\lt"
+  },
+  {
+    "symbol": "≱",
+    "latex": "\\ngeq"
+  },
+  {
+    "symbol": "≰",
+    "latex": "\\nleq"
+  },
+  {
+    "symbol": "⊼",
+    "latex": "\\barwedge"
+  },
+  {
+    "symbol": "⊻",
+    "latex": "\\veebar"
+  },
+  {
+    "symbol": "⊙",
+    "latex": "\\odot"
+  },
+  {
+    "symbol": "⊕",
+    "latex": "\\oplus"
+  },
+  {
+    "symbol": "⊗",
+    "latex": "\\otimes"
+  },
+  {
+    "symbol": "∂",
+    "latex": "\\partial"
+  },
+  {
+    "symbol": "⊘",
+    "latex": "\\oslash"
+  },
+  {
+    "symbol": "⊚",
+    "latex": "\\circledcirc"
+  },
+  {
+    "symbol": "⊡",
+    "latex": "\\boxdot"
+  },
+  {
+    "symbol": "[",
+    "latex": "\\lbrack"
+  },
+  {
+    "symbol": "[",
+    "latex": "\\lbrack"
+  },
+  {
+    "symbol": "]",
+    "latex": "\\rbrack"
+  },
+  {
+    "symbol": "]",
+    "latex": "\\rbrack"
+  },
+  {
+    "symbol": "(",
+    "latex": "\\lparen"
+  },
+  {
+    "symbol": ")",
+    "latex": "\\rparen"
+  },
+  {
+    "symbol": "<",
+    "latex": "\\textless"
+  },
+  {
+    "symbol": ">",
+    "latex": "\\textgreater"
+  },
+  {
+    "symbol": "⌊",
+    "latex": "\\lfloor"
+  },
+  {
+    "symbol": "⌋",
+    "latex": "\\rfloor"
+  },
+  {
+    "symbol": "⌈",
+    "latex": "\\lceil"
+  },
+  {
+    "symbol": "⌉",
+    "latex": "\\rceil"
+  },
+  {
+    "symbol": "|",
+    "latex": "\\textbar"
+  },
+  {
+    "symbol": "↑",
+    "latex": "\\uparrow"
+  },
+  {
+    "symbol": "⇑",
+    "latex": "\\Uparrow"
+  },
+  {
+    "symbol": "↓",
+    "latex": "\\downarrow"
+  },
+  {
+    "symbol": "⇓",
+    "latex": "\\Downarrow"
+  },
+  {
+    "symbol": "↕",
+    "latex": "\\updownarrow"
+  },
+  {
+    "symbol": "⇕",
+    "latex": "\\Updownarrow"
+  },
+  {
+    "symbol": "…",
+    "latex": "\\ldots"
+  },
+  {
+    "symbol": "…",
+    "latex": "\\ldots"
+  },
+  {
+    "symbol": "⋯",
+    "latex": "\\@cdots"
+  },
+  {
+    "symbol": "⋱",
+    "latex": "\\ddots"
+  },
+  {
+    "symbol": "ı",
+    "latex": "\\i"
+  },
+  {
+    "symbol": "ȷ",
+    "latex": "\\j"
+  },
+  {
+    "symbol": "ß",
+    "latex": "\\ss"
+  },
+  {
+    "symbol": "æ",
+    "latex": "\\ae"
+  },
+  {
+    "symbol": "œ",
+    "latex": "\\oe"
+  },
+  {
+    "symbol": "ø",
+    "latex": "\\o"
+  },
+  {
+    "symbol": "Æ",
+    "latex": "\\AE"
+  },
+  {
+    "symbol": "Œ",
+    "latex": "\\OE"
+  },
+  {
+    "symbol": "Ø",
+    "latex": "\\O"
+  },
+  {
+    "symbol": "–",
+    "latex": "--"
+  },
+  {
+    "symbol": "—",
+    "latex": "---"
+  },
+  {
+    "symbol": "‘",
+    "latex": "`"
+  },
+  {
+    "symbol": "“",
+    "latex": "``"
+  },
+  {
+    "symbol": "°",
+    "latex": "\\degree"
+  },
+  {
+    "symbol": "°",
+    "latex": "\\textdegree"
+  },
+  {
+    "symbol": "£",
+    "latex": "\\mathsterling"
+  },
+  {
+    "symbol": "£",
+    "latex": "\\textsterling"
+  }
+]
