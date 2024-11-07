@@ -6,7 +6,7 @@ import SymbolPicker from "./SymbolPicker";
 import Undo from "editorjs-undo";
 
 
-import { faX } from "@fortawesome/free-solid-svg-icons";
+
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import { faFileExport } from "@fortawesome/free-solid-svg-icons";
 
@@ -399,9 +399,7 @@ const textEditor = () => {
 
 
         </div>
-        <div id="tool" className="basis-1/10">
-          <p>T2</p>
-        </div>
+        
         <div id="tool" className="basis-1/10">
           <button onClick={exportToPDF} >
             <FontAwesomeIcon icon={faFileExport} />
