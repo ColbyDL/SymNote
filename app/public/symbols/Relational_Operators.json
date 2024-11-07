@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "≡",
+    "latex": "\\equiv"
+  },
+  {
+    "symbol": "≺",
+    "latex": "\\prec"
+  },
+  {
+    "symbol": "≻",
+    "latex": "\\succ"
+  },
+  {
+    "symbol": "≃",
+    "latex": "\\simeq"
+  },
+  {
+    "symbol": "≆",
+    "latex": "\\ncong"
+  },
+  {
+    "symbol": "≈",
+    "latex": "\\approx"
+  },
+  {
+    "symbol": "≅",
+    "latex": "\\cong"
+  },
+  {
+    "symbol": "≥",
+    "latex": "\\geq"
+  },
+  {
+    "symbol": "≤",
+    "latex": "\\leq"
+  }
+]

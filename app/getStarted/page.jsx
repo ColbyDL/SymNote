@@ -1,4 +1,5 @@
-import TextEditor from '../components/textEditor';
+'use client'
+import TextEditorStarted from '../components/textEditorStarted';
 import FileNav from '../components/fileNav';
 
 const getStarted = () => {
@@ -7,7 +8,7 @@ const getStarted = () => {
       <div>
         <FileNav />
       </div>
-      <TextEditor />
+      <TextEditorStarted />
     </div>
   )
 }
