@@ -248,6 +248,14 @@ main {
     color: black;
 }
 
+#editorjs1 {
+    border: 4px solid var(--btn-text-color);
+    background-color: white;
+    margin-left: 25%;
+    margin-right: 25%;
+    color: black;
+}
+
 h1.ce-header{
     @apply text-3xl font-bold;
 }

@@ -22,6 +22,8 @@ import katex from "katex";
 import html2canvas from "html2canvas";
 import "katex/dist/katex.min.css";
 
+import { useUser } from "@auth0/nextjs-auth0/client";
+
 
 const textEditor = () => {
   // Stores reference to an Editor.js instance
@@ -36,6 +38,8 @@ const textEditor = () => {
   const [file, setFile] = useState();
   const [loading, setLoading] = useState(true);
   const [fileName, setFileName] = useState("");
+
+  const { user} = useUser();
 
   
 
@@ -70,11 +74,13 @@ const textEditor = () => {
   };
 
   useEffect(() => {
-    if (fileId && loading) {
+    if ( user && fileId && loading) {
       fetchFile();
       setLoading(false);
+    } else if ( !user ) {
+      setLoading(false);
     }
-  }, [fileId, loading]);
+  }, [fileId, loading, user]);
 
 
   const initEditor = () => {
@@ -100,7 +106,7 @@ const textEditor = () => {
         },
       },
       data: {
-        blocks: file.content,
+        blocks: file?.content || [],
       },
       // Prevents editor border from extending down, creating unused space
       minHeight: 0,
@@ -136,8 +142,9 @@ const textEditor = () => {
       ejInstance.current = null;
     };
 
+
   }, [file]);
-  
+ 
 
   const insertMathBlock = () => {
     ejInstance.current.blocks.insert("math", {});
@@ -345,9 +352,7 @@ const textEditor = () => {
               </button>
             )}
           </div>
-          <div id="tool" className="basis-1/10">
-            <p>T2</p>
-          </div>
+          
         </div>
         <div id="filename" className="">
           <form>
