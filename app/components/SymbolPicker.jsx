@@ -3,17 +3,20 @@ import symbolsArrows from '../public/symbols/Arrows.json'
 import symbolsGreek from '../public/symbols/Greek_Letters.json'
 import symbolsLogic from '../public/symbols/Logical_and_Set_Notation.json'
 import symbolsRelational from '../public/symbols/Relational_Operators.json'
+import symbolsArith from '../public/symbols/Arithmetic_and_Algebra.json'
 import symbolsMisc from '../public/symbols/Miscellaneous_Symbols.json'
 
 const SymbolPicker = () => {
     const [symbols, setSymbols] = useState([]);
     const [isDragging, setIsDragging] = useState(false);
     const [position, setPosition] = useState({ x: 100, y: 100 });
-    const [startPos, setStartPos] = useState({ x: 0, y: 0 });    
-    const [offset, setOffset] = useState({ x: 0, y: 0 });
+    const [startPos, setStartPos] = useState({ x: 0, y: 0 });   
+    const [miscIndex, setMiscIndex] = useState(20); //tracking how many symbols will be rendered by misc
+    const [selectedCategory, setSelectedCategory] = useState('');
 
     const categories = {
       '↔\nArrows\n↔': symbolsArrows,
+      'Arithmetic & Algebra': symbolsArith,
       'Ξ\nGreek Letters\nΞ': symbolsGreek,
       '∈\nLogical and Set Notation\n∋': symbolsLogic,
       '<\nRelational Operators\n>': symbolsRelational,
@@ -43,23 +46,22 @@ const SymbolPicker = () => {
 
     const handleCategoryChange = (e) => {
       const category = e.target.value;
-      setSymbols(categories[category] || []);
+      setSelectedCategory(category);
+      if(category === 'Miscellaneous') {
+        setSymbols(symbolsMisc.slice(0,20)); //load first 20 symbols
+        setMiscIndex(20);
+      }
+      else {
+        setSymbols(categories[category] || []);
+        setMiscIndex(20);
+      }
     }
-  
-    // const startDragging = (e) => {
-    //   setIsDragging(true);
-    //   setOffset({ x: e.clientX - position.x, y: e.clientY - position.y });
-    // };
-  
-    // const onDragging = (e) => {
-    //   if (isDragging) {
-    //     setPosition({ x: e.clientX - offset.x, y: e.clientY - offset.y });
-    //   }
-    // };
-  
-    // const stopDragging = () => {
-    //   setIsDragging(false);
-    // };
+    
+    const handleViewMore = () => {
+      const newSymbols = symbolsMisc.slice(miscIndex, miscIndex + 20); //load 20 more symbols
+      setSymbols((prevSymbols) => [...prevSymbols, ...newSymbols]);
+      setMiscIndex(miscIndex + 20);
+    }
   
     // Function to copy the LaTeX syntax to the clipboard
     const copyToClipboard = (latex) => {
@@ -86,7 +88,6 @@ const SymbolPicker = () => {
         onMouseDown={handlePointerDown}
         onMouseMove={handlePointerMove}
         onMouseUp={handlePointerUp}
-        //onMouseLeave={stopDragging}
       >
       <h2 className="sym-pick-header font-bold text-lg mb-2">Mathematical Symbol Selector</h2>
       
@@ -118,6 +119,16 @@ const SymbolPicker = () => {
             </button>
           ))}
         </div>
+
+        {/* View More Misc Symbols*/}
+        {selectedCategory === 'Miscellaneous' && symbols.length < symbolsMisc.length && (
+          <button
+            onClick={handleViewMore}
+            className='mt-2 p-2 bg-blue-500 text-white rounded hover:bg-blue-600'
+            >
+              View More
+            </button>
+        )}
       </div>
     );
   };
