@@ -13,10 +13,12 @@ export async function GET(request, { params }) {
 export async function PUT(request, { params }) {
     await ConnectMongoDB();
     const { id } = params;
-    const data = await request.json();
-    const updatedFile = await FileService.update(id, data);
+    const { name, content} = await request.json();
+    const updatedFile = await FileService.update(id, { name, content });
     return NextResponse.json(updatedFile);
 }
+
+
 
 export async function DELETE(request, { params }) {
     await ConnectMongoDB();

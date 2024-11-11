@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 
 const fileDisplay = ({ file }) => {
+  console.log("file._id", file._id)
 
   
   return (
