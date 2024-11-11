@@ -1,5 +1,6 @@
 // services/FolderService.js
 import Folder from '../models/folder';
+import File from '../models/file';
 import GenericService from './GenericService';
 
 class FolderService extends GenericService {

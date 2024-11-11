@@ -6,7 +6,7 @@ import SymbolPicker from "./SymbolPicker";
 import Undo from "editorjs-undo";
 
 
-import { faX } from "@fortawesome/free-solid-svg-icons";
+
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import { faFileExport } from "@fortawesome/free-solid-svg-icons";
 
@@ -22,6 +22,8 @@ import katex from "katex";
 import html2canvas from "html2canvas";
 import "katex/dist/katex.min.css";
 
+import { useUser } from "@auth0/nextjs-auth0/client";
+
 
 const textEditor = () => {
   // Stores reference to an Editor.js instance
@@ -36,6 +38,8 @@ const textEditor = () => {
   const [file, setFile] = useState();
   const [loading, setLoading] = useState(true);
   const [fileName, setFileName] = useState("");
+
+  const { user} = useUser();
 
   
 
@@ -70,11 +74,13 @@ const textEditor = () => {
   };
 
   useEffect(() => {
-    if (fileId && loading) {
+    if ( user && fileId && loading) {
       fetchFile();
       setLoading(false);
+    } else if ( !user ) {
+      setLoading(false);
     }
-  }, [fileId, loading]);
+  }, [fileId, loading, user]);
 
 
   const initEditor = () => {
@@ -100,10 +106,10 @@ const textEditor = () => {
         },
       },
       data: {
-        blocks: file.content,
+        blocks: file?.content || [],
       },
       data: {
-        blocks: file.content,
+        blocks: file?.content || [],
       },
       // Prevents editor border from extending down, creating unused space
       minHeight: 0,
@@ -139,8 +145,9 @@ const textEditor = () => {
       ejInstance.current = null;
     };
 
+
   }, [file]);
-  
+ 
 
   const insertMathBlock = () => {
     ejInstance.current.blocks.insert("math", {});
@@ -210,15 +217,9 @@ const textEditor = () => {
     }
   };
 
-  const handleChange = (event) => {
-    setFileName(event.target.value);
-  };
+  
 
-  useEffect(() => {
-    if (file) {
-      updateFileName();
-    }
-  }, [fileName]);
+  
 
   useEffect(() => {
     if (file) {
@@ -324,7 +325,43 @@ const textEditor = () => {
   
     return yPosition;
   };
- 
+
+  
+  const handleFileNameChange = (event) => {
+    setFileName(event.target.value);
+  };
+
+  const handleFileNameSave = async () => {
+    if (fileName !== file?.name) {
+      try {
+        const res = await fetch(`/api/files/${fileId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name: fileName, content: file.content }),
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setFile(data);
+          console.log("Filename updated:", data);
+        } else {
+          throw new Error("Error updating name");
+        }
+      } catch (error) {
+        console.error("Error saving filename:", error);
+      }
+    }
+  };
+
+  const handleFileNameKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleFileNameSave();
+    }
+  };
+
+  const handleFileNameBlur = () => {
+    handleFileNameSave();
+  }; 
 
   if (loading) {
     return (
@@ -348,9 +385,7 @@ const textEditor = () => {
               </button>
             )}
           </div>
-          <div id="tool" className="basis-1/10">
-            <p>T2</p>
-          </div>
+          
         </div>
         <div id="filename" className="">
           <form>
@@ -402,33 +437,7 @@ const textEditor = () => {
 
 
         </div>
-        <div id="tool" className="basis-1/10">
-          <p>T2</p>
-        </div>
-      </div>
-
-      <div id="filename" className="">
-          <form><input className="filename-text" onChange={(e) => {setFileName(e)}} type="text" name="filename" value="Loading Document" ></input></form>
-      </div>
-
-      <div id="editorjs" className="rounded-lg"></div>
-
-      {/* Render Symbol Picker if it's open */}
-      {isSymbolPickerOpen && <SymbolPicker />}
-  </div>
-
-    )
-  }
-
-
-
-  
-
-  // Displays the editor
-    return (
-    
-    <div>
-      <div id="editor-toolbar" className="">
+        
         <div id="tool" className="basis-1/10">
           <button onClick={exportToPDF} >
             <FontAwesomeIcon icon={faFileExport} />
@@ -457,15 +466,15 @@ const textEditor = () => {
       </div>
 
       <div id="filename" className="">
-        <form>
           <input
             className="filename-text"
-            onChange={handleChange}
+            onChange={handleFileNameChange}
+            onKeyDown={handleFileNameKeyDown}
+            onBlur={handleFileNameBlur}
             type="text"
             name="filename"
             value={fileName}
           ></input>
-        </form>
       </div>
 
       <div id="editorjs" className="rounded-lg"></div>
