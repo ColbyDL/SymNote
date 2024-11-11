@@ -1,3 +1,4 @@
+'use client'
 import TextEditor from '../components/textEditor';
 import FileNav from '../components/fileNav';
 

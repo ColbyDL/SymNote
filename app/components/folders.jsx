@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Folder from "./folder";
 
-const Folders = ({ rootFolder }) => {
+const Folders = ({ rootFolder, removeFolder }) => {
   useEffect(() => {
     console.log("rootFolder updated in folders.jsx:", rootFolder);
   }, [rootFolder]);
@@ -10,7 +10,7 @@ const Folders = ({ rootFolder }) => {
     <div className="flex flex-wrap gap-9 px-24 justify-between">
       {Array.isArray(rootFolder.folders) &&
         rootFolder.folders.map(f => (
-          <Folder key={f._id} folder={f} />
+          <Folder key={f._id} folder={f} onFolderDelete={removeFolder} />
         ))}
     </div>
   );
