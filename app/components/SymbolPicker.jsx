@@ -1,47 +1,67 @@
-import React, {useState, useEffect} from 'react';
-import symbolsData from '../public/symbols/katexSymbols.json'
+import React, {useState} from 'react';
 import symbolsArrows from '../public/symbols/Arrows.json'
 import symbolsGreek from '../public/symbols/Greek_Letters.json'
 import symbolsLogic from '../public/symbols/Logical_and_Set_Notation.json'
 import symbolsRelational from '../public/symbols/Relational_Operators.json'
+import symbolsArith from '../public/symbols/Arithmetic_and_Algebra.json'
 import symbolsMisc from '../public/symbols/Miscellaneous_Symbols.json'
 
 const SymbolPicker = () => {
     const [symbols, setSymbols] = useState([]);
-    const [position, setPosition] = useState({ x: 100, y: 100 });
     const [isDragging, setIsDragging] = useState(false);
-    const [offset, setOffset] = useState({ x: 0, y: 0 });
+    const [position, setPosition] = useState({ x: 100, y: 100 });
+    const [startPos, setStartPos] = useState({ x: 0, y: 0 });   
+    const [miscIndex, setMiscIndex] = useState(20); //tracking how many symbols will be rendered by misc
+    const [selectedCategory, setSelectedCategory] = useState('');
 
     const categories = {
       '↔\nArrows\n↔': symbolsArrows,
+      'Arithmetic & Algebra': symbolsArith,
       'Ξ\nGreek Letters\nΞ': symbolsGreek,
       '∈\nLogical and Set Notation\n∋': symbolsLogic,
       '<\nRelational Operators\n>': symbolsRelational,
       'Miscellaneous': symbolsMisc,
     };
 
-    const handleCategoryChange = (category) => {
-      setSymbols(categories[category]);
+    const handlePointerDown = (event) => {
+      setIsDragging(true);
+      event.target.setPointerCapture(event.pointerId);
+
+      setStartPos({ x: event.clientX - position.x, y:event.clientY - position.y });
     }
 
-    // useEffect(() => {
-    //   setSymbols(symbolsData);
-    // }, []);
-  
-    const startDragging = (e) => {
-      setIsDragging(true);
-      setOffset({ x: e.clientX - position.x, y: e.clientY - position.y });
-    };
-  
-    const onDragging = (e) => {
+    const handlePointerMove = (event) => {
       if (isDragging) {
-        setPosition({ x: e.clientX - offset.x, y: e.clientY - offset.y });
+        const newX = event.clientX - startPos.x;
+        const newY = event.clientY - startPos.y;
+        setPosition({ x: newX, y: newY});
       }
-    };
-  
-    const stopDragging = () => {
+    }
+
+    const handlePointerUp = (event) => {
       setIsDragging(false);
-    };
+      event.target.releasePointerCapture(event.pointerId);
+    }
+
+
+    const handleCategoryChange = (e) => {
+      const category = e.target.value;
+      setSelectedCategory(category);
+      if(category === 'Miscellaneous') {
+        setSymbols(symbolsMisc.slice(0,20)); //load first 20 symbols
+        setMiscIndex(20);
+      }
+      else {
+        setSymbols(categories[category] || []);
+        setMiscIndex(20);
+      }
+    }
+    
+    const handleViewMore = () => {
+      const newSymbols = symbolsMisc.slice(miscIndex, miscIndex + 20); //load 20 more symbols
+      setSymbols((prevSymbols) => [...prevSymbols, ...newSymbols]);
+      setMiscIndex(miscIndex + 20);
+    }
   
     // Function to copy the LaTeX syntax to the clipboard
     const copyToClipboard = (latex) => {
@@ -63,26 +83,27 @@ const SymbolPicker = () => {
           left: `${position.x}px`,
           top: `${position.y}px`,
           zIndex: 1000,
-          width: '700px',
+          width: '300px',
         }}
-        onMouseDown={startDragging}
-        onMouseMove={onDragging}
-        onMouseUp={stopDragging}
-        onMouseLeave={stopDragging}
+        onMouseDown={handlePointerDown}
+        onMouseMove={handlePointerMove}
+        onMouseUp={handlePointerUp}
       >
-        <h2 className="sym-pick-header font-bold text-lg mb-2">Mathematical Symbol Selector</h2>
-
-        {/* Category selection buttons */}
-        <div className="mb-4 flex gap-2">
+      <h2 className="sym-pick-header font-bold text-lg mb-2">Mathematical Symbol Selector</h2>
+      
+      {/* Category selection dropdown */}
+      <div className="mb-4 flex gap-2">
+        <select 
+          onChange={handleCategoryChange} 
+          className='p-2 bg-blue-500 text-white rounded'>
+          
+          <option value ="">Select a category</option>
           {Object.keys(categories).map((category) => (
-          <button
-            key={category}
-            onClick={() => handleCategoryChange(category)}
-            className="category-btns p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-          >
-          {category.replace('_', ' ')}
-          </button>
-        ))}
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
       </div>
 
 
@@ -98,6 +119,16 @@ const SymbolPicker = () => {
             </button>
           ))}
         </div>
+
+        {/* View More Misc Symbols*/}
+        {selectedCategory === 'Miscellaneous' && symbols.length < symbolsMisc.length && (
+          <button
+            onClick={handleViewMore}
+            className='mt-2 p-2 bg-blue-500 text-white rounded hover:bg-blue-600'
+            >
+              View More
+            </button>
+        )}
       </div>
     );
   };

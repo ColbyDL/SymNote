@@ -1,0 +1,58 @@
+[
+    {
+        "symbol": "−",
+        "latex": "-"
+    },
+    {
+        "symbol": "⋅",
+        "latex": "\\cdot"
+    },
+    {
+        "symbol": "∘",
+        "latex": "\\circ"
+    },
+    {
+        "symbol": "÷",
+        "latex": "\\div"
+    },
+    {
+        "symbol": "±",
+        "latex": "\\pm"
+    },
+    {
+        "symbol": "×",
+        "latex": "\\times"
+    },
+    {
+        "symbol": "∖",
+        "latex": "\\setminus"
+    },
+    {
+        "symbol": "⊕",
+        "latex": "\\oplus"
+    },
+    {
+        "symbol": "⊗",
+        "latex": "\\otimes"
+    },
+    {
+        "symbol": "∇",
+        "latex": "\\nabla"
+    },
+    {
+        "symbol": "∞",
+        "latex": "\\infty"
+    },
+    {
+        "symbol": "∂",
+        "latex": "\\partial"
+    },
+    {
+        "symbol": "∼",
+        "latex": "\\sim"
+    },
+    {
+        "symbol": "∠",
+        "latex": "\\angle"
+    }
+]

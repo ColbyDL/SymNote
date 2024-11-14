@@ -108,6 +108,9 @@ const textEditor = () => {
       data: {
         blocks: file?.content || [],
       },
+      data: {
+        blocks: file?.content || [],
+      },
       // Prevents editor border from extending down, creating unused space
       minHeight: 0,
       // When the editor is loaded and ready, the reference now refers to the editor
@@ -439,6 +442,26 @@ const textEditor = () => {
           <button onClick={exportToPDF} >
             <FontAwesomeIcon icon={faFileExport} />
           </button>
+        </div>
+        <div id="tool" className="basis-1/10">
+          
+            <button
+              onClick={insertMathBlock}
+            >
+              <FontAwesomeIcon icon={faSquareRootVariable} />
+            </button>
+        </div>
+        <div id="tool" className="basis-1/10">
+          {/* Button to open/close Symbol Picker */}
+          <button
+            onClick={toggleSymbolPicker}
+          >
+          <FontAwesomeIcon icon={isSymbolPickerOpen ? faMinus : faPlus} />
+          </button>
+
+        </div>
+        <div id="tool" className="basis-1/10">
+          <p>T2</p>
         </div>
       </div>
 
