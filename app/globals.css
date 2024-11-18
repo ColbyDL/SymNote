@@ -3,372 +3,386 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 :root {
-    --black: rgb(0, 0, 0);
-    --logo-color: #2B3440;
-    --nav-color:#E5E6E6;
-    --button-color:#2B3440;
-    --settings-color:#2B3440;
-    --btn-text-color: #D7DDE4;
-    --gradient-bottom: #2B3440;
-    --gradient-top: #D7DDE4;
-    --setting-bg: #8d8d8d;
+  --black: rgb(0, 0, 0);
+  --logo-color: #2b3440;
+  --nav-color: #e5e6e6;
+  --button-color: #2b3440;
+  --settings-color: #2b3440;
+  --btn-text-color: #d7dde4;
+  --gradient-bottom: #2b3440;
+  --gradient-top: #d7dde4;
+  --setting-bg: #8d8d8d;
 }
-[data-theme='dark'] {
-    --logo-color: #e7e2df;
-    --nav-color:#15191e;
-    --button-color: #e7e2df;
-    --settings-color:#e7e2df;
-    --btn-text-color: #15191e;
-    --gradient-bottom: #2B3440;
-    --gradient-top: #15191e;
-    --setting-bg: #ffffff;
+[data-theme="dark"] {
+  --logo-color: #e7e2df;
+  --nav-color: #15191e;
+  --button-color: #e7e2df;
+  --settings-color: #e7e2df;
+  --btn-text-color: #15191e;
+  --gradient-bottom: #2b3440;
+  --gradient-top: #15191e;
+  --setting-bg: #ffffff;
 }
-[data-theme='luxury'] {
-    --logo-color: #dca54c;
-    --nav-color:#0b0c0f;
-    --button-color: #2e2d2f;
-    --settings-color:#dca54c;
-    --btn-text-color: #dca54c;
-    --gradient-bottom: #cf9537;
-    --gradient-top: #111111;
-    --setting-bg: #2e2d2f;
+[data-theme="luxury"] {
+  --logo-color: #dca54c;
+  --nav-color: #0b0c0f;
+  --button-color: #2e2d2f;
+  --settings-color: #dca54c;
+  --btn-text-color: #dca54c;
+  --gradient-bottom: #cf9537;
+  --gradient-top: #111111;
+  --setting-bg: #2e2d2f;
 }
-[data-theme='cupcake'] {
-    --logo-color: #291334;
-    --nav-color:#e7e2df;
-    --button-color:#291334;
-    --settings-color:#291334;
-    --gradient-bottom: #291334;
-    --gradient-top: #e7e2df;
-    --setting-bg: #985db6;
+[data-theme="cupcake"] {
+  --logo-color: #291334;
+  --nav-color: #e7e2df;
+  --button-color: #291334;
+  --settings-color: #291334;
+  --gradient-bottom: #291334;
+  --gradient-top: #e7e2df;
+  --setting-bg: #985db6;
 }
-[data-theme='synthwave'] {
-    --logo-color: #221551;
-    --nav-color:#f9f7fd;
-    --button-color: #221551;
-    --settings-color:#221551;
-    --editor-text: black;
-    --gradient-bottom: #e7e2df;
-    --gradient-top: #221551;
-    --setting-bg: #221551;
+[data-theme="synthwave"] {
+  --logo-color: #221551;
+  --nav-color: #f9f7fd;
+  --button-color: #221551;
+  --settings-color: #221551;
+  --editor-text: black;
+  --gradient-bottom: #e7e2df;
+  --gradient-top: #221551;
+  --setting-bg: #221551;
 }
-[data-theme='aqua'] {
-    --logo-color: #a9cbff;
-    --nav-color:#3b8ac4;
-    --button-color: #a9cbff;
-    --settings-color:#a9cbff;
-    --btn-text-color: #345da7;
-    --gradient-bottom: #a9cbff;
-    --gradient-top: #345da7;
-    --setting-bg: #8ca8d3;
+[data-theme="aqua"] {
+  --logo-color: #a9cbff;
+  --nav-color: #3b8ac4;
+  --button-color: #a9cbff;
+  --settings-color: #a9cbff;
+  --btn-text-color: #345da7;
+  --gradient-bottom: #a9cbff;
+  --gradient-top: #345da7;
+  --setting-bg: #8ca8d3;
 }
-[data-theme='coffee'] {
-    --logo-color: #c59f60;
-    --nav-color:#12100c;
-    --button-color: #c59f60;
-    --settings-color:#c59f60;
-    --btn-text-color: #120C12;
-    --gradient-bottom: #c59f60;
-    --gradient-top: #120C12;
-    --setting-bg: #693800;
+[data-theme="coffee"] {
+  --logo-color: #c59f60;
+  --nav-color: #12100c;
+  --button-color: #c59f60;
+  --settings-color: #c59f60;
+  --btn-text-color: #120c12;
+  --gradient-bottom: #c59f60;
+  --gradient-top: #120c12;
+  --setting-bg: #693800;
 }
-[data-theme='valentine'] {
-    --logo-color: #f0d6e8;
-    --nav-color:#e96d7b;
-    --button-color: #f0d6e8;
-    --settings-color:#f0d6e8;
-    --btn-text-color: #632c3b;
-    --gradient-bottom: #632c3b;
-    --gradient-top: #f0d6e8;
-    --setting-bg: #f0d6e8;
+[data-theme="valentine"] {
+  --logo-color: #f0d6e8;
+  --nav-color: #e96d7b;
+  --button-color: #f0d6e8;
+  --settings-color: #f0d6e8;
+  --btn-text-color: #632c3b;
+  --gradient-bottom: #632c3b;
+  --gradient-top: #f0d6e8;
+  --setting-bg: #f0d6e8;
 }
 
-html, body {
-    @apply h-full w-full;
+html,
+body {
+  @apply h-full w-full;
 }
 
 /* Button classes */
 .logo-div {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .btn-primary {
-    @apply inline-block align-middle mx-1 min-[400px]:mx-2 sm:mx-4 rounded-3xl p-4 text-xs min-[400px]:text-sm sm:text-lg font-bold cursor-pointer tracking-wider transform transition duration-150 hover:scale-110;
-    background-color: var(--button-color);
-    color: var(--btn-text-color);
+  @apply inline-block align-middle mx-1 min-[400px]:mx-2 sm:mx-4 rounded-3xl p-4 text-xs min-[400px]:text-sm sm:text-lg font-bold cursor-pointer tracking-wider transform transition duration-150 hover:scale-110;
+  background-color: var(--button-color);
+  color: var(--btn-text-color);
 }
 
 .btn-nocolor {
-    @apply rounded-3xl p-4 text-lg font-bold cursor-pointer tracking-wider transform transition duration-150 hover:scale-110;
+  @apply rounded-3xl p-4 text-lg font-bold cursor-pointer tracking-wider transform transition duration-150 hover:scale-110;
 }
 
 .btn-file {
-    @apply cursor-pointer tracking-wider transform transition duration-150 hover:scale-110;
+  @apply cursor-pointer tracking-wider transform transition duration-150 hover:scale-110;
 }
 
 .btn-logo {
-    @apply w-16 h-16 align-middle transform transition duration-150;
-    filter: drop-shadow(0px 100px 0 var(--logo-color));
-    transform: translateY(-100px);
+  @apply w-16 h-16 align-middle transform transition duration-150;
+  filter: drop-shadow(0px 100px 0 var(--logo-color));
+  transform: translateY(-100px);
 }
 
 .settings-icon {
-    color: var(--settings-color);
+  color: var(--settings-color);
 }
 
 .dropdown-content {
-    @apply font-bold;
-    background-color: var(--setting-bg);
-    color: var(--btn-text-color);
+  @apply font-bold;
+  background-color: var(--setting-bg);
+  color: var(--btn-text-color);
 }
 
 .theme-icon {
-    @apply w-8 h-8 object-center transform transition duration-150 hover:scale-110 text-white;
+  @apply w-8 h-8 object-center transform transition duration-150 hover:scale-110 text-white;
 }
 
 /* Navbar class */
 .navBar {
-    @apply flex justify-between p-4 mx-auto z-50 w-full h-24;
-    background-color: var(--nav-color);
+  @apply flex justify-between p-4 mx-auto z-50 w-full h-24;
+  background-color: var(--nav-color);
 }
 
 /* Main content area */
 main {
-    @apply pt-52 pb-28 h-full z-0 overflow-x-scroll;
+  @apply pt-4 pb-28 h-fit z-0 overflow-auto;
 }
 
 #editor-toolbar {
-    position: absolute;
-    left:0;
-    right: 0;
-    top: 95px;
-    height: 40px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border: 1px solid var(--button-color);
-    background-color: var(--nav-color);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 95px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid var(--button-color);
+  background-color: var(--nav-color);
 }
 
 #tool {
-    @apply rounded-sm;
-    width: 30px;
-    height: 30px;
-    background-color: var(--button-color);
-    color: var(--btn-text-color);
-    margin-left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  @apply rounded-sm;
+  width: 30px;
+  height: 30px;
+  background-color: var(--button-color);
+  color: var(--btn-text-color);
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #filename {
-    @apply font-bold text-3xl;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 5rem;
+  @apply font-bold text-3xl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 5rem;
 }
 
 .filename-text {
-    @apply rounded-3xl text-center;
-    background-color: var(--button-color);
-    color: var(--btn-text-color);
-    border: 4px solid var(--btn-text-color);
+  @apply rounded-3xl text-center;
+  background-color: var(--button-color);
+  color: var(--btn-text-color);
+  border: 4px solid var(--btn-text-color);
 }
 
 #editor-file-nav {
-    border: 1px solid var(--button-color);
-    background-color: var(--nav-color);
-    position: absolute;
-    top: 134px;
-    left: 0px;
-    height: 100%;
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.5s;
+  border: 1px solid var(--button-color);
+  background-color: var(--nav-color);
+  position: absolute;
+  top: 134px;
+  left: 0px;
+  height: 100%;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s;
 }
 
 #editor-file-nav #nav-tab {
-    @apply font-bold text-4xl;
-    color: var(--btn-text-color);
-    background-color: var(--button-color);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    border: 2px solid var(--gradient-bottom);
-    text-align: center;
-    position: absolute;
-    top: 500px;
-    left: 175px;
+  @apply font-bold text-4xl;
+  color: var(--btn-text-color);
+  background-color: var(--button-color);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--gradient-bottom);
+  text-align: center;
+  position: absolute;
+  top: 500px;
+  left: 175px;
 }
 
 .file-nav-active {
-    transform: translateX(-200px);
+  transform: translateX(-200px);
 }
 
 #folder {
-    margin-left:.5rem;
-    display: flex;
-    flex-direction: column;
+  margin-left: 0.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 #file {
-    margin-left: 1rem;
-    width: 2.25rem;
+  margin-left: 1rem;
+  width: 2.25rem;
 }
 
 #editorjs {
-    border: 4px solid var(--btn-text-color);
-    background-color: white;
-    margin-left: 25%;
-    margin-right: 25%;
-    color: black;
+  border: 4px solid var(--btn-text-color);
+  background-color: white;
+  margin-left: 25%;
+  margin-right: 25%;
+  color: black;
 }
 
 #editorjs1 {
-    border: 4px solid var(--btn-text-color);
-    background-color: white;
-    margin-left: 25%;
-    margin-right: 25%;
-    color: black;
+  border: 4px solid var(--btn-text-color);
+  background-color: white;
+  margin-left: 25%;
+  margin-right: 25%;
+  color: black;
 }
 
-h1.ce-header{
-    @apply text-3xl font-bold;
+h1.ce-header {
+  @apply text-3xl font-bold;
 }
-h2.ce-header{
-    @apply text-2xl font-semibold;
+h2.ce-header {
+  @apply text-2xl font-semibold;
 }
-h3.ce-header{
-    @apply text-xl font-semibold;
+h3.ce-header {
+  @apply text-xl font-semibold;
 }
-h4.ce-header{
-    @apply text-lg font-semibold;
+h4.ce-header {
+  @apply text-lg font-semibold;
 }
-h5.ce-header{
-    @apply text-base font-semibold;
+h5.ce-header {
+  @apply text-base font-semibold;
 }
-h6.ce-header{
-    @apply text-base font-semibold;
+h6.ce-header {
+  @apply text-base font-semibold;
 }
 
 .symbol-picker {
-    background-color: var(--nav-color);
+  background-color: var(--nav-color);
 }
 
 .sym-pick-header {
-    color: var(--button-color);
+  color: var(--button-color);
 }
 
 .symbol-btns {
-    background-color: var(--button-color);
-    color: var(--btn-text-color);
+  background-color: var(--button-color);
+  color: var(--btn-text-color);
 }
 
 .doc-bar {
-    @apply font-bold;
-    color: var(--btn-text-color);
-    background-color: var(--button-color);
+  @apply font-bold;
+  color: var(--btn-text-color);
+  background-color: var(--button-color);
 }
 
 .folder {
-    color: var(--btn-text-color);
-    background-color: var(--button-color);
-    border-color: var(--btn-text-color);
+  color: var(--btn-text-color);
+  background-color: var(--button-color);
+  border-color: var(--btn-text-color);
 }
 
 .folder hr {
-    background-color: var(--btn-text-color);
-    border: 2px solid var(--btn-text-color);
+  background-color: var(--btn-text-color);
+  border: 2px solid var(--btn-text-color);
 }
 
 .file-display td {
-    color: var(--btn-text-color);
-    background-color: var(--button-color);
-    border: 2px solid var(--btn-text-color);
+  color: var(--btn-text-color);
+  background-color: var(--button-color);
+  border: 2px solid var(--btn-text-color);
 }
 
 .file-table-header th {
-    color: var(--btn-text-color);
-    background-color: var(--button-color);
-    border: 2px solid var(--btn-text-color);
+  color: var(--btn-text-color);
+  background-color: var(--button-color);
+  border: 2px solid var(--btn-text-color);
 }
 
 .symbol-backdrop {
-    position: absolute;
-    left: 0;
-    top: 10%;
-    width: 100%;
-    height: 95%;
-    z-index: -2;
+  position: absolute;
+  left: 0;
+  top: 10%;
+  width: 100%;
+  height: 95%;
+  z-index: -2;
 }
 
 #gradient-div {
-    position: absolute;
-    left: 1;
-    top: 101%;
-    width: 100%;
-    height: 100px;
-    z-index: -1;
-    background: linear-gradient(0deg, var(--gradient-bottom) 25%, var(--gradient-top) 80%, rgba(255,220,41,0) 100%);
+  position: absolute;
+  left: 1;
+  top: 101%;
+  width: 100%;
+  height: 100px;
+  z-index: -1;
+  background: linear-gradient(
+    0deg,
+    var(--gradient-bottom) 25%,
+    var(--gradient-top) 80%,
+    rgba(255, 220, 41, 0) 100%
+  );
 }
 
 .rising-text {
-    animation-name: rise;
-    animation-duration:3s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    z-index: -1;
+  animation-name: rise;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  z-index: -1;
 }
 
 @keyframes rise {
-    0% {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    45% {
-        opacity: 1;
-    }
-    55% {
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(-800%);
-        opacity: 0;
-    }
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-800%);
+    opacity: 0;
+  }
 }
 
 @keyframes fileNav {
-    0% {
-        left: 200px;
-    }
-    100% {
-        left: 0;
-    }
+  0% {
+    left: 200px;
+  }
+  100% {
+    left: 0;
+  }
 }
