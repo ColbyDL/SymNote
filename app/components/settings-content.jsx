@@ -32,8 +32,8 @@ const settingsContent = () => {
 
     return (
         <>
-        <div className="flex flex-row">
-            <p className="text-lg font-bold pl-8 self-center">Theme: </p>
+        <div className="flex flex-row h-screen">
+            <p className="text-lg font-bold pl-8 pr-2 pt-3">Theme: </p>
             <details className="dropdown">
                 <summary className="btn m-1">{themeTitle}</summary>
                 <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">

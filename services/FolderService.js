@@ -20,6 +20,15 @@ class FolderService extends GenericService {
     async getById(id) {
         return await Folder.findById(id).populate('folders').populate('files');
     }
+
+    async moveFolder(folderId, oldParentId, newParentId) {
+
+        await Folder.findByIdAndUpdate(oldParentId, { $pull: { folders: folderId }});
+
+        await Folder.findByIdAndUpdate(newParentId, { $push: { folders: folderId }});
+
+        return await Folder.findByIdAndUpdate(folderId, { parentId: newParentId }, { new: true });
+    }
 }
 
 export default new FolderService(Folder);
