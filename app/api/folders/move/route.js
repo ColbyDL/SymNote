@@ -1,6 +1,6 @@
 // app/api/folders/move/route.js
 import { NextResponse } from 'next/server';
-import FolderService from '@/services/FolderService';
+import FolderService from '../../../../services/FolderService';
 
 export async function POST(req) {
     try {
