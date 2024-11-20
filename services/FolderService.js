@@ -9,6 +9,16 @@ class FolderService extends GenericService {
         return folder;
     }
 
+    async getRootFolders() {
+        // Fetch all top-level folders (parentId = null) and populate recursively
+        return await Folder.find({ parentId: null })
+          .populate({
+            path: 'folders',
+            populate: { path: 'folders', populate: 'folders' }, // Recursive population
+          })
+          .populate('files');
+    }
+
     async addFolderToParent(parentId, folderId) {
         return await Folder.findByIdAndUpdate(parentId, { $push: { folders: folderId } }, { new: true });
     }

@@ -22,6 +22,8 @@ export async function GET(request, { params }) {
     }
 }
 
+
+
 export async function PUT(request, { params }) {
     await ConnectMongoDB();
     const { id } = params;
