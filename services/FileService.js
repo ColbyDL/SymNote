@@ -9,13 +9,24 @@ class FileService extends GenericService {
     }
 
     async moveFile(fileId, oldFolderId, newFolderId) {
-
-        await Folder.findByIdAndUpdate(oldFolderId, { $pull: { files: fileId }});
-
-        await Folder.findByIdAndUpdate(newFolderId, { $push: { files: fileId }});
-
-        return await File.findByIdAndUpdate(fileId, { folderId: newFolderId }, { new: true });
+        // Remove the file from the old folder
+        const oldFolder = await Folder.findByIdAndUpdate(oldFolderId, { 
+            $pull: { files: fileId } 
+        }, { new: true });
+    
+        // Add the file to the new folder
+        const newFolder = await Folder.findByIdAndUpdate(newFolderId, { 
+            $push: { files: fileId } 
+        }, { new: true });
+    
+        // Update the file's folder reference
+        const updatedFile = await File.findByIdAndUpdate(fileId, { 
+            folderId: newFolderId 
+        }, { new: true });
+    
+        return { updatedFile, oldFolder, newFolder };
     }
+     
 }
 
 export default new FileService(File);
