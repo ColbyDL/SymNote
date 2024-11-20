@@ -5,9 +5,6 @@ import FileNav from '../components/fileNav';
 const getStarted = () => {
   return (
     <div>
-      <div>
-        <FileNav />
-      </div>
       <TextEditorStarted />
     </div>
   )

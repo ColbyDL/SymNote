@@ -4,6 +4,7 @@ import Header from "@editorjs/header";
 import MathTool from "editorjs-math";
 import SymbolPicker from "./SymbolPicker";
 import Undo from "editorjs-undo";
+import FileNav from "./fileNav";
 
 
 
@@ -45,8 +46,12 @@ const textEditor = () => {
 
   console.log("textEditor", fileId);
 
+  let isFetching = false;
+
   const fetchFile = async () => {
     console.log("fileId", fileId);
+    if (isFetching) return;
+    isFetching = true;
     if (!fileId) return;
 
     try {
@@ -70,9 +75,12 @@ const textEditor = () => {
       }
     } catch (error) {
       console.error("Error fetching document", error);
+    } finally {
+      isFetching = false;
     }
   };
 
+  /*
   useEffect(() => {
     if ( user && fileId && loading) {
       fetchFile();
@@ -81,6 +89,17 @@ const textEditor = () => {
       setLoading(false);
     }
   }, [fileId, loading, user]);
+  */
+
+  useEffect(() => {
+    if (!loading && fileId) return; // Prevent additional fetch calls if not loading
+    if (user && fileId) {
+      fetchFile().finally(() => setLoading(false));
+    } else if (!user) {
+      setLoading(false);
+    }
+  }, [fileId, user]);
+  
 
 
   const initEditor = () => {
@@ -108,9 +127,7 @@ const textEditor = () => {
       data: {
         blocks: file?.content || [],
       },
-      data: {
-        blocks: file?.content || [],
-      },
+      
       // Prevents editor border from extending down, creating unused space
       minHeight: 0,
       // When the editor is loaded and ready, the reference now refers to the editor
@@ -226,6 +243,11 @@ const textEditor = () => {
       setLoading(false);
     }
   }, [file]);
+
+
+
+
+
 
   const exportToPDF = async () => {
     try {
@@ -418,25 +440,7 @@ const textEditor = () => {
             <FontAwesomeIcon icon={faFloppyDisk} />
           </button>
         </div>
-        <div id="tool" className="basis-1/10">
-
-          
-            <button
-              onClick={insertMathBlock}
-            >
-              <FontAwesomeIcon icon={faSquareRootVariable} />
-            </button>
-        </div>
-        <div id="tool" className="basis-1/10">
-          {/* Button to open/close Symbol Picker */}
-          <button
-            onClick={toggleSymbolPicker}
-          >
-          <FontAwesomeIcon icon={isSymbolPickerOpen ? faMinus : faPlus} />
-          </button>
-
-
-        </div>
+        
         
         <div id="tool" className="basis-1/10">
           <button onClick={exportToPDF} >
