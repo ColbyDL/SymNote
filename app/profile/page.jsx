@@ -1,8 +1,5 @@
 'use client'
 import Link from 'next/link'
-import FolderFileButtons from '../components/folderFileButtons'
-import Folders from '../components/folders'
-import FileTable from '../components/fileTable'
 import { useParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
 
