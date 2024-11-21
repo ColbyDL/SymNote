@@ -357,6 +357,8 @@ h6.ce-header {
   z-index: -1;
 }
 
+
+
 @keyframes rise {
   0% {
     transform: translateY(100%);
@@ -384,4 +386,10 @@ h6.ce-header {
   100% {
     left: 0;
   }
+}
+
+.text-node {
+  @apply bg-white text-black dark:bg-gray-800 dark:text-white;
+  @apply border border-gray-300 dark:border-gray-700;
+  @apply rounded-md p-2; /* Optional: Padding and border radius for aesthetics */
 }
