@@ -33,9 +33,9 @@ const settingsContent = () => {
 
   return (
     <div>
-      <div className="flex flex-row  h-fit justify-center">
+      <div className="flex flex-row h-fit justify-center">
         <p className="text-lg font-bold pl-8 pr-2 pt-3">Theme: </p>
-        <details className="dropdown">
+        <details className="dropdown h-[250px]">
           <summary className="btn m-1">{themeTitle}</summary>
           <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
             <li>
@@ -113,6 +113,7 @@ const settingsContent = () => {
           </ul>
         </details>
       </div>
+      <div id="gradient-div"></div>
       <div className="symbol-backdrop flex flex-row place-items-end justify-around">
         <RandomSymbols />
       </div>

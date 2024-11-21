@@ -28,7 +28,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 
 const textEditor = () => {
   // Stores reference to an Editor.js instance
-  const ejInstance = useRef(null);
+  const ejInstance = useRef();
   const [isMathMode, setIsMathMode] = useState(false);
 
   const [isSymbolPickerOpen, setIsSymbolPickerOpen] = useState(false);

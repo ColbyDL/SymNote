@@ -9,9 +9,6 @@ const docsPage = () => {
       <h1 className="text-6xl font-bold">Docs</h1>
     </div>
     <DocSection />
-    <div className="symbol-backdrop flex flex-row place-items-end justify-around">
-      <RandomSymbols />
-    </div>
     </>
   )
 }

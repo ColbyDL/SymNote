@@ -5,7 +5,7 @@ import RandomSymbols from '../effects/randomSymbols';
 const heroWelcome = () => {
   return (
     <>
-    <div className="hero-menu flex h-full w-full flex-col min-[1170px]:flex-row pt-40">
+    <div className="hero-menu flex h-full w-full flex-col min-[1170px]:flex-row pt-60 max-[1170px]:pt-40">
       <div className="flex flex-col justify-center gap-4 p-4 m-auto">
         <h1 className="self-center text-9xl font-mono max-[515px]:text-7xl animate-fade-down animate-once animate-ease-out">SymNote</h1>
         <Link href="/getStarted" className="btn-primary self-center animate-fade-up animate-once animate-ease-out"><h1>Get Started</h1></Link>

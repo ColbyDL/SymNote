@@ -350,6 +350,7 @@ const ProfilePage = () => {
           )}
         </div>
       </div>
+      <div id="gradient-div"></div>
       <div className="symbol-backdrop flex flex-row place-items-end justify-around">
         <RandomSymbols />
       </div>
