@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Tooltip as ReactTooltip } from 'react-tooltip'
 import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import MathTool from "editorjs-math";
@@ -405,26 +406,30 @@ const textEditor = () => {
     <div className="pt-32">
       <div id="editor-toolbar" className="">
         <div id="tool" className="basis-1/10">
-          <button onClick={saveEditor}>
+          <button onClick={saveEditor} data-tooltip-content="Save" data-tooltip-id="save">
             <FontAwesomeIcon icon={faFloppyDisk} />
           </button>
+          <ReactTooltip id="save" />
         </div>
 
         <div id="tool" className="basis-1/10">
-          <button onClick={exportToPDF}>
+          <button onClick={exportToPDF} data-tooltip-content="Export" data-tooltip-id="export">
             <FontAwesomeIcon icon={faFileExport} />
           </button>
+          <ReactTooltip id="export" />
         </div>
         <div id="tool" className="basis-1/10">
-          <button onClick={insertMathBlock}>
+          <button onClick={insertMathBlock} data-tooltip-content="Insert Math Block" data-tooltip-id="mathblock">
             <FontAwesomeIcon icon={faSquareRootVariable} />
           </button>
+          <ReactTooltip id="mathblock" />
         </div>
         <div id="tool" className="basis-1/10">
           {/* Button to open/close Symbol Picker */}
-          <button onClick={toggleSymbolPicker}>
+          <button onClick={toggleSymbolPicker} data-tooltip-content="Symbol Selector" data-tooltip-id="symbol">
             <FontAwesomeIcon icon={isSymbolPickerOpen ? faMinus : faPlus} />
           </button>
+          <ReactTooltip id="symbol" />
         </div>
       </div>
 

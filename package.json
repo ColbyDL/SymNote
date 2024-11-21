@@ -37,6 +37,7 @@
     "react-katex": "^3.0.1",
     "react-router-dom": "^6.26.2",
     "react-to-pdf": "^1.0.1",
+    "react-tooltip": "^5.28.0",
     "tailwindcss-animated": "^1.1.2",
     "theme-change": "^2.5.0"
   },

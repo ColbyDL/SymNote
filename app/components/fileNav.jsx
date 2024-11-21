@@ -82,10 +82,10 @@ const FileNav = () => {
   return (
     <div id="editor-file-nav" className={isActive ? 'file-nav-active' : ''}>
       <div id="nav-tab">
-        <button onClick={tabClick}>{isActive ? '←' : '→'}</button>
+        <button onClick={tabClick}>{isActive ? '→' : '←'}</button>
       </div>
       <ul>
-        <li className="whitespace-nowrap text-lg px-2">{`Folder: ${parentName}`}</li>
+        <li className="whitespace-nowrap text-lg px-2">{parentName !== null ? `Folder: ${parentName}` : `Loading`}</li>
         {files.length > 0 ? (
           files.map((file) => (
             <li className="py-2" key={file._id} id="file">
@@ -98,7 +98,7 @@ const FileNav = () => {
             </li>
           ))
         ) : (
-          <p>No files available in this folder.</p>
+          <p className='pt-4'>No files available in this folder.</p>
         )}
       </ul>
     </div>
