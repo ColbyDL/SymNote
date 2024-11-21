@@ -6,12 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "copyfiles -u 2 'node_modules/editorjs-math/node_modules/katex/dist//fonts/*' app/public//fonts/"
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.2.4",
     "@auth0/nextjs-auth0": "^3.5.0",
     "@editorjs/header": "^2.8.7",
+    "@fontsource/noto-sans": "^5.1.0",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
@@ -23,6 +25,7 @@
     "editorjsMdParser": "../editorjs-markdown-parser/",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.4",
     "katex": "^0.16.11",
     "mongodb": "^6.9.0",
     "mongoose": "^8.7.0",
@@ -41,6 +44,7 @@
     "@editorjs/editorjs": "^2.30.6",
     "@types/node": "22.7.4",
     "@types/react": "18.3.11",
+    "copyfiles": "^2.4.1",
     "daisyui": "^4.12.10",
     "editorjs-undo": "^1.0.1",
     "eslint": "^8",
