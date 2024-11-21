@@ -1,4 +1,6 @@
+'use client'
 import DocSection from "../components/docs-section";
+import RandomSymbols from "../effects/randomSymbols";
 
 const docsPage = () => {
   return (

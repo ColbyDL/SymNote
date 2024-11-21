@@ -202,7 +202,7 @@ const textEditorStarted = () => {
   // Displays the editor
   return (
 
-    <div>
+    <div className="pt-32">
       <div id="editor-toolbar" className="">
         <div id="tool" className="basis-1/10">
           <button>

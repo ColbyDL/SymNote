@@ -34,5 +34,13 @@
   {
     "symbol": "≤",
     "latex": "\\leq"
+  },
+  {
+    "symbol": "≮",
+    "latex": "\\nless"
+  },
+  {
+    "symbol": "≯",
+    "latex": "\\ngtr"
   }
 ]
