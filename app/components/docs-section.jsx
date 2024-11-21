@@ -41,7 +41,7 @@ const DocSection = () => {
           <DisclosurePanel transition className="mt-2 text-sm/5 doc-body transition duration-200 ease-out data-[closed]:-translate-y-6 data-[closed]:opacity-0">
             Clicking the Getting Started button will take you to a empty text editor. <br/><br/>
             This text editor provides you with almost every function within the application. <br/><br/>
-            Only features such as file saving and file navigation are exempt, as you need to be signed into an account. <br/><br/>
+            Only features such as file saving, file navigation, and exporting are exempt, as you need to be signed into an account. <br/><br/>
             The toolbar located at the top consists of the following tools:
             <ul>
               <li id="doc-item">
@@ -59,14 +59,6 @@ const DocSection = () => {
                   </button>
                 </div>
                 Symbol Picker: Opens/Closes the Symbol Picker menu to select, copy, and paste various symbols.
-              </li>
-              <li id="doc-item">
-                <div id="tool-example" className="basis-1/10">
-                  <button>
-                    <FontAwesomeIcon icon={faFileExport} />
-                  </button>
-                </div>
-                Export: Will export the file in PDF form upon clicking.
               </li>
             </ul>
             The Getting Started page is designed for those who wish to quickly type and export their notes without having to make an account. For longer projects, signing in to save files is required.
@@ -155,7 +147,7 @@ const DocSection = () => {
           </DisclosureButton>
           <DisclosurePanel transition className="mt-2 text-sm/5 doc-body transition duration-200 ease-out data-[closed]:-translate-y-6 data-[closed]:opacity-0">
             Saved files and folders within your account our stored within our MongoDB database where you will be able to access and use it at any time.<br/><br/>
-            Additionally, using the text editor provides two new features that aren&apos;t available otherwise:
+            Additionally, using the text editor provides new features that aren't available otherwise:
             <ul>
               <li id="doc-item">
                 <div id="tool-example" className="basis-1/10">
@@ -163,8 +155,7 @@ const DocSection = () => {
                     <FontAwesomeIcon icon={faFloppyDisk} />
                   </button>
                 </div>
-                Saving your file at any time.<br/>
-                Additionally, your file will autosave occassionally.
+                Save File: Save your file at any time for later use.
               </li>
               <li id="doc-item">
                 <div id="nav-tab" className="basis-1/10">
@@ -172,8 +163,16 @@ const DocSection = () => {
                     <FontAwesomeIcon icon={faArrowRight} />
                   </button>
                 </div>
-                A tab that displays your current folder to allow you to easily switch between files within that folder.<br/>
+                File Navigation: A tab that displays your current folder to allow you to easily switch between files within that folder.<br/>
                 Clicking the arrow will open/close the tab.
+              </li>
+              <li id="doc-item">
+                <div id="tool-example" className="basis-1/10">
+                  <button>
+                    <FontAwesomeIcon icon={faFileExport} />
+                  </button>
+                </div>
+                Export: Will export the file in PDF form upon clicking.
               </li>
             </ul>
           </DisclosurePanel>
@@ -251,4 +250,16 @@ export default DocSection;
           The new PDF will download and display within a new Tab.</p>
         </details>
       </section>
+
+
+
+
+      <li id="doc-item">
+        <div id="tool-example" className="basis-1/10">
+            <button>
+              <FontAwesomeIcon icon={faFileExport} />
+            </button>
+        </div>
+        Export: Will export the file in PDF form upon clicking.
+      </li>
       */
