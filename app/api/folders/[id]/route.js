@@ -50,12 +50,3 @@ export async function POST(request, { params }) {
 }
 
 // New endpoint to add a file to a folder
-export async function POST_FILE(request, { params }) {
-    await ConnectMongoDB();
-    const { id } = params; // Folder ID
-    const { fileId } = await request.json(); // The ID of the file you want to add
-
-    const updatedFolder = await FolderService.addFileToFolder(id, fileId);
-    return NextResponse.json(updatedFolder);
-
-}

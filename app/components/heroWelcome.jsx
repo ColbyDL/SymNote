@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import RandomSymbols from '../effects/randomSymbols';
 
-const heroWelcome = () => {
+const HeroWelcome = () => {
   return (
     <>
     <div className="hero-menu flex h-full w-full flex-col min-[1170px]:flex-row pt-60 max-[1170px]:pt-40">
@@ -23,4 +23,4 @@ const heroWelcome = () => {
   )
 }
 
-export default heroWelcome;
+export default HeroWelcome;

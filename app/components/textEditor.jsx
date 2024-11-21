@@ -31,7 +31,7 @@ import relational from "../public/symbols/Relational_Operators.json";
 
 import { useUser } from "@auth0/nextjs-auth0/client";
 
-const textEditor = () => {
+const TextEditor = () => {
   // Stores reference to an Editor.js instance
   const ejInstance = useRef();
   const [isMathMode, setIsMathMode] = useState(false);
@@ -453,4 +453,4 @@ const textEditor = () => {
   );
 };
 
-export default textEditor;
+export default TextEditor;

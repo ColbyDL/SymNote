@@ -20,13 +20,13 @@ const DocSection = () => {
           </summary>
           <p className="pb-5">
             1. Create an account <br />
-            2. Click on the "New File" or "New Folder" button <br />
+            2. Click on the &quot;New File&quot; or &quot;New Folder&quot; button <br />
             3. Start typing your notes <br />
             4. Add Symbols or Equations utilizing Latex using the buttons in the upper Left Hand Corner. <br />
             5. Text Can be converted to different types within the editor such as a Header <br />
             6. Highlight text to add Bold, Italics or Hyperlinks <br />
-            7. Click on the "Save" button in the upper left hand corner to save your notes <br />
-            8. Click on the "Export" button in the upper left hand corner to export your notes <br />
+            7. Click on the &quot;Save&quot; button in the upper left hand corner to save your notes <br />
+            8. Click on the &quot;Export&quot; button in the upper left hand corner to export your notes <br />
           </p>
         </details>
       </section>

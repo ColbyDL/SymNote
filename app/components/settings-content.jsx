@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { themeChange } from "theme-change";
 import RandomSymbols from "../effects/randomSymbols";
 
-const settingsContent = () => {
+const SettingsContent = () => {
   const [theme, setTheme] = useState("light");
 
   const handleClick = (string) => {
@@ -121,4 +121,4 @@ const settingsContent = () => {
   );
 };
 
-export default settingsContent;
+export default SettingsContent;

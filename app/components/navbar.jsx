@@ -25,8 +25,8 @@ const Navbar = () => {
   //getProfile
   const [profile, setProfile] = useState(null);
 
+  const [isOpen, setIsOpen] = useState(false);
   function dropDownMenu() {
-    const [isOpen, setIsOpen] = useState(false);
   }
   
     const toggleDropdown = () => {
