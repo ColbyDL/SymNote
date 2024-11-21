@@ -147,7 +147,7 @@ const DocSection = () => {
           </DisclosureButton>
           <DisclosurePanel transition className="mt-2 text-sm/5 doc-body transition duration-200 ease-out data-[closed]:-translate-y-6 data-[closed]:opacity-0">
             Saved files and folders within your account our stored within our MongoDB database where you will be able to access and use it at any time.<br/><br/>
-            Additionally, using the text editor provides new features that aren't available otherwise:
+            Additionally, using the text editor provides new features that aren&apos;t available otherwise:
             <ul>
               <li id="doc-item">
                 <div id="tool-example" className="basis-1/10">
