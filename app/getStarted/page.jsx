@@ -1,8 +1,7 @@
 'use client'
-import TextEditorStarted from '../components/textEditorStarted';
-import FileNav from '../components/fileNav';
-
-const getStarted = () => {
+import dynamic from 'next/dynamic'
+const TextEditorStarted = dynamic(() => import('../components/textEditorStarted'), { ssr: false })
+const GetStarted = () => {
   return (
     <div>
       <TextEditorStarted />
@@ -10,4 +9,4 @@ const getStarted = () => {
   )
 }
 
-export default getStarted;
+export default GetStarted;

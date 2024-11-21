@@ -46,13 +46,10 @@ const ProfilePage = () => {
   return (
     <div>
       <div className="h-40">
-        <FolderFileButtons rootFolder={rootFolder} />
       </div>
       <div>
-        <Folders rootFolder={rootFolder}  />
       </div>
       <div className="pt-40">
-        <FileTable rootFolder={rootFolder}  />
       </div>
     </div>
   )

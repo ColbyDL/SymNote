@@ -31,7 +31,7 @@ import relational from "../public/symbols/Relational_Operators.json";
 
 import { useUser } from "@auth0/nextjs-auth0/client";
 
-const textEditor = () => {
+const TextEditorStarted = () => {
   // Stores reference to an Editor.js instance
   const ejInstance = useRef();
   const [isMathMode, setIsMathMode] = useState(false);
@@ -41,10 +41,10 @@ const textEditor = () => {
   const [currentMathBlockIndex, setCurrentMathBlockIndex] = useState(null);
   const { fileId } = useParams();
   const [file, setFile] = useState();
-  const [loading, setLoading] = useState(false);
   const [fileName, setFileName] = useState("");
 
   const { user } = useUser();
+  const [init, setInit] = useState(false);
 
   const combinedSymbols = [
     ...arithmetic,
@@ -55,25 +55,32 @@ const textEditor = () => {
     ...relational,
   ];
 
-  console.log("textEditor", fileId);
 
-  let isFetching = false;
-
-  /*
-  useEffect(() => {
-    if ( user && fileId && loading) {
-      fetchFile();
-      setLoading(false);
-    } else if ( !user ) {
-      setLoading(false);
-    }
-  }, [fileId, loading, user]);
-  */
+  const sampleData = {
+    blocks: [
+      {
+        type: "header",
+        data: {
+          text: "Get Started",
+          level: 1,
+        },
+      },
+      {
+        type: "paragraph",
+        data: {
+          text: "This is your sample document. Start editing to get started!",
+        },
+      },
+    ],
+  };
 
   const initEditor = () => {
-    // Create editor
+    if (ejInstance.current) {
+      console.log("already initialized")
+      return; // Prevent reinitialization
+    }
+  
     const editor = new EditorJS({
-      // ID for the editor dom
       holder: "editorjs",
       tools: {
         header: {
@@ -84,54 +91,41 @@ const textEditor = () => {
           class: MathTool,
           config: {
             katex: {
-              //Katex Rendering Configuration
-              throwOnError: false, //Will not crash the entire site if katex fails to render
+              throwOnError: false,
             },
           },
         },
       },
-      data: {
-        blocks: [
-          {
-            type: "paragraph",
-            data: {
-              text: "", // Empty paragraph block as the first block
-            },
-          },
-        ], // You can pre-load some default content here
-      },
-
-      // Prevents editor border from extending down, creating unused space
+      data: sampleData,
       minHeight: 0,
-      // When the editor is loaded and ready, the reference now refers to the editor
       onReady: () => {
         ejInstance.current = editor;
         new Undo({ editor });
       },
-      // Autofocuses on the editor after loading.
       autofocus: true,
-
-      // Gets the editors data within content.
       onChange: async () => {
         let content = await editor.saver.save();
         console.log(content);
       },
-      // Initial text within the editor.
       placeholder: "Enter your text here!",
     });
   };
 
   // Ensures the editor loads once and destroys itself when it unmounts
   useEffect(() => {
-    if (ejInstance.current === null ) {
+    console.log("init triggered")
+    if (!ejInstance.current && !init) {
+      console.log("init started")
       initEditor();
     }
 
     return () => {
+      setInit(true)
+      console.log("destorying editor instance")
       ejInstance.current?.destroy();
       ejInstance.current = null;
     };
-  }, [file]);
+  }, []);
 
   const insertMathBlock = () => {
     ejInstance.current.blocks.insert("math", {});
@@ -148,80 +142,37 @@ const textEditor = () => {
     setIsMathMode(false); // Deactivate math mode
   };
 
-   
+  
 
-  if (loading) {
-    return (
-      <div className="flex">
-        <div id="editor-toolbar" className="">
-          <div id="tool" className="basis-1/10">
-            <button onClick={file ? saveEditor : null}>
-              <FontAwesomeIcon icon={faFloppyDisk} />
-            </button>
-          </div>
-          <div id="tool" className="basis-1/10">
-            {!isMathMode && (
-              <button onClick={insertMathBlock}>
-                <FontAwesomeIcon icon={faSquareRootVariable} />
-              </button>
-            )}
-            {isMathMode && (
-              <button onClick={exitMathMode}>
-                <FontAwesomeIcon icon={faX} />
-              </button>
-            )}
-          </div>
-        </div>
-        <div id="filename" className="">
-          <form>
-            <input
-              className="filename-text"
-              onChange={(e) => {
-                setFileName(e);
-              }}
-              type="text"
-              name="filename"
-              value="Loading Document"
-            ></input>
-          </form>
-        </div>
-
-        <div id="editorjs" className="rounded-lg"></div>
-
-        {isMathMode && <SymbolPicker />}
-      </div>
-    );
-  }
-
-  // Displays the editor
+    // Displays the editor
   return (
     <div className="pt-32">
       <div id="editor-toolbar" className="">
         <div id="tool" className="basis-1/10">
-          <button data-tooltip-id="getstarted-save" data-tooltip-content="Sign In to Save">
+          <button  data-tooltip-content="Sign In to Save" data-tooltip-id="save">
             <FontAwesomeIcon icon={faFloppyDisk} />
           </button>
-          <ReactTooltip id="getstarted-save"/>
+          <ReactTooltip id="save" />
         </div>
 
         <div id="tool" className="basis-1/10">
-          <button data-tooltip-id="getstarted-export" data-tooltip-content="Sign In to Export">
+          <button data-tooltip-content="Sign In to Export" data-tooltip-id="export">
             <FontAwesomeIcon icon={faFileExport} />
           </button>
-          <ReactTooltip id="getstarted-export"/>
+          <ReactTooltip id="export" />
         </div>
         <div id="tool" className="basis-1/10">
-          <button onClick={insertMathBlock} data-tooltip-id="getstarted-mathblock" data-tooltip-content="Insert Math Block">
+          <button onClick={insertMathBlock} data-tooltip-content="Insert Math Block" data-tooltip-id="mathblock">
             <FontAwesomeIcon icon={faSquareRootVariable} />
           </button>
-          <ReactTooltip id="getstarted-mathblock" />
+          <ReactTooltip id="mathblock" />
         </div>
         <div id="tool" className="basis-1/10">
           {/* Button to open/close Symbol Picker */}
-          <button onClick={toggleSymbolPicker} data-tooltip-id="getstarted-symbol" data-tooltip-content="Symbol Picker">
+          <button onClick={toggleSymbolPicker} data-tooltip-content="Symbol Selector" data-tooltip-id="symbol">
             <FontAwesomeIcon icon={isSymbolPickerOpen ? faMinus : faPlus} />
           </button>
-          <ReactTooltip id="getstarted-symbol" />
+          <ReactTooltip id="symbol" />
         </div>
       </div>
 
@@ -242,4 +193,4 @@ const textEditor = () => {
   );
 };
 
-export default textEditor;
+export default React.memo(TextEditorStarted);
