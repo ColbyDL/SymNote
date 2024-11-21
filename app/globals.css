@@ -37,7 +37,7 @@ body {
   --nav-color: #e5e6e6;
   --button-color: #2b3440;
   --settings-color: #2b3440;
-  --btn-text-color: #d7dde4;
+  --btn-text-color: rgb(215, 221, 228);
   --gradient-bottom: #2b3440;
   --gradient-top: #d7dde4;
   --setting-bg: #8d8d8d;
@@ -47,7 +47,7 @@ body {
   --nav-color: #15191e;
   --button-color: #e7e2df;
   --settings-color: #e7e2df;
-  --btn-text-color: #15191e;
+  --btn-text-color: hsl(213, 18%, 10%);
   --gradient-bottom: #2b3440;
   --gradient-top: #15191e;
   --setting-bg: #ffffff;
@@ -57,7 +57,7 @@ body {
   --nav-color: #0b0c0f;
   --button-color: #2e2d2f;
   --settings-color: #dca54c;
-  --btn-text-color: #dca54c;
+  --btn-text-color: rgb(220, 165, 76);
   --gradient-bottom: #cf9537;
   --gradient-top: #111111;
   --setting-bg: #2e2d2f;
@@ -86,7 +86,7 @@ body {
   --nav-color: #3b8ac4;
   --button-color: #a9cbff;
   --settings-color: #a9cbff;
-  --btn-text-color: #345da7;
+  --btn-text-color: rgb(52, 93, 167);
   --gradient-bottom: #a9cbff;
   --gradient-top: #345da7;
   --setting-bg: #8ca8d3;
@@ -96,7 +96,7 @@ body {
   --nav-color: #12100c;
   --button-color: #c59f60;
   --settings-color: #c59f60;
-  --btn-text-color: #120c12;
+  --btn-text-color: rgb(18, 12, 18);
   --gradient-bottom: #c59f60;
   --gradient-top: #120c12;
   --setting-bg: #693800;
@@ -106,7 +106,7 @@ body {
   --nav-color: #e96d7b;
   --button-color: #f0d6e8;
   --settings-color: #f0d6e8;
-  --btn-text-color: #632c3b;
+  --btn-text-color: rgb(99, 44, 59);
   --gradient-bottom: #632c3b;
   --gradient-top: #f0d6e8;
   --setting-bg: #f0d6e8;
@@ -190,6 +190,34 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: var(--button-color);
+  color: var(--btn-text-color);
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  border: 2px solid var(--btn-text-color);
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  width: 120px;
+  top: 100%;
+  left: 50%;
+  margin-left: 10px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
 #filename {

@@ -1,4 +1,5 @@
 summary.doc-bar {
+    @apply mx-[10%];
     cursor: pointer;
     display: flex;
     justify-content: space-between; 
@@ -22,6 +23,51 @@ summary.doc-bar {
   }
 
   details p {
+    @apply mx-[10%] pl-8;
     white-space: normal;
     overflow-wrap: break-word;
+  }
+
+  .doc-bar {
+    border-color: var(--btn-text-color);
+  }
+
+  .doc-header {
+    color: var(--btn-text-color);
+  }
+
+  .doc-body {
+    color: var(--btn-text-color);
+  }
+
+  #doc-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 1rem;
+    gap: 1rem;
+  }
+  #tool-example {
+    @apply rounded-sm;
+    width: 30px;
+    height: 30px;
+    background-color: var(--btn-text-color);
+    color: var(--button-color);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #nav-tab {
+    @apply rounded-sm;
+    width: 30px;
+    height: 30px;
+    background-color: var(--btn-text-color);
+    color: var(--button-color);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
   }
