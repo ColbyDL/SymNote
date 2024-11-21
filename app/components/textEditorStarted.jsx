@@ -146,7 +146,7 @@ const TextEditorStarted = () => {
 
     // Displays the editor
   return (
-    <div className="pt-32">
+    <div className="pt-32 h-screen">
       <div id="editor-toolbar" className="">
         <div id="tool" className="basis-1/10">
           <button  data-tooltip-content="Sign In to Save" data-tooltip-id="save">
