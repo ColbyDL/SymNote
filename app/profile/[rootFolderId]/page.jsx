@@ -269,7 +269,7 @@ const ProfilePage = () => {
         <div className="flex flex-row justify-around items-center backdrop-blur-lg bg-white/10 w-1/2 mr-10 h-40 rounded-b-3xl rounded-r-3xl">
           {rootFolder ? (
             <div className="flex justify-start">
-              <h1 className="text-5xl">{rootFolder.name}</h1>
+              <h1 className="text-5xl">{truncateName(rootFolder.name)}</h1>
             </div>
           ) : (
             <></>
