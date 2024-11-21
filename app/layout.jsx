@@ -1,6 +1,7 @@
 "use client";
 
 import "./globals.css";
+import 'react-tooltip/dist/react-tooltip.css'
 import Navbar from "./components/navbar";
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import { useState, useEffect } from 'react';

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Tooltip as ReactTooltip } from 'react-tooltip'
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -217,7 +218,21 @@ const ProfilePage = () => {
       console.error("Error fetching folder data:", error);
     }
   };
-   
+
+
+  const truncateName = (name, maxLength = 15) => {
+    if (name.length > maxLength) {
+      return name.slice(0, maxLength) + "...";
+    }
+    return name;
+  };
+
+   const truncateFileName = (name, maxLength = 25) => {
+    if (name.length > maxLength) {
+      return name.slice(0, maxLength) + "...";
+    }
+    return name;
+  };
   
 
   return (
@@ -225,7 +240,7 @@ const ProfilePage = () => {
       <div className="flex flex-row">
         <div className="flex flex-row justify-start items-center backdrop-blur-lg bg-white/10 w-1/2 ml-10 h-20 rounded-l-3xl">
           <div className="px-4 pl-20">
-            <button>
+            <button data-tooltip-content="Add a File" data-tooltip-id="addfile">
               <FontAwesomeIcon
                 icon={faFileCirclePlus}
                 onClick={() => {
@@ -235,9 +250,10 @@ const ProfilePage = () => {
                 className="text-4xl"
               />
             </button>
+            <ReactTooltip id="addfile" />
           </div>
           <div className="px-4">
-            <button>
+            <button data-tooltip-content="Add a Folder" data-tooltip-id="addfolder">
               <FontAwesomeIcon
                 icon={faFolderPlus}
                 onClick={() => {
@@ -247,6 +263,7 @@ const ProfilePage = () => {
                 className="text-4xl"
               />
             </button>
+            <ReactTooltip id="addfolder" />
           </div>
         </div>
         <div className="flex flex-row justify-around items-center backdrop-blur-lg bg-white/10 w-1/2 mr-10 h-40 rounded-b-3xl rounded-r-3xl">
@@ -261,7 +278,7 @@ const ProfilePage = () => {
           <div className="flex flex-col justify-end">
             <div className="self-center flex">
               <div>
-                <button className="">
+                <button className="" data-tooltip-content="Delete Folder from Dropdown" data-tooltip-id="deletefolder">
                   <FontAwesomeIcon
                     onClick={handleFolderDelete}
                     disabled={!selectedFolder}
@@ -269,6 +286,7 @@ const ProfilePage = () => {
                     className="text-4xl"
                   />
                 </button>
+                <ReactTooltip id="deletefolder" />
               </div>
               
             </div>
@@ -284,7 +302,7 @@ const ProfilePage = () => {
                 </option>
                 {rootFolder?.folders?.map((folder) => (
                   <option key={folder._id} value={folder._id}>
-                    {folder.name}
+                    {truncateName(folder.name)}
                   </option>
                 ))}
               </select>
@@ -304,12 +322,15 @@ const ProfilePage = () => {
                 <Link
                   href={`/documents/${f._id}`}
                   className="flex flex-row justify-start items-center w-4/5"
+                  data-tooltip-content={`Last Updated: ${f.updatedAt.slice(0, 10)}`}
+                  data-tooltip-id="fileupdated"
                 >
                   <FontAwesomeIcon icon={faFile} className="text-xl px-4" />
-                  <h2 className="text-xl px-4">{f.name}</h2>
+                  <h2 className="text-xl px-4">{truncateFileName(f.name)}</h2>
                 </Link>
+                <ReactTooltip id="fileupdated" />
                 <div className="flex flex-row justify-end items-center w-1/5">
-                  <button>
+                  <button data-tooltip-content="Move File" data-tooltip-id="movefile">
                     <FontAwesomeIcon
                       onClick={() => {
                         setFileToMove(f._id);
@@ -319,12 +340,14 @@ const ProfilePage = () => {
                       className="text-xl px-4"
                     />
                   </button>
-                  <button onClick={() => handleFileDelete(f._id)}>
+                  <ReactTooltip id="movefile" />
+                  <button onClick={() => handleFileDelete(f._id)} data-tooltip-content="Delete File" data-tooltip-id="deletefile">
                     <FontAwesomeIcon
                       icon={faTrashCan}
                       className="text-xl px-4"
                     />
                   </button>
+                  <ReactTooltip id="deletefile" />
                 </div>
               </div>
             ))
@@ -339,10 +362,13 @@ const ProfilePage = () => {
                 <Link
                   href={`/profile/${f._id}`}
                   className="flex flex-col justify-center items-center"
+                  data-tooltip-content={`Last Updated: ${f.updatedAt.slice(0,10)}`}
+                  data-tooltip-id="folderupdated"
                 >
                   <FontAwesomeIcon icon={faFolder} className="text-6xl" />
-                  <h5>{f.name}</h5>
+                  <h5>{truncateName(f.name)}</h5>
                 </Link>
+                <ReactTooltip id="folderupdated" />
               </div>
             ))
           ) : (
