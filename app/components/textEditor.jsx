@@ -6,6 +6,7 @@ import MathTool from "editorjs-math";
 import SymbolPicker from "./SymbolPicker";
 import Undo from "editorjs-undo";
 import FileNav from "./fileNav";
+import ColorPicker from 'editorjs-color-picker';
 
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import { faFileExport } from "@fortawesome/free-solid-svg-icons";
@@ -30,6 +31,7 @@ import misc from "../public/symbols/Miscellaneous_Symbols.json";
 import relational from "../public/symbols/Relational_Operators.json";
 
 import { useUser } from "@auth0/nextjs-auth0/client";
+import FontSize from 'editorjs-inline-font-size-tool'
 
 const TextEditor = () => {
   // Stores reference to an Editor.js instance
@@ -45,6 +47,8 @@ const TextEditor = () => {
   const [fileName, setFileName] = useState("");
 
   const { user } = useUser();
+
+  
 
   const combinedSymbols = [
     ...arithmetic,
@@ -120,6 +124,7 @@ const TextEditor = () => {
         header: {
           class: Header,
           inlineToolbar: true,
+          
         },
         math: {
           class: MathTool,
@@ -129,6 +134,9 @@ const TextEditor = () => {
               throwOnError: false, //Will not crash the entire site if katex fails to render
             },
           },
+        },
+        ColorPicker: {
+          class: ColorPicker,
         },
       },
       data: {
@@ -182,6 +190,14 @@ const TextEditor = () => {
   const exitMathMode = () => {
     setIsMathMode(false); // Deactivate math mode
   };
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      saveEditor();
+    }, 10000);
+
+    return () => clearInterval(intervalId);
+  }, [fileId]);
 
   const saveEditor = async () => {
     try {
