@@ -187,6 +187,8 @@ const TextEditor = () => {
     const intervalId = setInterval(() => {
       saveEditor();
     }, 10000);
+
+    return () => clearInterval(intervalId);
   }, [fileId]);
 
   const saveEditor = async () => {
