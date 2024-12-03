@@ -47,6 +47,7 @@ const TextEditor = () => {
   const [fileName, setFileName] = useState("");
 
   const { user } = useUser();
+  const [saving, setSaving] = useState(false);
 
   
 
@@ -200,6 +201,7 @@ const TextEditor = () => {
   }, [fileId]);
 
   const saveEditor = async () => {
+    setSaving(true)
     try {
       const outputData = await ejInstance.current.save();
       console.log("Article data: ", outputData);
@@ -223,6 +225,8 @@ const TextEditor = () => {
       }
     } catch (error) {
       console.log("Saving failed: ", error);
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -446,6 +450,10 @@ const TextEditor = () => {
             <FontAwesomeIcon icon={isSymbolPickerOpen ? faMinus : faPlus} />
           </button>
           <ReactTooltip id="symbol" />
+        </div>
+        <div id="" className="pl-4 basis-1/10">
+          {/* Button to open/close Symbol Picker */}
+          {saving && <p>Saving...</p>}
         </div>
       </div>
 
