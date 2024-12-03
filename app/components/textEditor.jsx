@@ -183,6 +183,12 @@ const TextEditor = () => {
     setIsMathMode(false); // Deactivate math mode
   };
 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      saveEditor();
+    }, 10000);
+  }, [fileId]);
+
   const saveEditor = async () => {
     try {
       const outputData = await ejInstance.current.save();
