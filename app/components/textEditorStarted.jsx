@@ -6,6 +6,7 @@ import MathTool from "editorjs-math";
 import SymbolPicker from "./SymbolPicker";
 import Undo from "editorjs-undo";
 import FileNav from "./fileNav";
+import ColorPicker from 'editorjs-color-picker';
 
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import { faFileExport } from "@fortawesome/free-solid-svg-icons";
@@ -94,6 +95,9 @@ const TextEditorStarted = () => {
               throwOnError: false,
             },
           },
+        },
+        ColorPicker: {
+          class: ColorPicker,
         },
       },
       data: sampleData,

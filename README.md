@@ -1,34 +1,30 @@
 ## SymNote
+
 <img src="https://i.imgur.com/EQBEvEg.png" width=200/>
 
 ### What is SymNote?
 
-**SymNote** is an up and coming note-taking application designed specifically for students, educators, and professionals who need to incorporate complex mathematical symbols and expressions into their notes seamlessly. We put a focus on user experience and powerful functionality, SymNote aims to make mathematical writing accessible and efficient. 
-
+**SymNote** is a note-taking application designed specifically for students, educators, and professionals who need to incorporate complex mathematical symbols and expressions into their notes seamlessly. We put a focus on user experience and powerful functionality, SymNote aims to make mathematical writing accessible and efficient.
 
 ### Can I see a demo?
 
-**A video demonstration** of the app can be found here: https://youtu.be/4B_kHCOMqHY
+**A video demonstration** of the app can be found here: https://youtu.be/4B_kHCOMqHY (OUTDATED - Showcases an early prototype representing the skeleton of the project)
 
 ### User Experience
 
-**Using the app, users will be able to** effortlessly write out complex mathematical documents, type intricate equations, and export your work in multiple formats, allowing you to upload your work to other applications! In addition, SymNote provides you with a user-friendly interface, customizable to fit your needs*.
+**Detailed Notes** - Effortlessly write out complex mathematical documents, type intricate equations, and export your work via a PDF, allowing you to upload your work to other applications! In addition, SymNote provides you with a user-friendly interface, customizable to fit your needs\*.
 
-**Light and Dark Mode** We are incorporating a light and dark mode theme to enhance the user experience for the editors preference. This will help the editor website feel more modern for Users that are accustomed to a certain theming on there applications of choice. 
+**Various Themes** - We are incorporating various different visual themes and color schemes to enhance the user experience for the editors preference. This will help the editor website feel more modern for Users that are accustomed to a certain theming on there applications of choice.
 
 ### Design Elements
 
-For the Prototype we decided to build direclty using React, Next.js with the usage of Tailwind.css, editor.js, and auth0 for the logging in functionality. We wanted to keep the website simple so it is easy to navigate with a folder/file page that is similiar to the look of google drive for ease of understanding. 
+For the Prototype we decided to build direclty using React, Next.js with the usage of Tailwind.css, editor.js, and auth0 for the logging in functionality. We wanted to keep the website simple so it is easy to navigate with a folder/file page that is similiar to the look of google drive for ease of understanding.
 
-The Editor is basic as of this prototype but with the use of plug-ins available to editor.js, we will be able to add in functionality without having to code each element from scratch. 
+The Editor is basic as of this prototype but with the use of plug-ins available to editor.js, we will be able to add in functionality without having to code each element from scratch.
 
-Auth0 has the functionality to be able to sign in using email, google, or github for the user's preference.  It also allows for ease of logging off from any screen within the website with minimal code. With Auth0's functionality, we will be able to combine new users directly to the Mongo backend database.
+Auth0 has the functionality to be able to sign in using email, google, or github for the user's preference. It also allows for ease of logging off from any screen within the website with minimal code. With Auth0's functionality, we will be able to combine new users directly to the Mongo backend database.
 
-
-
-<sup>*many features still in development</sup>
-
-
+Once signed in, the user can create folders/files to work within before saving them to a MongoDB backend infrastructure.
 
 ---
 
@@ -38,7 +34,25 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+- Clone the project
+
+- Run `npm install` to install all dependencies.
+
+- Create an `.env.local` file within the root of your project with the following variables:
+
+```env
+# required for Auth0 authentication
+AUTH0_SECRET= secure_randomly_generated_string
+AUTH0_BASE_URL=http://localhost:3000
+AUTH0_ISSUER_BASE_URL='https://your-auth0-domain'
+AUTH0_CLIENT_ID= your_autho0_client_id
+AUTH0_CLIENT_SECRET= your_secret_provided_by_auth0
+
+# database configuration
+MONGODB_URI = mongodb+srv://<username>:<password>@<cluster-url>/<dbname>
+```
+
+To run the development server:
 
 ```bash
 npm run dev
@@ -50,9 +64,17 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To run the production build:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+npm run build
+
+# then
+
+npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to begin using SymNote!
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
